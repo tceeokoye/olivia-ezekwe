@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Brand Color Variables ─────────────────────────────────────────────── */
+:root {
+  --background:   #ffffff;
+  --foreground:   #0A1628;
+  --gold:         #C9A227;
+  --gold-light:   #e8c96a;
+  --navy:         #0A1628;
+  --navy-surface: #0f1e36;
+}
+
+html.dark {
+  --background:   #050d1f;
+  --foreground:   #ffffff;
+  --gold:         #C9A227;
+  --gold-light:   #e8c96a;
+  --navy:         #0A1628;
+  --navy-surface: #0f1e36;
+}
+
+/* ─── Base Layer ─────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply antialiased font-sans transition-colors duration-300;
+    background-color: #ffffff;
+    color: #0A1628;
+    overflow-x: hidden;
+  }
+
+  html.dark body {
+    background-color: #050d1f;
+    color: #f1f5f9;
+  }
+
+  ::selection {
+    background-color: #C9A227;
+    color: #ffffff;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #0A1628;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html.dark h1,
+  html.dark h2,
+  html.dark h3,
+  html.dark h4,
+  html.dark h5,
+  html.dark h6 {
+    color: #ffffff;
+  }
+
+  p {
+    color: #334155;
+  }
+
+  html.dark p {
+    color: #cbd5e1;
+  }
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+html.dark ::-webkit-scrollbar-track { background: #050d1f; }
+
+::-webkit-scrollbar-thumb { background: #0A1628; border-radius: 4px; }
+html.dark ::-webkit-scrollbar-thumb { background: #1e3a5f; }
+
+::-webkit-scrollbar-thumb:hover { background: #C9A227; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #C9A227; }
+
+/* ─── Card — white card with navy border (light) & navy glass (dark) ────── */
+.tech-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 24px -6px rgba(10,22,40,0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tech-card:hover {
+  border-color: #C9A227;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -8px rgba(10,22,40,0.15), 0 0 0 1px rgba(201,162,39,0.25);
+}
+
+html.dark .tech-card {
+  background: rgba(10, 22, 40, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(201, 162, 39, 0.18);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+html.dark .tech-card:hover {
+  background: rgba(15, 30, 54, 0.95);
+  border-color: rgba(201, 162, 39, 0.5);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px -5px rgba(201, 162, 39, 0.2);
+}
+
+/* ─── Pill ───────────────────────────────────────────────────────────────── */
+.tech-pill {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #0A1628;
+}
+
+html.dark .tech-pill {
+  background: rgba(10, 22, 40, 0.9);
+  border: 1px solid rgba(201, 162, 39, 0.25);
+  color: #ffffff;
+}
+
+/* ─── Navy Card ──────────────────────────────────────────────────────────── */
+.navy-card {
+  background: #0A1628;
+  border: 1px solid rgba(201,162,39,0.2);
+  color: #ffffff;
+}
+
+/* ─── Gradient Text Utilities ────────────────────────────────────────────── */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #a07a10 0%, #C9A227 50%, #e8c96a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.dark .text-gradient-gold {
+  background: linear-gradient(135deg, #f5e7b2 0%, #C9A227 50%, #e8c96a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-navy {
+  background: linear-gradient(135deg, #0A1628 0%, #1e3a5f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.dark .text-gradient-navy {
+  background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Tech Grid Pattern ──────────────────────────────────────────────────── */
+.bg-grid-tech {
+  background-size: 32px 32px;
+  background-image:
+    linear-gradient(to right, rgba(10, 22, 40, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 22, 40, 0.05) 1px, transparent 1px);
+}
+
+html.dark .bg-grid-tech {
+  background-image:
+    linear-gradient(to right, rgba(201, 162, 39, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(201, 162, 39, 0.04) 1px, transparent 1px);
+}
+
+/* ─── Scrollbar Hide ─────────────────────────────────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ─── Modal Inner Scrollbar ──────────────────────────────────────────────── */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(201,162,39,0.4);
+  border-radius: 4px;
+}
+
+/* ─── Shadow Utilities ───────────────────────────────────────────────────── */
+.shadow-gold { box-shadow: 0 4px 20px -4px rgba(201,162,39,0.4); }
+.shadow-navy { box-shadow: 0 4px 20px -4px rgba(10,22,40,0.3); }
