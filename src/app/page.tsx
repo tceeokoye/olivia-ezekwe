@@ -1,103 +1,255 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 import {
-  ArrowRight, Download, Sparkles, Award, Compass, Globe, Camera, Film,
-  FileText, Users, Search, Share2, CheckCircle2, ChevronRight,
-  HeartHandshake, Layers, Shield, Zap, PenTool,
-} from 'lucide-react';
-import SectionHeader from '@/components/SectionHeader';
-import TiltCard from '@/components/TiltCard';
-import ProjectModal from '@/components/ProjectModal';
-import { projectsData } from '@/data/portfolioData';
-import { Project } from '@/types';
+  ArrowRight,
+  Download,
+  Sparkles,
+  Award,
+  Compass,
+  Globe,
+  Camera,
+  Film,
+  FileText,
+  Users,
+  Search,
+  Share2,
+  CheckCircle2,
+  ChevronRight,
+  HeartHandshake,
+  Layers,
+  Shield,
+  Zap,
+  PenTool,
+} from "lucide-react";
+import SectionHeader from "@/components/SectionHeader";
+import TiltCard from "@/components/TiltCard";
+import ProjectModal from "@/components/ProjectModal";
+import { projectsData } from "@/data/portfolioData";
+import { Project } from "@/types";
+import Image from "next/image";
+import heroImage from "@/assets/hero-img.jpeg";
 
 export default function HomePage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const whatIDoItems = [
-    { title: 'Strategic Communications', icon: Compass, desc: 'High-level communication frameworks for non-profits, international funds, and civic organisations.', tag: 'Strategy' },
-    { title: 'Digital Communications', icon: Globe, desc: 'Scalable digital campaigns, multi-channel engagement, and high-converting online growth.', tag: 'Growth' },
-    { title: 'Brand Management', icon: Sparkles, desc: 'Memorable brand identities, positioning, visual style guides, and authoritative brand voice.', tag: 'Identity' },
-    { title: 'Content Strategy', icon: Layers, desc: 'Editorial calendars, SEO content funnels, email workflows, and thought leadership copy.', tag: 'Editorial' },
-    { title: 'Development Storytelling', icon: HeartHandshake, desc: 'Human-centered grassroots impact stories with ethical, dignity-first visual narratives.', tag: 'Advocacy' },
-    { title: 'Documentary Photography', icon: Camera, desc: 'On-the-ground visual photojournalism for field interventions, summits, and community voices.', tag: 'Media' },
-    { title: 'Videography & Media', icon: Film, desc: 'Directing and editing documentaries, campaign short films, and high-engagement reels.', tag: 'Production' },
-    { title: 'SEO & Website Management', icon: Search, desc: 'Optimizing web architectures, search rankings, user journeys, and donor conversion.', tag: 'Tech' },
-    { title: 'Social Media Management', icon: Share2, desc: 'Building vibrant online communities, digital movements, and viral live-broadcast coverage.', tag: 'Social' },
-    { title: 'Reports & Publications', icon: FileText, desc: 'Authoring and designing research scorecards, donor briefs, policy papers, and annual reports.', tag: 'Knowledge' },
+    {
+      title: "Strategic Communications",
+      icon: Compass,
+      desc: "Developing communication plans, messaging and approaches that help organisations and brand communicate with clarity.",
+      tag: "Strategy",
+    },
+    {
+      title: "Content Strategy & Development",
+      icon: Layers,
+      desc: "Planning and creating content that fits the audience, platform and communication goal.",
+      tag: "Content",
+    },
+    {
+      title: "Photography, Videography & Documentary",
+      icon: Camera,
+      desc: "Capturing people, places, events and impact through photography, video and documentary storytelling.",
+      tag: "Media",
+    },
+    {
+      title: "Storytelling & Editorial",
+      icon: PenTool,
+      desc: "Turning complex ideas, experiences and information into clear, engaging stories, articles and editorial content.",
+      tag: "Editorial",
+    },
+    {
+      title: "Digital Communications",
+      icon: Globe,
+      desc: "Building consistent communication across websites, social platforms, email and other digital channels.",
+      tag: "Digital",
+    },
+    {
+      title: "Social Media Management",
+      icon: Share2,
+      desc: "Managing social platforms from strategy and content creation to publishing, community engagement and performance tracking.",
+      tag: "Social",
+    },
+    {
+      title: "Brand Management",
+      icon: Sparkles,
+      desc: "Shaping brand voice, messaging and digital presence to create a consistent and recognisable identity.",
+      tag: "Identity",
+    },
+    {
+      title: "Reports & Publications",
+      icon: FileText,
+      desc: "Creating reports, newsletters, publications and organisational documents that communicate information clearly and professionally.",
+      tag: "Knowledge",
+    },
+    {
+      title: "SEO & Website Management",
+      icon: Search,
+      desc: "Improving website content, structure and visibility while keeping digital platforms relevant, accessible and up to date.",
+      tag: "Tech",
+    },
+    {
+      title: "Campaigns & Advocacy",
+      icon: HeartHandshake,
+      desc: "Developing communication and content for campaigns that raise awareness, encourage action and amplify important issues.",
+      tag: "Advocacy",
+    },
   ];
 
   return (
     <div className="space-y-0 pb-0">
-
       {/* ============================================================
-          HERO — dark navy full-bleed section
+          HERO — adaptive full-bleed section
       ============================================================ */}
-      <section className="relative bg-[#0A1628] min-h-[90vh] flex items-center justify-center pt-10 sm:pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-[#0A1628] min-h-[90vh] flex items-center justify-center pt-8 sm:pt-20 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Hero Background Image with Balanced Dark Overlay */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <Image
+            src={heroImage}
+            alt="Strategic Communications Background"
+            fill
+            className="w-full h-full object-cover object-top sm:object-center opacity-55 sm:opacity-65 dark:opacity-40 scale-100 transition-opacity duration-300"
+            priority
+          />
+          {/* Balanced Dark Gradient for crisp text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/70 via-[#0A1628]/55 to-[#0A1628]/85 dark:from-[#0A1628]/85 dark:via-[#0A1628]/70 dark:to-[#0A1628]/95 transition-colors duration-300" />
+        </div>
+
         {/* Subtle gold glow top-right */}
-        <div className="absolute top-0 right-0 w-[500px] h-[400px] rounded-full blur-[120px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse, rgba(201,162,39,0.2) 0%, transparent 70%)' }} />
-        {/* Subtle blue glow bottom-left */}
-        <div className="absolute bottom-0 left-0 w-[400px] h-[300px] rounded-full blur-[120px] pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse, rgba(30,87,153,0.3) 0%, transparent 70%)' }} />
+        <div
+          className="absolute top-0 right-0 w-[500px] h-[400px] rounded-full blur-[100px] pointer-events-none z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse, rgba(201,162,39,0.08) 0%, transparent 70%)",
+          }}
+        />
+        {/* Subtle blue/gold glow bottom-left */}
+        <div
+          className="absolute bottom-0 left-0 w-[400px] h-[300px] rounded-full blur-[100px] pointer-events-none z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse, rgba(201,162,39,0.08) 0%, transparent 90%)",
+          }}
+        />
 
         <div className="max-w-5xl mx-auto w-full text-center relative z-10 space-y-8">
-          {/* Badge */}
-         {/*  <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-            className="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full border border-[#C9A227]/30 bg-[#C9A227]/10 text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-[#C9A227] animate-pulse" />
-            <span className="font-semibold text-white">COMMUNICATIONS STRATEGIST &amp; BRAND LEAD</span>
-            <span className="text-[#C9A227]/60">•</span>
-            <span className="text-[#C9A227] font-bold">LEGAL SCHOLAR (LL.M, B.L, LL.B)</span>
-          </motion.div>  */}
-
           {/* Name */}
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight font-display leading-[1.05]">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight font-display leading-[1.05]"
+          >
             <span className="text-white">Olivia </span>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] via-[#C9A227] to-[#a07a10]">Ezekwe</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] via-[#C9A227] to-[#a07a10]">
+              Ezekwe
+            </span>
           </motion.h1>
 
           {/* Tagline */}
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-2xl md:text-3xl font-bold text-white/90 font-sans tracking-wide max-w-4xl mx-auto">
-            Strategic Communications <span className="text-[#C9A227]">/</span> Digital Specialist <span className="text-[#C9A227]">/</span> Brand &amp; Content
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg sm:text-2xl md:text-2xl font-bold text-white/95 font-sans tracking-wide max-w-4xl mx-auto drop-shadow-sm"
+          >
+            Strategic Communications <span className="text-[#C9A227]">/</span>{" "}
+            Digital Specialist <span className="text-[#C9A227]">/</span> Brand
+            &amp; Content
           </motion.p>
 
           {/* Description */}
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-slate-300 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-normal">
-            I help non-profits, development organisations, and purpose-driven brands communicate their impact through strategic communications, storytelling, digital engagement, and multimedia content.
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-slate-200 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-normal drop-shadow-sm"
+          >
+            I help non-profits, development organisations, and purpose-driven
+            brands communicate their impact through strategic communications,
+            storytelling, digital engagement, and multimedia content.
           </motion.p>
 
           {/* CTA Buttons */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }}
-            className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/portfolio"
-              className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm uppercase tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2">
-              <span>VIEW MY WORK</span><ArrowRight className="w-4 h-4" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            <Link
+              href="/portfolio"
+              className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm uppercase tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <span>VIEW MY WORK</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/cv"
-              className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/20 hover:border-[#C9A227]/60 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/5 transition-all flex items-center justify-center gap-2">
-              <Download className="w-4 h-4 text-[#C9A227]" /><span>DOWNLOAD CV</span>
+            <Link
+              href="/cv"
+              className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/20 hover:border-[#C9A227]/60 text-white font-bold text-sm uppercase tracking-wider hover:bg-white/5 transition-all flex items-center justify-center gap-2"
+            >
+              <Download className="w-4 h-4 text-[#C9A227]" />
+              <span>DOWNLOAD CV</span>
             </Link>
           </motion.div>
 
           {/* Metrics Strip */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
-            className="pt-12 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="pt-10 sm:pt-12 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 max-w-4xl mx-auto items-stretch"
+          >
             {[
-              { val: '8+ Yrs', label: 'Strategic Impact', color: 'text-white' },
-              { val: '38+', label: 'Communities Reached', color: 'text-[#C9A227]' },
-              { val: '2.5M+', label: 'Digital Audience', color: 'text-[#C9A227]' },
-              { val: 'LL.M / B.L', label: 'Legal & Policy Rigor', color: 'text-white' },
+              {
+                val: "4+ Yrs",
+                label: "Communications Experience",
+                color: "text-white",
+              },
+              {
+                val: "5+ Brands",
+                label: "Managed & Supported",
+                color: "text-[#C9A227]",
+              },
+              {
+                val: "5+ Sectors",
+                label: "Nonprofit",
+                color: "text-[#C9A227]",
+                list: ["UK Finance", "Hospitality", "Mental Health", "Faith"],
+              },
+              {
+                val: "18+ Platforms",
+                label: "Managed Across Digital Channels",
+                color: "text-white",
+              },
             ].map((m, i) => (
-              <div key={i} className="p-4 rounded-2xl border border-white/10 bg-white/5 text-center">
-                <div className={`text-2xl sm:text-3xl font-extrabold font-display ${m.color}`}>{m.val}</div>
-                <div className="text-[11px] text-slate-400 font-mono mt-1 uppercase font-semibold">{m.label}</div>
+              <div
+                key={i}
+                className="p-3 sm:p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col items-center justify-center text-center h-full transition-all hover:border-[#C9A227]/30 overflow-hidden"
+              >
+                <div
+                  className={`text-base sm:text-xl lg:text-2xl font-extrabold font-display leading-tight tracking-tight ${m.color}`}
+                >
+                  {m.val}
+                </div>
+                {m.label && (
+                  <div className="text-[10px] sm:text-[11px] text-slate-300 font-mono mt-1 uppercase font-semibold leading-snug">
+                    {m.label}
+                  </div>
+                )}
+                {m.list && (
+                  <div className="w-full flex justify-center mt-1.5">
+                    <ul className="text-[9px] sm:text-[11px] text-slate-300 font-mono space-y-0.5 text-left inline-block uppercase font-medium">
+                      {m.list.map((item, idx) => (
+                        <li key={idx} className="leading-tight">
+                          • {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             ))}
           </motion.div>
@@ -124,8 +276,12 @@ export default function HomePage() {
                     <span className="px-3 py-1 text-xs font-mono rounded-full bg-[#C9A227] text-[#0A1628] font-bold inline-block mb-2">
                       LEGAL &amp; COMMUNICATIONS LEAD
                     </span>
-                    <h3 className="text-2xl font-bold font-display text-white">Olivia Ezekwe</h3>
-                    <p className="text-xs text-[#e8c96a] font-mono mt-0.5">Master of Laws (LL.M) • Barrister-at-Law (B.L)</p>
+                    <h3 className="text-2xl font-bold font-display text-white">
+                      Olivia Ezekwe
+                    </h3>
+                    <p className="text-xs text-[#e8c96a] font-mono mt-0.5">
+                      Master of Laws (LL.M) • Barrister-at-Law (B.L)
+                    </p>
                   </div>
                 </div>
               </TiltCard>
@@ -137,18 +293,28 @@ export default function HomePage() {
                 ABOUT ME
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A1628] dark:text-white font-display leading-tight">
-                Bridging analytical legal rigor with evocative, human-centered storytelling.
+                Bridging analytical legal rigor with evocative, human-centered
+                storytelling.
               </h2>
               <p className="text-slate-600 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
-                I am a communications professional with deep expertise in communication strategy, storytelling, digital engagement, brand management, and multimedia content.
+                I am a communications professional with deep expertise in
+                communication strategy, storytelling, digital engagement, brand
+                management, and multimedia content.
               </p>
               <p className="text-slate-500 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-                With an advanced legal foundation (LL.M, B.L, LL.B) and leadership across international non-profits and purpose-driven enterprises, I translate complex public policy, healthcare reform, and community interventions into clear, persuasive narratives that drive donor trust and institutional change.
+                With an advanced legal foundation (LL.M, B.L, LL.B) and
+                leadership across international non-profits and purpose-driven
+                enterprises, I translate complex public policy, healthcare
+                reform, and community interventions into clear, persuasive
+                narratives that drive donor trust and institutional change.
               </p>
               <div className="pt-4">
-                <Link href="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0A1628] dark:bg-white/10 hover:bg-[#1e3a5f] dark:hover:bg-white/20 text-[#C9A227] text-xs uppercase font-bold tracking-wider transition-all hover:translate-x-1">
-                  <span>Learn more about my story</span><ArrowRight className="w-4 h-4" />
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0A1628] dark:bg-white/10 hover:bg-[#1e3a5f] dark:hover:bg-white/20 text-[#C9A227] text-xs uppercase font-bold tracking-wider transition-all hover:translate-x-1"
+                >
+                  <span>Learn more about my story</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -164,14 +330,19 @@ export default function HomePage() {
           <SectionHeader
             badge="CAPABILITIES"
             title="What I Do"
-            description="A comprehensive toolkit combining strategic clarity, technical digital mastery, and cinematic media production."
+            description="I turn ideas, information and stories into clear communication and compelling content that connect with audience."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
             {whatIDoItems.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }} transition={{ duration: 0.4, delay: idx * 0.04 }}>
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.04 }}
+                >
                   <TiltCard className="h-full">
                     <div className="tech-card rounded-2xl p-6 h-full flex flex-col justify-between group">
                       <div>
@@ -183,8 +354,12 @@ export default function HomePage() {
                             {item.tag}
                           </span>
                         </div>
-                        <h3 className="text-sm font-bold text-[#0A1628] dark:text-white mb-2 group-hover:text-[#C9A227] transition-colors">{item.title}</h3>
-                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">{item.desc}</p>
+                        <h3 className="text-sm font-bold text-[#0A1628] dark:text-white mb-2 group-hover:text-[#C9A227] transition-colors">
+                          {item.title}
+                        </h3>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed font-normal">
+                          {item.desc}
+                        </p>
                       </div>
                     </div>
                   </TiltCard>
@@ -205,39 +380,69 @@ export default function HomePage() {
               <span className="text-xs font-mono tracking-widest text-[#C9A227] uppercase px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 inline-block mb-3 font-semibold">
                 PORTFOLIO // SELECTED WORK
               </span>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A1628] dark:text-white font-display">Featured Projects</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#0A1628] dark:text-white font-display">
+                Selected Work
+              </h2>
+              <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base mt-2 max-w-2xl font-normal leading-relaxed">
+                Writing, visual storytelling, strategic communications and
+                creative work across organisations, brands and campaigns.
+              </p>
             </div>
-            <Link href="/portfolio"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-extrabold text-xs uppercase tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105">
-              <span>View All Projects</span><ArrowRight className="w-4 h-4" />
+            <Link
+              href="/portfolio"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-extrabold text-xs uppercase tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
+            >
+              <span>View All Projects</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projectsData.slice(0, 4).map((project, idx) => (
-              <motion.div key={project.id} initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.1 }}
-                onClick={() => setSelectedProject(project)} className="cursor-pointer group">
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                onClick={() => setSelectedProject(project)}
+                className="cursor-pointer group"
+              >
                 <TiltCard maxTilt={6}>
                   <div className="tech-card rounded-2xl overflow-hidden">
                     <div className="relative h-64 sm:h-72 w-full overflow-hidden">
-                      <img src={project.image} alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-[#0A1628]/30 to-transparent" />
                       <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-[#C9A227] text-[#0A1628]">{project.category}</span>
+                        <span className="px-3 py-1 text-xs font-bold rounded-full bg-[#C9A227] text-[#0A1628]">
+                          {project.category}
+                        </span>
                       </div>
                     </div>
                     <div className="p-6 sm:p-8 space-y-3">
-                      <div className="text-xs text-[#C9A227] font-mono font-semibold">{project.client}</div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors font-display">{project.title}</h3>
-                      <p className="text-slate-500 dark:text-slate-300 text-xs sm:text-sm leading-relaxed line-clamp-2">{project.summary}</p>
+                      <div className="text-xs text-[#C9A227] font-mono font-semibold">
+                        {project.client}
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors font-display">
+                        {project.title}
+                      </h3>
+                      <p className="text-slate-500 dark:text-slate-300 text-xs sm:text-sm leading-relaxed line-clamp-2">
+                        {project.summary}
+                      </p>
                       <div className="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
                         <div className="flex gap-4">
                           {project.metrics?.slice(0, 2).map((m, mIdx) => (
                             <div key={mIdx}>
-                              <span className="text-sm font-bold text-[#C9A227]">{m.value}</span>{' '}
-                              <span className="text-[11px] text-slate-400">{m.label}</span>
+                              <span className="text-sm font-bold text-[#C9A227]">
+                                {m.value}
+                              </span>{" "}
+                              <span className="text-[11px] text-slate-400">
+                                {m.label}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -261,34 +466,79 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-14">
             <span className="text-xs font-mono tracking-widest text-[#C9A227] uppercase px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 inline-block mb-4 font-semibold">
-              PORTFOLIO DISCIPLINES
+              SELECTED WORK
             </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white font-display">Writing, Photography &amp; Film</h2>
-            <p className="text-slate-400 mt-3 max-w-xl mx-auto text-base">Explore specialized media pillars housed within the portfolio.</p>
+            <h2 className="text-3xl sm:text-4xl font-black text-white font-display">
+              Disciplines &amp; Focus Areas
+            </h2>
+            <p className="text-slate-400 mt-3 max-w-2xl mx-auto text-base">
+              Writing, visual storytelling, strategic communications and
+              creative work across organisations, brands and campaigns.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { href: '/writing', icon: PenTool, num: '01', label: 'Articles & Reports', title: 'Writing & Policy', desc: 'Thought leadership essays, governance reports, human rights chronicles, and newsletters.', count: '6+ Publications', color: 'border-sky-500/30 bg-sky-500/10 text-sky-400' },
-              { href: '/photography', icon: Camera, num: '02', label: 'Visual Stories', title: 'Photography', desc: 'Dignity-first documentary photojournalism capturing grassroots development and human rights.', count: 'View Gallery', color: 'border-[#C9A227]/30 bg-[#C9A227]/10 text-[#C9A227]' },
-              { href: '/videography', icon: Film, num: '03', label: 'Motion & Media', title: 'Videography', desc: 'Directing and producing documentary films, campaign videos, and viral social reels.', count: 'Watch Showcase', color: 'border-indigo-500/30 bg-indigo-500/10 text-indigo-400' },
+              {
+                href: "/writing",
+                icon: PenTool,
+                num: "01",
+                title: "Writing & Storytelling",
+                desc: "Articles, Press releases, and editorial work.",
+                color: "border-sky-500/30 bg-sky-500/10 text-sky-400",
+              },
+              {
+                href: "/services",
+                icon: Globe,
+                num: "02",
+                title: "Strategic & Digital Communications",
+                desc: "Communication strategy, campaigns, digital content.",
+                color: "border-[#C9A227]/30 bg-[#C9A227]/10 text-[#C9A227]",
+              },
+              {
+                href: "/photography",
+                icon: Camera,
+                num: "03",
+                title: "Visual Storytelling",
+                desc: "Photography, videography, documentary films, interviews and visual content that capture people, places and stories.",
+                color: "border-indigo-500/30 bg-indigo-500/10 text-indigo-400",
+              },
+              {
+                href: "/portfolio",
+                icon: Sparkles,
+                num: "04",
+                title: "Brand & Digital Presence",
+                desc: "Brand communication, websites and digital experiences that create a consistent public presence.",
+                color:
+                  "border-emerald-500/30 bg-emerald-500/10 text-emerald-400",
+              },
             ].map((d) => {
               const Icon = d.icon;
               return (
-                <Link key={d.href} href={d.href} className="group">
-                  <div className="border border-white/10 hover:border-[#C9A227]/40 bg-white/5 hover:bg-white/10 rounded-2xl p-8 h-full flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
+                <Link key={d.title} href={d.href} className="group">
+                  <div className="border border-white/10 hover:border-[#C9A227]/40 bg-white/5 hover:bg-white/10 rounded-2xl p-6 sm:p-8 h-full flex flex-col justify-between transition-all duration-300 hover:-translate-y-1">
                     <div className="space-y-4">
-                      <div className={`w-12 h-12 rounded-xl border flex items-center justify-center ${d.color}`}>
+                      <div
+                        className={`w-12 h-12 rounded-xl border flex items-center justify-center ${d.color}`}
+                      >
                         <Icon className="w-6 h-6" />
                       </div>
                       <div>
-                        <span className={`text-[11px] font-mono uppercase font-semibold ${d.color.split(' ').pop()}`}>{d.num} // {d.label}</span>
-                        <h3 className="text-2xl font-bold text-white group-hover:text-[#C9A227] transition-colors mt-1 font-display">{d.title}</h3>
+                        <span
+                          className={`text-[11px] font-mono uppercase font-semibold ${d.color.split(" ").pop()}`}
+                        >
+                          {d.num} // Pillar
+                        </span>
+                        <h3 className="text-xl font-bold text-white group-hover:text-[#C9A227] transition-colors mt-1 font-display">
+                          {d.title}
+                        </h3>
                       </div>
-                      <p className="text-slate-400 text-sm leading-relaxed">{d.desc}</p>
+                      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                        {d.desc}
+                      </p>
                     </div>
                     <div className="pt-6 mt-6 border-t border-white/10 flex items-center justify-between text-xs font-bold text-[#C9A227]">
-                      <span>{d.count}</span>
+                      <span>Explore Work</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </div>
                   </div>
@@ -305,21 +555,49 @@ export default function HomePage() {
       <section className="bg-[#f8fafc] dark:bg-[#0A1628]/60 py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
         <div className="max-w-5xl mx-auto text-center">
           <span className="text-xs font-mono tracking-widest text-[#C9A227] uppercase px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 inline-block mb-4 font-semibold">
-            WHAT CLIENTS SAY
+            THEY SAID IT, NOT ME.
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#0A1628] dark:text-white font-display mb-12">Trusted by Partners Worldwide</h2>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0A1628] dark:text-white font-display mb-12">
+            What people I’ve worked with have to say…
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { quote: 'Olivia brings clarity, creativity and professionalism to every project. She understands communication and delivers results.', name: 'Client Name', org: 'Partner Organisation' },
-              { quote: 'Her legal background combined with communications expertise is rare. She elevated our advocacy campaigns significantly.', name: 'Programme Director', org: 'International NGO' },
-              { quote: 'Olivia transformed how we communicate with donors. Our engagement rates tripled after working with her.', name: 'Executive Director', org: 'Development Foundation' },
+              {
+                quote:
+                  "Olivia is gifted, and I truly enjoyed working with her. Her legal background gives her an advantage because she can see an idea or communication from different angles, and she knows how to translate it in interesting ways. I look forward to working with her again.",
+                name: "Mary E.A.",
+                org: "HR Executive.",
+              },
+              {
+                quote:
+                  "Olivia is a really good writer. One of the best I know actually. She has a way of turning an idea (no matter how abstract or how mundane), into something magical.",
+                name: "John-Martins, O.  (Esq).",
+                org: "Creative Director, Shatili",
+              },
+              {
+                quote:
+                  "She has a really good eye for detail. She pays attention to the little things that others may overlook and has a way of turning ordinary moments into stories through her visual work.",
+                name: "Daniel N.",
+                org: "Cinematographer",
+              },
             ].map((t, i) => (
-              <div key={i} className="tech-card rounded-2xl p-6 text-left space-y-4">
-                <div className="text-4xl text-[#C9A227] font-serif leading-none">&ldquo;</div>
-                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic">{t.quote}</p>
+              <div
+                key={i}
+                className="tech-card rounded-2xl p-6 text-left space-y-4"
+              >
+                <div className="text-4xl text-[#C9A227] font-serif leading-none">
+                  &ldquo;
+                </div>
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed italic">
+                  {t.quote}
+                </p>
                 <div className="pt-3 border-t border-slate-100 dark:border-white/10">
-                  <div className="font-bold text-[#0A1628] dark:text-white text-sm">— {t.name}</div>
-                  <div className="text-xs text-[#C9A227] font-mono">{t.org}</div>
+                  <div className="font-bold text-[#0A1628] dark:text-white text-sm">
+                    ~{t.name}
+                  </div>
+                  <div className="text-xs text-[#C9A227] font-mono">
+                    {t.org}
+                  </div>
                 </div>
               </div>
             ))}
@@ -333,25 +611,37 @@ export default function HomePage() {
       <section className="bg-[#0A1628] dark:bg-[#050d1f] py-20 sm:py-24 px-4 sm:px-6 lg:px-8 text-center transition-colors duration-300">
         <div className="max-w-3xl mx-auto space-y-6">
           <h2 className="text-3xl sm:text-5xl font-black text-white font-display">
-            Let&apos;s Work <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] to-[#C9A227]">Together</span>
+            GOT SOMETHING IN{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] to-[#C9A227]">
+              MIND?
+            </span>
           </h2>
           <p className="text-slate-400 text-base sm:text-lg max-w-xl mx-auto">
-            Ready to communicate your impact? Let&apos;s build something meaningful.
+            Have a story to tell, an idea to communicate or a project in mind?
+            Let’s get started.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <Link href="/contact"
-              className="w-full sm:w-auto px-10 py-4 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm uppercase tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2">
-              <span>GET IN TOUCH</span><ArrowRight className="w-4 h-4" />
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto px-10 py-4 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm uppercase tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2"
+            >
+              <span>GET IN TOUCH</span>
+              <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/portfolio"
-              className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:border-[#C9A227]/50 hover:bg-white/5 transition-all flex items-center justify-center gap-2">
+            <Link
+              href="/portfolio"
+              className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/20 text-white font-bold text-sm uppercase tracking-wider hover:border-[#C9A227]/50 hover:bg-white/5 transition-all flex items-center justify-center gap-2"
+            >
               <span>EXPLORE WORK</span>
             </Link>
           </div>
         </div>
       </section>
 
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </div>
   );
 }

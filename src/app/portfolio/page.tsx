@@ -51,79 +51,89 @@ export default function PortfolioPage() {
         </div>
 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0A1628] dark:text-white font-display">
-          Portfolio &amp;{' '}
+          Selected{' '}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] via-[#C9A227] to-[#a07a10]">
-            Selected Work
+            Work
           </span>
         </h1>
 
         <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-          Explore multi-sector campaigns, development communications, policy research reports, documentary photojournalism, and cinematic video productions.
+          Writing, visual storytelling, strategic communications and creative work across organisations, brands and campaigns.
         </p>
       </section>
 
       {/* ===================== PORTFOLIO DISCIPLINES QUICK NAV ===================== */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="p-4 rounded-2xl bg-[#C9A227]/15 border border-[#C9A227]/40 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#C9A227] text-[#0A1628] flex items-center justify-center font-bold">
-              <FolderKanban className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-[#0A1628] dark:text-white">Selected Work</div>
-              <div className="text-[10px] text-[#C9A227] font-mono font-semibold">6 Flagship Projects</div>
-            </div>
-          </div>
-          <span className="text-xs font-bold text-[#C9A227] font-mono">Active</span>
-        </div>
-
-        <Link
-          href="/writing"
-          className="p-4 rounded-2xl tech-card flex items-center justify-between group hover:border-sky-400/50"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-sky-500/10 text-sky-500 flex items-center justify-center group-hover:bg-sky-500 group-hover:text-white transition-colors">
-              <PenTool className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-[#0A1628] dark:text-white group-hover:text-sky-500">Writing &amp; Articles</div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Policy, Op-Eds &amp; Blogs</div>
-            </div>
-          </div>
-          <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-sky-500" />
-        </Link>
-
-        <Link
-          href="/photography"
-          className="p-4 rounded-2xl tech-card flex items-center justify-between group hover:border-[#C9A227]/50"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#C9A227]/10 text-[#C9A227] flex items-center justify-center group-hover:bg-[#C9A227] group-hover:text-white transition-colors">
-              <Camera className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227]">Photography</div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Field &amp; Documentary</div>
-            </div>
-          </div>
-          <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#C9A227]" />
-        </Link>
-
-        <Link
-          href="/videography"
-          className="p-4 rounded-2xl tech-card flex items-center justify-between group hover:border-indigo-400/50"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center group-hover:bg-indigo-500 group-hover:text-white transition-colors">
-              <Film className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="text-xs font-bold text-[#0A1628] dark:text-white group-hover:text-indigo-500">Videography</div>
-              <div className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">Films &amp; Social Reels</div>
-            </div>
-          </div>
-          <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-indigo-500" />
-        </Link>
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        {[
+          {
+            href: '/writing',
+            icon: PenTool,
+            num: '01',
+            title: 'Writing & Storytelling',
+            desc: 'Articles, Press releases, and editorial work.',
+            hoverBorder: 'hover:border-sky-400/50',
+            iconColor: 'bg-sky-500/10 text-sky-500 group-hover:bg-sky-500 group-hover:text-white',
+          },
+          {
+            href: '/services',
+            icon: Sparkles,
+            num: '02',
+            title: 'Strategic & Digital Communications',
+            desc: 'Communication strategy, campaigns, digital content.',
+            hoverBorder: 'hover:border-[#C9A227]/50',
+            iconColor: 'bg-[#C9A227]/10 text-[#C9A227] group-hover:bg-[#C9A227] group-hover:text-[#0A1628]',
+          },
+          {
+            href: '/photography',
+            icon: Camera,
+            num: '03',
+            title: 'Visual Storytelling',
+            desc: 'Photography, videography, documentary films, interviews and visual content that capture people, places and stories.',
+            hoverBorder: 'hover:border-indigo-400/50',
+            iconColor: 'bg-indigo-500/10 text-indigo-500 group-hover:bg-indigo-500 group-hover:text-white',
+          },
+          {
+            href: '/portfolio',
+            icon: FolderKanban,
+            num: '04',
+            title: 'Brand & Digital Presence',
+            desc: 'Brand communication, websites and digital experiences that create a consistent public presence.',
+            hoverBorder: 'hover:border-emerald-400/50',
+            iconColor: 'bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white',
+          },
+        ].map((item) => {
+          const Icon = item.icon;
+          return (
+            <Link
+              key={item.num}
+              href={item.href}
+              className={`p-5 sm:p-6 rounded-2xl tech-card flex flex-col justify-between group transition-all duration-300 hover:-translate-y-1 ${item.hoverBorder}`}
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-colors ${item.iconColor}`}>
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <span className="text-[11px] font-mono font-bold text-[#C9A227]">
+                    {item.num}
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-sm sm:text-base font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-slate-300 font-normal leading-relaxed mt-2">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+              <div className="pt-4 mt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between text-xs font-semibold text-[#C9A227]">
+                <span>Explore Work</span>
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+            </Link>
+          );
+        })}
       </section>
 
       {/* ===================== CATEGORY FILTER TABS ===================== */}

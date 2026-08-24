@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -276,8 +277,8 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Fullscreen Drawer */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
+      {mobileMenuOpen && typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
           <div className="fixed inset-0 z-50 lg:hidden">
             <motion.div
               initial={{ opacity: 0 }}
@@ -426,8 +427,9 @@ export default function Navbar() {
               </div>
             </motion.div>
           </div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body,
+      )}
     </header>
   );
 }

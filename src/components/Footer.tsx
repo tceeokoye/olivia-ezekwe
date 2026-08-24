@@ -1,14 +1,22 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { Mail, Linkedin, Phone, ArrowUpRight, Sparkles, Check, Shield } from 'lucide-react';
+import React, { useState } from "react";
+import Link from "next/link";
+import {
+  Mail,
+  Linkedin,
+  Phone,
+  ArrowUpRight,
+  Sparkles,
+  Check,
+  Shield,
+} from "lucide-react";
 
 export default function Footer() {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('hello@oliviaezekwe.com');
+    navigator.clipboard.writeText("hello@oliviaezekwe.com");
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 3000);
   };
@@ -30,10 +38,11 @@ export default function Footer() {
                 <Sparkles className="w-3.5 h-3.5" /> Start a Conversation
               </div>
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white font-display">
-                LET&apos;S WORK TOGETHER
+                OKAY, YOUR TURN!
               </h3>
               <p className="text-slate-200 text-base sm:text-lg mt-3 leading-relaxed">
-                &ldquo;Great communication doesn&apos;t just share information — it helps people understand why it matters.&rdquo;
+                &ldquo;If you’ve been saying, ‘We really need to communicate
+                this better’… this is your sign. &rdquo;
               </p>
             </div>
 
@@ -77,13 +86,12 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-slate-300 text-sm max-w-md leading-relaxed">
-              Communications Strategist, Brand Manager &amp; Legal Scholar. Helping non-profits, development agencies, and visionary brands amplify their impact through strategic storytelling, multimedia production, and data-driven campaigns.
+              Red = Communications Strategist, Writer & Visual Storyteller
+              <br /> Green = Communications Strategist, Writer & Storyteller
+              working across strategic communications, content development,
+              digital media, photography, videography and documentary
+              storytelling.
             </p>
-            <div className="flex items-center gap-3 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-xs text-[#e8c96a] font-mono font-semibold">
-                <Shield className="w-3.5 h-3.5 text-[#C9A227]" /> Legal Rigor (LL.M, B.L, LL.B)
-              </span>
-            </div>
           </div>
 
           <div>
@@ -92,22 +100,34 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/portfolio" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/portfolio"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   • Selected Work &amp; Campaigns
                 </Link>
               </li>
               <li>
-                <Link href="/writing" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/writing"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   • Writing &amp; Publications
                 </Link>
               </li>
               <li>
-                <Link href="/photography" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/photography"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   • Photography &amp; Field Stories
                 </Link>
               </li>
               <li>
-                <Link href="/videography" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/videography"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   • Videography &amp; Media
                 </Link>
               </li>
@@ -120,27 +140,42 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link href="/" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/about"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   About Olivia
                 </Link>
               </li>
               <li>
-                <Link href="/services" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/services"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   Services &amp; Consulting
                 </Link>
               </li>
               <li>
-                <Link href="/cv" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/cv"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   CV / Executive Resume
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium">
+                <Link
+                  href="/contact"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                >
                   Contact &amp; Inquiries
                 </Link>
               </li>
@@ -156,9 +191,9 @@ export default function Footer() {
               className="flex items-center gap-1.5 hover:text-[#C9A227] transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span>hello@oliviaezekwe.com</span>
+              <span> ezekweolivia@gmail.com</span>
             </a>
-            <a
+            {/* <a
               href="https://linkedin.com/in/oliviaezekwe"
               target="_blank"
               rel="noopener noreferrer"
@@ -166,13 +201,13 @@ export default function Footer() {
             >
               <Linkedin className="w-3.5 h-3.5 text-sky-400" />
               <span>linkedin.com/in/oliviaezekwe</span>
-            </a>
+            </a> */}
             <a
-              href="tel:+2340000000000"
+              href="https://wa.me/2348067103176"
               className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>+234 000 000 0000</span>
+              <span>+2348067103176</span>
             </a>
           </div>
 
