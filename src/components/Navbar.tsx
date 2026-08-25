@@ -103,8 +103,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5">
         <div className="flex items-center justify-between">
           {/* Brand Logo & Live Status */}
-          <Link href="/" className="group flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-amber-200 text-slate-950 font-black text-base flex items-center justify-center shadow-glow-gold transition-transform group-hover:scale-105">
+          <Link href="/" className="group flex items-center gap-3 ">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-amber-200 text-slate-950 font-black text-base flex items-center justify-center shadow-glow-gold transition-transform group-hover:scale-105 flex-shrink-0">
               OE
             </div>
             <div>
