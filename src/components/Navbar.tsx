@@ -118,7 +118,7 @@ export default function Navbar() {
                 </span>
               </div>
               <span className="text-[10px] text-slate-400 font-mono tracking-wider block">
-                Communications &amp; Brand Lead
+                Communications Strategist, Writer & Visual Storyteller
               </span>
             </div>
           </Link>

@@ -137,7 +137,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* ===================== CATEGORY FILTER TABS ===================== */}
-      <section className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+      {/* <section className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
         {CATEGORIES.map((cat) => {
           const isActive = activeCategory === cat;
           return (
@@ -154,10 +154,10 @@ export default function PortfolioPage() {
             </button>
           );
         })}
-      </section>
+      </section> */}
 
       {/* ===================== PROJECT GRID ===================== */}
-      <section>
+      {/* <section>
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence>
             {filteredProjects.map((project) => (
@@ -174,7 +174,7 @@ export default function PortfolioPage() {
                 <TiltCard maxTilt={8} className="h-full">
                   <div className="tech-card rounded-2xl overflow-hidden h-full flex flex-col justify-between">
                     <div>
-                      {/* Image Frame */}
+                     
                       <div className="relative h-64 w-full overflow-hidden">
                         <img
                           src={project.image}
@@ -189,7 +189,6 @@ export default function PortfolioPage() {
                         </div>
                       </div>
 
-                      {/* Content */}
                       <div className="p-6 space-y-3">
                         <div className="text-xs text-[#C9A227] font-mono font-semibold">{project.client}</div>
                         <h3 className="text-xl font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors font-display">
@@ -201,7 +200,7 @@ export default function PortfolioPage() {
                       </div>
                     </div>
 
-                    {/* Footer Metrics / Action */}
+                   
                     <div className="p-6 pt-0">
                       <div className="pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
                         <div className="text-xs text-[#C9A227] font-bold">
@@ -221,7 +220,7 @@ export default function PortfolioPage() {
             ))}
           </AnimatePresence>
         </motion.div>
-      </section>
+      </section> */}
 
       {/* ===================== WHAT CLIENTS SAY ===================== */}
       <section>

@@ -38,11 +38,11 @@ export default function Footer() {
                 <Sparkles className="w-3.5 h-3.5" /> Start a Conversation
               </div>
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white font-display">
-                OKAY, YOUR TURN!
+                LET’S TALK ABOUT YOUR NEXT PROJECT.
               </h3>
               <p className="text-slate-200 text-base sm:text-lg mt-3 leading-relaxed">
-                &ldquo;If you’ve been saying, ‘We really need to communicate
-                this better’… this is your sign. &rdquo;
+                &ldquo;Have an idea, story, campaign or communication challenge
+                in mind? Let’s talk. &rdquo;
               </p>
             </div>
 
@@ -86,11 +86,9 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-slate-300 text-sm max-w-md leading-relaxed">
-              Red = Communications Strategist, Writer & Visual Storyteller
-              <br /> Green = Communications Strategist, Writer & Storyteller
-              working across strategic communications, content development,
-              digital media, photography, videography and documentary
-              storytelling.
+              Communications Strategist, Writer & Storyteller working across
+              strategic communications, content development, digital media,
+              photography, videography and documentary storytelling.
             </p>
           </div>
 

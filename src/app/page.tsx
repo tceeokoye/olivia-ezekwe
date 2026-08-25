@@ -7,27 +7,26 @@ import {
   ArrowRight,
   Download,
   Sparkles,
-  Award,
+
   Compass,
   Globe,
   Camera,
-  Film,
+ 
   FileText,
-  Users,
+ 
   Search,
   Share2,
-  CheckCircle2,
+ 
   ChevronRight,
   HeartHandshake,
   Layers,
-  Shield,
-  Zap,
+
   PenTool,
 } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import TiltCard from "@/components/TiltCard";
 import ProjectModal from "@/components/ProjectModal";
-import { projectsData } from "@/data/portfolioData";
+import { projectsData, testimonialsData } from "@/data/portfolioData";
 import { Project } from "@/types";
 import Image from "next/image";
 import heroImage from "@/assets/hero-img.jpeg";
@@ -155,9 +154,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-2xl md:text-2xl font-bold text-white/95 font-sans tracking-wide max-w-4xl mx-auto drop-shadow-sm"
           >
-            Strategic Communications <span className="text-[#C9A227]">/</span>{" "}
-            Digital Specialist <span className="text-[#C9A227]">/</span> Brand
-            &amp; Content
+            Communications Strategist, Writer & Visual Storyteller.
           </motion.p>
 
           {/* Description */}
@@ -204,9 +201,9 @@ export default function HomePage() {
           >
             {[
               {
-                val: "4+ Yrs",
+                val: "4+ Yearrs",
                 label: "Communications Experience",
-                color: "text-white",
+               color: "text-[#C9A227]",
               },
               {
                 val: "5+ Brands",
@@ -215,14 +212,14 @@ export default function HomePage() {
               },
               {
                 val: "5+ Sectors",
-                label: "Nonprofit",
+                label: ["Nonprofit","UK Finance", "Hospitality", "Mental Health", "Faith"],
                 color: "text-[#C9A227]",
-                list: ["UK Finance", "Hospitality", "Mental Health", "Faith"],
+                
               },
               {
                 val: "18+ Platforms",
                 label: "Managed Across Digital Channels",
-                color: "text-white",
+                color: "text-[#C9A227]"
               },
             ].map((m, i) => (
               <div
@@ -234,15 +231,15 @@ export default function HomePage() {
                 >
                   {m.val}
                 </div>
-                {m.label && (
+                {typeof m.label === "string" && (
                   <div className="text-[10px] sm:text-[11px] text-slate-300 font-mono mt-1 uppercase font-semibold leading-snug">
                     {m.label}
                   </div>
                 )}
-                {m.list && (
+                {Array.isArray(m.label) && (
                   <div className="w-full flex justify-center mt-1.5">
                     <ul className="text-[9px] sm:text-[11px] text-slate-300 font-mono space-y-0.5 text-left inline-block uppercase font-medium">
-                      {m.list.map((item, idx) => (
+                      {m.label.map((item, idx) => (
                         <li key={idx} className="leading-tight">
                           • {item}
                         </li>
@@ -273,14 +270,11 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628] via-transparent to-transparent opacity-80" />
                   <div className="absolute bottom-6 left-6 right-6">
-                    <span className="px-3 py-1 text-xs font-mono rounded-full bg-[#C9A227] text-[#0A1628] font-bold inline-block mb-2">
-                      LEGAL &amp; COMMUNICATIONS LEAD
-                    </span>
                     <h3 className="text-2xl font-bold font-display text-white">
                       Olivia Ezekwe
                     </h3>
                     <p className="text-xs text-[#e8c96a] font-mono mt-0.5">
-                      Master of Laws (LL.M) • Barrister-at-Law (B.L)
+                      Communications Strategist, Writer & Visual Storyteller.
                     </p>
                   </div>
                 </div>
@@ -293,20 +287,23 @@ export default function HomePage() {
                 ABOUT ME
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A1628] dark:text-white font-display leading-tight">
-                Bridging analytical legal rigor with evocative, human-centered
-                storytelling.
+                Communications, shaped by curiosity, clarity and a love for good
+                stories.
               </h2>
               <p className="text-slate-600 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
-                I am a communications professional with deep expertise in
-                communication strategy, storytelling, digital engagement, brand
-                management, and multimedia content.
+                I am a communications professional working across writing,
+                storytelling, strategic communications, digital content and
+                visual media. I turn ideas, information and real experiences
+                into stories and content that people can understand and connect
+                with.
               </p>
               <p className="text-slate-500 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-                With an advanced legal foundation (LL.M, B.L, LL.B) and
-                leadership across international non-profits and purpose-driven
-                enterprises, I translate complex public policy, healthcare
-                reform, and community interventions into clear, persuasive
-                narratives that drive donor trust and institutional change.
+                My work spans development, advocacy, purpose-driven
+                organisations and brands, where I have worked on everything from
+                campaign communications and programme storytelling to editorial
+                content, photography and video. With a background in law, I also
+                bring strong research and analytical skills to the way I
+                approach communication.
               </p>
               <div className="pt-4">
                 <Link
@@ -561,26 +558,7 @@ export default function HomePage() {
             What people I’ve worked with have to say…
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                quote:
-                  "Olivia is gifted, and I truly enjoyed working with her. Her legal background gives her an advantage because she can see an idea or communication from different angles, and she knows how to translate it in interesting ways. I look forward to working with her again.",
-                name: "Mary E.A.",
-                org: "HR Executive.",
-              },
-              {
-                quote:
-                  "Olivia is a really good writer. One of the best I know actually. She has a way of turning an idea (no matter how abstract or how mundane), into something magical.",
-                name: "John-Martins, O.  (Esq).",
-                org: "Creative Director, Shatili",
-              },
-              {
-                quote:
-                  "She has a really good eye for detail. She pays attention to the little things that others may overlook and has a way of turning ordinary moments into stories through her visual work.",
-                name: "Daniel N.",
-                org: "Cinematographer",
-              },
-            ].map((t, i) => (
+            {testimonialsData.map((t, i) => (
               <div
                 key={i}
                 className="tech-card rounded-2xl p-6 text-left space-y-4"
@@ -593,10 +571,11 @@ export default function HomePage() {
                 </p>
                 <div className="pt-3 border-t border-slate-100 dark:border-white/10">
                   <div className="font-bold text-[#0A1628] dark:text-white text-sm">
-                    ~{t.name}
+                    ~{t.author}
                   </div>
                   <div className="text-xs text-[#C9A227] font-mono">
-                    {t.org}
+                    {t.role}
+                    {t.organization ? `, ${t.organization}` : ""}
                   </div>
                 </div>
               </div>

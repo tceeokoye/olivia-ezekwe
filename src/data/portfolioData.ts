@@ -163,23 +163,23 @@ export const projectsData: Project[] = [
 export const testimonialsData: Testimonial[] = [
   {
     id: '1',
-    quote: 'Olivia brings clarity, creativity, and rare strategic rigor to every project. Her legal precision combined with unmatched storytelling transformed our organisation’s donor relations and public stature.',
-    author: 'Dr. Nkechi Okeke',
-    role: 'Executive Director',
-    organization: 'South Saharan Social Development Organisation (SSDO)'
+    quote: 'Olivia is gifted, and I truly enjoyed working with her. Her legal background gives her an advantage because she can see an idea or communication from different angles, and she knows how to translate it in interesting ways. I look forward to working with her again.',
+    author: 'Mary E.A.',
+    role: 'HR Executive',
+    organization: ''
   },
   {
     id: '2',
-    quote: 'Her ability to translate complex health and financial subjects into crisp, engaging content is remarkable. Olivia grew our platform traffic by nearly 300% and built an exceptionally loyal community.',
-    author: 'Dr. T. Adeyemi',
-    role: 'Founder & CEO',
-    organization: 'Moneywise Doctor UK'
+    quote: 'Olivia is a really good writer. One of the best I know actually. She has a way of turning an idea (no matter how abstract or how mundane), into something magical.',
+    author: 'John-Martins, O. (Esq).',
+    role: 'Creative Director',
+    organization: 'Shatili'
   },
   {
     id: '3',
-    quote: 'From field photography in remote communities to high-stakes policy briefings in capital boardrooms, Olivia operates with total excellence, empathy, and technological mastery.',
-    author: 'Emeka Nwosu',
-    role: 'Programs Lead',
-    organization: 'Civic Governance Alliance'
+    quote: 'She has a really good eye for detail. She pays attention to the little things that others may overlook and has a way of turning ordinary moments into stories through her visual work.',
+    author: 'Daniel N.',
+    role: 'Cinematographer',
+    organization: ''
   }
 ];

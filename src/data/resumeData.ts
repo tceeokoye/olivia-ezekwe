@@ -1,131 +1,153 @@
-import { ExperienceItem, EducationItem, SkillCategory } from '@/types';
+import { ExperienceItem, EducationItem, SkillCategory } from "@/types";
 
 export const experiencesData: ExperienceItem[] = [
   {
-    role: 'Communications Lead',
-    organization: 'South Saharan Social Development Organisation (SSDO)',
-    period: '2022 - Present',
-    location: 'Nigeria',
-    description: 'Leading strategic communications, brand stewardship, donor reporting, and multimedia storytelling across all regional civic and development interventions.',
+    role: "CONTENT & BRAND MANAGER (Remote)",
+    organization:
+      "Moneywise Doctor | Holistic Dimension Ltd, UK 2025 – Present",
+    period: "2025 - Present",
+    location: "Remote / London, UK",
+    description:
+      "Lead content and digital brand communications tailored to a UK medical audience, developing relevant financial and professional content that reflects the interests, context and needs of a specialised audience.",
     achievements: [
-      'Spearheaded communications for the Sister Guardian Initiative across 38+ rural communities, resulting in a 400% increase in national media visibility.',
-      'Authored and designed high-level donor reports, policy briefs, and annual publications for international partners including Ford Foundation and Open Society.',
-      'Managed all digital properties, growing online community engagement by 320% and establishing a standardized multimedia production pipeline.',
-      'Trained and mentored 50+ grassroots female advocates in mobile storytelling and human rights documentation.'
-    ]
+      "Develop editorial content and digital communications aligned with the brand’s voice, audience and objectives.",
+      "Translate financial and professional topics into clear, accessible articles and social content for a specialised UK medical audience.",
+      "Manage audience engagement across digital platforms, maintaining a responsive and consistent brand presence.",
+      "Support content planning and editorial direction across social and web platforms.",
+      "Apply SEO and content optimisation principles to website content to improve discoverability and audience reach.",
+      "Monitor content and audience performance to inform future communication and content decisions.",
+    ],
   },
   {
-    role: 'Content & Brand Manager',
-    organization: 'Moneywise Doctor (UK)',
-    period: '2021 - Present',
-    location: 'Remote / London, UK',
-    description: 'Directing global content strategy, SEO architecture, brand positioning, and educational product launches for a UK fintech/healthtech advisory platform.',
+    role: "Communications Lead",
+    organization: "South Saharan Social Development Organisation (SSDO)",
+    period: "2024 - Present",
+    location: "Nigeria",
+    description:
+      "Leading strategic communications across the organisation’s civic and development programmes, covering campaigns, digital communications, donor reporting, brand management, and multimedia storytelling.",
     achievements: [
-      'Grew organic search traffic by 280% through deep-funnel SEO articles and financial wellness guides tailored to NHS physicians.',
-      'Engineered a weekly email newsletter series maintaining an industry-leading average open rate of 42.8% across 15,000+ active subscribers.',
-      'Supervised digital product launches, webinar series, and podcast post-production generating over 4,500 qualified registrations.',
-      'Refined the brand identity guidelines, visual assets, and cross-channel social media tone of voice.'
-    ]
+      "Lead communications for the Cost of Justice Project, coordinating contributions from 100+ writers across Nigeria and Kenya and 30+ visual artists, and supporting the project’s launch in collaboration with UN Women.",
+      "Lead communications for the Sister Guardian Initiative across 34+ rural communities in Enugu State and 22 communities across Nigeria, with communications efforts contributing to a 350% increase in reported media visibility.",
+      "Develop donor reports, policy briefs, newsletters, and other communications materials for government agencies, international partners, and donor organisations.",
+      " Manage the organisation’s digital communication channels and assets, strengthening audience engagement and establishing a consistent multimedia production workflow.",
+      "Train and mentor 50+ community-based women advocates in storytelling, documentation, and communicating human rights issues.",
+      "Train partner-organisation communications teams on communications planning, content development, and effective digital communication",
+    ],
   },
+
   {
-    role: 'Communications Consultant',
-    organization: 'Various Non-profits & International Organisations',
-    period: '2018 - Present',
-    location: 'Nigeria & International',
-    description: 'Providing bespoke advisory services on advocacy campaign development, brand rebranding, media training, and crisis communications.',
+    role: "Social Media & Publicity Manager",
+    organization: "DIGC Garki",
+    period: "2022 - Present",
+    location: "Enugu, Nigeria",
+    description:
+      "Lead communications and publicity for a faith-based organisation, including outreaches, special programmes and major activities.",
     achievements: [
-      'Designed and executed digital advocacy campaigns for civic governance and health sector reform coalitions reaching 2.5M+ digital impressions.',
-      'Consulted for luxury hospitality brands including Sunches Villa Hotel, increasing direct booking conversions by 65% through visual rebranding.',
-      'Authored high-impact op-eds and media statements featured in top national dailies and international development portals.',
-      'Delivered interactive communication masterclasses for over 200 non-profit professionals and civil society leaders.'
-    ]
+      "Develop communication plans and promotional content across social media and other digital channels.",
+      "Produce and coordinate visual content, including photography, short-form videos and service coverage.",
+      "Manage social media content and audience engagement to strengthen visibility and participation.",
+      "Support the organisation’s brand presence through consistent messaging, visual communication and digital content.",
+    ],
   },
+
   {
-    role: 'Social Media & Publicity Manager',
-    organization: 'DIGC Garki',
-    period: '2015 - Present',
-    location: 'Abuja, Nigeria',
-    description: 'Managing multi-channel digital publicity, weekly live broadcast communications, and large-scale event media operations.',
+    role: "Communications Consultant",
+    organization: "Various Non-profits & International Organisations",
+    period: "2018 - Present",
+    location: "Nigeria & International",
+    description:
+      "Providing bespoke advisory services on advocacy campaign development, brand rebranding, media training, and crisis communications.",
     achievements: [
-      'Coordinated weekly live streaming operations reaching an active global online audience of over 25,000 concurrent viewers.',
-      'Built and led a dynamic 20-person media volunteer team covering photography, video editing, social live-tweeting, and graphics.',
-      'Produced over 300 video highlight packages, testimonial reels, and event documentaries with consistently high viral engagement.'
-    ]
-  }
+      "Designed and executed digital advocacy campaigns for civic governance and health sector reform coalitions reaching 2.5M+ digital impressions.",
+      "Consulted for luxury hospitality brands including Sunches Villa Hotel, increasing direct booking conversions by 65% through visual rebranding.",
+      "Authored high-impact op-eds and media statements featured in top national dailies and international development portals.",
+      "Delivered interactive communication masterclasses for over 200 non-profit professionals and civil society leaders.",
+    ],
+  },
 ];
 
 export const educationData: EducationItem[] = [
   {
-    degree: 'Master of Laws (LL.M)',
-    institution: 'Faculty of Law, Prestigious University',
-    year: 'Postgraduate Degree',
-    details: 'Advanced specialization in International Law, Governance, Human Rights, and Regulatory Frameworks. Applied legal intellect to public policy communications.'
+    degree: "Master of Laws (LL.M)",
+    institution: "Faculty of Law, Prestigious University",
+    year: "Postgraduate Degree",
+    details:
+      "Advanced specialization in International Law, Governance, Human Rights, and Regulatory Frameworks. Applied legal intellect to public policy communications.",
   },
   {
-    degree: 'Barrister-at-Law (B.L)',
-    institution: 'Nigerian Law School',
-    year: 'Professional Bar Certification',
-    details: 'Admitted to the Nigerian Bar as a Solicitor and Advocate of the Supreme Court of Nigeria. Trained in high-stakes advocacy, legal drafting, and institutional negotiation.'
+    degree: "Barrister-at-Law (B.L)",
+    institution: "Nigerian Law School",
+    year: "Professional Bar Certification",
+    details:
+      "Admitted to the Nigerian Bar as a Solicitor and Advocate of the Supreme Court of Nigeria. Trained in high-stakes advocacy, legal drafting, and institutional negotiation.",
   },
   {
-    degree: 'Bachelor of Laws (LL.B)',
-    institution: 'Faculty of Law',
-    year: 'Undergraduate Degree',
-    details: 'Graduated with honors. Key focus on Jurisprudence, Constitutional Law, Media & Communication Law, and Public Advocacy.'
-  }
+    degree: "Bachelor of Laws (LL.B)",
+    institution: "Faculty of Law",
+    year: "Undergraduate Degree",
+    details:
+      "Graduated with honors. Key focus on Jurisprudence, Constitutional Law, Media & Communication Law, and Public Advocacy.",
+  },
 ];
 
 export const skillCategoriesData: SkillCategory[] = [
   {
-    category: 'Strategic & Development Communications',
+    category: "Strategic & Development Communications",
     skills: [
-      { name: 'Strategic Communications Blueprinting', level: 95 },
-      { name: 'Advocacy & Public Policy Framing', level: 92 },
-      { name: 'Donor Reporting & Knowledge Products', level: 90 },
-      { name: 'Stakeholder & Community Engagement', level: 94 },
-      { name: 'Crisis & Reputation Management', level: 88 }
-    ]
+      { name: "Strategic Communications Blueprinting", level: 95 },
+      { name: "Advocacy & Public Policy Framing", level: 92 },
+      { name: "Donor Reporting & Knowledge Products", level: 90 },
+      { name: "Stakeholder & Community Engagement", level: 94 },
+      { name: "Crisis & Reputation Management", level: 88 },
+    ],
   },
   {
-    category: 'Digital, SEO & Content Management',
+    category: "Digital, SEO & Content Management",
     skills: [
-      { name: 'Content Strategy & Editorial Calendars', level: 96 },
-      { name: 'Search Engine Optimization (SEO)', level: 88 },
-      { name: 'Email Marketing & Newsletter Architecture', level: 92 },
-      { name: 'Social Media Growth & Community Management', level: 95 },
-      { name: 'Analytics, Data Tracking & KPIs', level: 86 }
-    ]
+      { name: "Content Strategy & Editorial Calendars", level: 96 },
+      { name: "Search Engine Optimization (SEO)", level: 88 },
+      { name: "Email Marketing & Newsletter Architecture", level: 92 },
+      { name: "Social Media Growth & Community Management", level: 95 },
+      { name: "Analytics, Data Tracking & KPIs", level: 86 },
+    ],
   },
   {
-    category: 'Brand & Multimedia Production',
+    category: "Brand & Multimedia Production",
     skills: [
-      { name: 'Brand Identity & Visual Direction', level: 90 },
-      { name: 'Documentary & Field Photography', level: 92 },
-      { name: 'Video Directing, Scripting & Editing', level: 88 },
-      { name: 'Graphic Design & Presentation Decks', level: 89 },
-      { name: 'Copywriting & Thought Leadership Op-Eds', level: 96 }
-    ]
-  }
+      { name: "Brand Identity & Visual Direction", level: 90 },
+      { name: "Documentary & Field Photography", level: 92 },
+      { name: "Video Directing, Scripting & Editing", level: 88 },
+      { name: "Graphic Design & Presentation Decks", level: 89 },
+      { name: "Copywriting & Thought Leadership Op-Eds", level: 96 },
+    ],
+  },
 ];
 
 export const toolsAndPlatforms = [
-  { name: 'Google Analytics', category: 'Analytics', icon: 'BarChart3' },
-  { name: 'Meta Business Suite', category: 'Social & Ads', icon: 'Share2' },
-  { name: 'WordPress & Webflow', category: 'CMS & Web', icon: 'Globe' },
-  { name: 'Canva Pro', category: 'Design', icon: 'Palette' },
-  { name: 'Adobe Premiere & Lightroom', category: 'Creative Suite', icon: 'Film' },
-  { name: 'Mailchimp & Substack', category: 'Email / Newsletter', icon: 'Mail' },
-  { name: 'Notion & Asana', category: 'Project Management', icon: 'Layers' },
-  { name: 'Buffer & Hootsuite', category: 'Social Automation', icon: 'Zap' },
-  { name: 'Figma', category: 'UI / Wireframing', icon: 'Layout' },
-  { name: 'Microsoft 365 / Google Workspace', category: 'Productivity', icon: 'FileText' }
+  { name: "Canva", category: "Design", icon: "Palette" },
+  { name: "Adobe Lightroom", category: "Photo Editing", icon: "Image" },
+  { name: "WordPress", category: "Web Publishing", icon: "Globe" },
+  { name: "Elementor", category: "Web Design", icon: "PanelsTopLeft" },
+  { name: "Meta Business Suite", category: "Social Media", icon: "Share2" },
+  { name: "Mailchimp", category: "Email Marketing", icon: "Mail" },
+  {
+    name: "Microsoft Office Suite",
+    category: "Productivity",
+    icon: "FileSpreadsheet",
+  },
+  { name: "Microsoft Teams", category: "Collaboration", icon: "Users" },
+  { name: "Zoom", category: "Meetings", icon: "Video" },
+  { name: "Google Workspace", category: "Collaboration", icon: "Cloud" },
 ];
 
 export const clientLogos = [
-  { name: 'South Saharan Social Development Organisation (SSDO)', tag: 'Development NGO' },
-  { name: 'Moneywise Doctor UK', tag: 'Fintech & Healthcare' },
-  { name: 'Sunches Villa Hotel', tag: 'Luxury Hospitality' },
-  { name: 'DIGC Garki', tag: 'Faith-based & Media' },
-  { name: 'Civic Governance Network', tag: 'Policy & Advocacy' },
-  { name: 'Health Reform Coalition', tag: 'Public Health' }
+  { name: "Moneywise Doctor UK", tag: "Medical Finance" },
+  {
+    name: "South Saharan Social Development Organisation ",
+    tag: "Non Profit",
+  },
+  { name: "Sunches Villa Hotel", tag: "Luxury Hospitality" },
+  { name: "Life Mind Navigation Psychiatry, USA ", tag: "Mental Health" },
+  { name: "DIGC Garriki", tag: "Faith Based" },
+  { name: "Somto Eden Evolution", tag: "Academic & Researcy" },
 ];
