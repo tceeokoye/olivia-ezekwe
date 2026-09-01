@@ -757,7 +757,7 @@ function PortfolioContent() {
         {/* Background Accent */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C9A227]/10 dark:bg-[#C9A227]/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto ">
           {/* Breadcrumb */}
           <motion.div
             initial={{
