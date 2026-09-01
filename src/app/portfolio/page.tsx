@@ -98,7 +98,7 @@ function Lightbox({
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-[#050d1f]/98 backdrop-blur-2xl">
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4 border-b border-white/8">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
         <div>
           <p className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase">{title}</p>
           <p className="text-white/50 text-xs font-mono mt-0.5">
@@ -107,7 +107,7 @@ function Lightbox({
         </div>
         <button
           onClick={onClose}
-          className="w-9 h-9 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-white transition-colors"
+          className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
@@ -128,13 +128,13 @@ function Lightbox({
           <>
             <button
               onClick={prev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg"
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg cursor-pointer"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={next}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg cursor-pointer"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -144,7 +144,7 @@ function Lightbox({
 
       {/* Thumbnail strip */}
       {images.length > 1 && (
-        <div className="px-5 py-4 border-t border-white/8 flex gap-2 overflow-x-auto">
+        <div className="px-5 py-4 border-t border-white/10 flex gap-2 overflow-x-auto">
           {images.map((src, i) => (
             <button
               key={i}
@@ -182,32 +182,39 @@ function CampaignGallery({
         const remaining = imgs.length - LIMIT;
 
         return (
-          <div key={campaign.id} className="space-y-5">
-            {/* Sub-section label */}
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
-              <div className="space-y-1">
-                <div className="flex items-center gap-3">
-                  <span className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase font-semibold">
-                    Campaign {cIdx + 1}
+          <div
+            key={campaign.id}
+            className="tech-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#0c1a2e] border border-slate-200/80 dark:border-white/10 shadow-lg dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] space-y-6"
+          >
+            {/* Sub-section label & context */}
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 pb-5 border-b border-slate-100 dark:border-white/10">
+              <div className="space-y-2">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-mono text-[#C9A227] tracking-wider uppercase font-bold px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20">
+                    Campaign 0{cIdx + 1}
                   </span>
                   {campaign.client && (
-                    <span className="text-[11px] font-mono text-white/40">— {campaign.client}</span>
+                    <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+                      {campaign.client}
+                    </span>
                   )}
                 </div>
-                <h4 className="text-base sm:text-lg font-bold text-white leading-snug">
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0A1628] dark:text-white leading-snug">
                   {campaign.title}
-                </h4>
+                </h3>
                 {campaign.summary && (
-                  <p className="text-white/50 text-sm leading-relaxed max-w-2xl">{campaign.summary}</p>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl font-normal">
+                    {campaign.summary}
+                  </p>
                 )}
               </div>
-              <span className="self-start shrink-0 text-xs font-mono text-white/30 bg-white/5 px-3 py-1 rounded-full">
+              <span className="self-start shrink-0 text-xs font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1 rounded-md">
                 {imgs.length} visuals
               </span>
             </div>
 
             {/* Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {visible.map((src, i) => (
                 <motion.button
                   key={i}
@@ -216,7 +223,7 @@ function CampaignGallery({
                   viewport={{ once: true, margin: '-10px' }}
                   transition={{ duration: 0.3, delay: (i % 8) * 0.02, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => onOpen(imgs, i, campaign.title)}
-                  className="group relative aspect-square rounded-xl overflow-hidden bg-[#0A1628] cursor-pointer shadow-md hover:shadow-xl transition-shadow"
+                  className="group relative aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-[#0A1628] cursor-pointer shadow-md hover:shadow-xl transition-shadow border border-slate-200/60 dark:border-white/5"
                 >
                   <img
                     src={src}
@@ -236,10 +243,10 @@ function CampaignGallery({
 
             {/* Show more / less */}
             {remaining > 0 && (
-              <div className="flex justify-start pt-1">
+              <div className="flex justify-start pt-2">
                 <button
                   onClick={() => setExpanded(!expanded)}
-                  className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors"
+                  className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors cursor-pointer"
                 >
                   {expanded ? (
                     <>
@@ -261,7 +268,7 @@ function CampaignGallery({
 }
 
 // ─────────────────────────────────────────────
-// Document Preview Card (WhatsApp-style)
+// Document Preview Card (in spacious card with shadow)
 // ─────────────────────────────────────────────
 function DocumentCard({ doc }: { doc: Project }) {
   const isPptx = doc.fileType === 'pptx';
@@ -276,39 +283,47 @@ function DocumentCard({ doc }: { doc: Project }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-15px' }}
       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-      className="flex flex-col"
+      className="tech-card rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#0c1a2e] border border-slate-200/80 dark:border-white/10 shadow-lg dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] flex flex-col justify-between hover:shadow-xl transition-all duration-300 group"
     >
-      {/* Context write-up above the card */}
-      <div className="mb-4 space-y-1.5">
+      {/* Context write-up inside the card with generous breathing room */}
+      <div className="mb-6 space-y-3">
         <div className="flex flex-wrap items-center gap-2">
           {doc.year && (
-            <span className="text-[11px] font-mono text-[#C9A227] font-semibold tracking-wider">
+            <span className="text-xs font-mono text-[#C9A227] font-bold tracking-wider px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20">
               {doc.year}
             </span>
           )}
           {doc.client && (
-            <span className="text-[11px] font-mono text-white/40">— {doc.client}</span>
+            <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
+              {doc.client}
+            </span>
           )}
         </div>
-        <h3 className="text-base sm:text-lg font-bold text-white leading-snug">{doc.title}</h3>
+
+        <h3 className="text-lg sm:text-xl font-bold text-[#0A1628] dark:text-white leading-snug group-hover:text-[#C9A227] transition-colors">
+          {doc.title}
+        </h3>
+
         {doc.summary && (
-          <p className="text-white/50 text-sm leading-relaxed line-clamp-3">{doc.summary}</p>
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
+            {doc.summary}
+          </p>
         )}
       </div>
 
       {/* WhatsApp-style document preview card */}
-      <div className="rounded-2xl overflow-hidden bg-[#1f2c34] shadow-lg w-full max-w-xs">
+      <div className="rounded-xl overflow-hidden bg-[#1f2c34] shadow-md border border-slate-300/40 dark:border-white/5 w-full max-w-sm mt-auto">
         {/* Document page thumbnail */}
-        <div className="bg-white p-5 flex flex-col items-center justify-center min-h-[120px] text-center gap-2.5 select-none">
+        <div className="bg-white p-5 flex flex-col items-center justify-center min-h-[110px] text-center gap-2 select-none border-b border-slate-200/60">
           {doc.client && (
-            <div className="bg-[#0A1628] text-white text-[10px] font-bold px-3 py-1 rounded tracking-wide truncate max-w-full">
+            <div className="bg-[#0A1628] text-white text-[10px] font-bold px-2.5 py-1 rounded tracking-wide truncate max-w-full">
               {doc.client.toUpperCase()}
             </div>
           )}
-          <p className="text-[11px] font-semibold text-slate-700 leading-tight line-clamp-2 px-2">
+          <p className="text-xs font-semibold text-slate-700 leading-tight line-clamp-2 px-2">
             {doc.title}
           </p>
-          <div className="w-full space-y-1.5 px-2 pt-1">
+          <div className="w-full space-y-1.5 px-3 pt-1">
             <div className="h-1 bg-slate-200 rounded-full w-5/6 mx-auto" />
             <div className="h-1 bg-slate-200 rounded-full w-4/6 mx-auto" />
             <div className="h-1 bg-slate-200 rounded-full w-3/5 mx-auto" />
@@ -325,7 +340,7 @@ function DocumentCard({ doc }: { doc: Project }) {
           </div>
           <div className="min-w-0 flex-1">
             <p className="text-[13px] font-semibold text-white truncate leading-snug">{fileName}</p>
-            <p className="text-[11px] text-white/40 font-mono mt-0.5">
+            <p className="text-[11px] text-white/50 font-mono mt-0.5">
               {doc.fileSize ? `${doc.fileSize} · ` : ''}
               {isPptx ? 'Presentation' : 'PDF document'}
             </p>
@@ -373,16 +388,16 @@ function DocumentGrid({ items }: { items: Project[] }) {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         {visible.map((doc) => (
           <DocumentCard key={doc.id} doc={doc} />
         ))}
       </div>
       {remaining > 0 && (
-        <div className="pt-2">
+        <div className="pt-3">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors"
+            className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors cursor-pointer"
           >
             {expanded ? (
               <>
@@ -434,32 +449,34 @@ function PortfolioContent() {
   }, [categoryParam]);
 
   return (
-    <div className="min-h-screen bg-[#0A1628] text-white font-sans">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#050d1f] text-[#0A1628] dark:text-white font-sans transition-colors duration-300">
       {/* ─── HERO ─── */}
-      <section className="relative overflow-hidden px-5 sm:px-8 lg:px-16 pt-24 pb-20 border-b border-white/8">
+      <section className="relative overflow-hidden px-5 sm:px-8 lg:px-16 pt-20 pb-16 bg-white dark:bg-[#0A1628] border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
         {/* Background accent */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C9A227]/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C9A227]/10 dark:bg-[#C9A227]/5 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* Breadcrumb-style label */}
-          <div className="flex items-center gap-2 mb-8">
-            <span className="text-[11px] font-mono text-white/30 tracking-widest uppercase">
+          <div className="flex items-center gap-2 mb-6">
+            <span className="text-[11px] font-mono text-slate-400 dark:text-white/40 tracking-widest uppercase">
               Olivia Ezekwe
             </span>
-            <span className="text-white/20">/</span>
+            <span className="text-slate-300 dark:text-white/20">/</span>
             <span className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase font-semibold">
               Portfolio
             </span>
           </div>
 
           {/* Headline */}
-          <div className="space-y-5 max-w-3xl">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.04]">
+          <div className="space-y-4 max-w-3xl">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0A1628] dark:text-white leading-[1.05]">
               Selected
               <br />
-              <span className="text-[#C9A227]">Works.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] via-[#C9A227] to-[#a07a10]">
+                Works.
+              </span>
             </h1>
-            <p className="text-white/55 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+            <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
               A curated archive of campaigns, creative writing, editorial publications, press
               statements, and legal research spanning civic engagement, development communications,
               and literary non-fiction.
@@ -467,7 +484,7 @@ function PortfolioContent() {
           </div>
 
           {/* Quick-jump links */}
-          <div className="mt-10 flex flex-wrap gap-2">
+          <div className="mt-8 flex flex-wrap gap-2">
             {SECTIONS.map((s) => (
               <button
                 key={s.id}
@@ -479,24 +496,26 @@ function PortfolioContent() {
                       ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
                   }, 100);
                 }}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-white/60 hover:text-white bg-white/6 hover:bg-white/10 border border-white/8 hover:border-white/20 transition-all"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0A1628] dark:hover:text-white bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-all cursor-pointer"
               >
-                <span className="font-mono text-[#C9A227]">{s.label}</span>
+                <span className="font-mono text-[#C9A227] font-bold">{s.label}</span>
                 <span>{s.title}</span>
               </button>
             ))}
           </div>
 
           {/* Stats row */}
-          <div className="mt-12 flex flex-wrap gap-8 pt-8 border-t border-white/8">
+          <div className="mt-10 flex flex-wrap gap-8 pt-8 border-t border-slate-200 dark:border-white/10">
             {[
               { number: '55+', label: 'Campaign Visuals' },
               { number: '12+', label: 'Publications' },
               { number: '5', label: 'Disciplines' },
             ].map((stat) => (
               <div key={stat.label} className="space-y-0.5">
-                <div className="text-2xl font-black text-white">{stat.number}</div>
-                <div className="text-xs font-mono text-white/35 tracking-wider uppercase">
+                <div className="text-2xl sm:text-3xl font-black text-[#0A1628] dark:text-white">
+                  {stat.number}
+                </div>
+                <div className="text-xs font-mono text-slate-500 dark:text-slate-400 tracking-wider uppercase">
                   {stat.label}
                 </div>
               </div>
@@ -506,8 +525,8 @@ function PortfolioContent() {
       </section>
 
       {/* ─── SECTIONS ─── */}
-      <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-16 py-14 space-y-0 divide-y divide-white/6">
-        {SECTIONS.map((section, sIdx) => {
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-16 py-12 space-y-0 divide-y divide-slate-200 dark:divide-white/10">
+        {SECTIONS.map((section) => {
           const items = projectsData.filter((p) => p.category === section.id);
           if (items.length === 0) return null;
           const isCampaign = section.id === 'Campaigns';
@@ -518,36 +537,36 @@ function PortfolioContent() {
               {/* Section Header — click to toggle */}
               <button
                 onClick={() => toggle(section.id)}
-                className="w-full flex items-start sm:items-center justify-between gap-4 py-8 text-left group"
+                className="w-full flex items-start sm:items-center justify-between gap-4 py-8 text-left group cursor-pointer"
               >
                 <div className="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
                   {/* Number label */}
-                  <span className="shrink-0 text-[11px] font-mono text-[#C9A227] tracking-widest pt-1 sm:pt-0">
+                  <span className="shrink-0 text-xs font-mono text-[#C9A227] font-bold tracking-widest pt-1 sm:pt-0">
                     {section.label}
                   </span>
 
                   <div className="min-w-0 space-y-1">
                     <div className="flex flex-wrap items-baseline gap-3">
-                      <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white group-hover:text-[#C9A227] transition-colors leading-tight">
+                      <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors leading-tight">
                         {section.title}
                       </h2>
-                      <span className="text-xs font-mono text-white/30 font-normal hidden sm:inline">
+                      <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-normal hidden sm:inline">
                         {section.subtitle}
                       </span>
                     </div>
-                    <p className="text-white/40 text-sm leading-relaxed max-w-2xl line-clamp-2">
+                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed max-w-3xl line-clamp-2">
                       {section.description}
                     </p>
                   </div>
                 </div>
 
                 <div className="shrink-0 flex items-center gap-3 self-start sm:self-auto mt-1 sm:mt-0">
-                  <span className="hidden md:block text-xs font-mono text-white/25">
+                  <span className="hidden md:block text-xs font-mono text-slate-500 dark:text-slate-400">
                     {isCampaign
                       ? `${items.length} campaigns`
                       : `${items.length} ${items.length === 1 ? 'work' : 'works'}`}
                   </span>
-                  <div className="w-8 h-8 rounded-full border border-white/12 group-hover:border-[#C9A227]/60 flex items-center justify-center text-white/40 group-hover:text-[#C9A227] transition-all">
+                  <div className="w-8 h-8 rounded-lg border border-slate-200 dark:border-white/15 group-hover:border-[#C9A227] flex items-center justify-center text-slate-600 dark:text-white/60 group-hover:text-[#C9A227] transition-all">
                     {isOpen ? (
                       <ChevronUp className="w-4 h-4" />
                     ) : (
@@ -567,7 +586,7 @@ function PortfolioContent() {
                     transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="pb-10">
+                    <div className="pb-12 pt-2">
                       {isCampaign ? (
                         <CampaignGallery
                           items={items}
@@ -586,13 +605,13 @@ function PortfolioContent() {
       </div>
 
       {/* ─── Footer CTA ─── */}
-      <section className="border-t border-white/8 px-5 sm:px-8 lg:px-16 py-16">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <section className="border-t border-slate-200 dark:border-white/10 px-5 sm:px-8 lg:px-16 py-16 bg-white dark:bg-[#0A1628] transition-colors duration-300">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div className="space-y-1">
-            <p className="text-white/40 text-xs font-mono uppercase tracking-widest">
+            <p className="text-slate-500 dark:text-slate-400 text-xs font-mono uppercase tracking-widest font-semibold">
               Open to opportunities
             </p>
-            <p className="text-xl sm:text-2xl font-bold text-white">
+            <p className="text-xl sm:text-2xl font-bold text-[#0A1628] dark:text-white">
               Interested in working together?
             </p>
           </div>
@@ -623,7 +642,7 @@ export default function PortfolioPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#0A1628] flex items-center justify-center text-white/30 text-sm font-mono animate-pulse">
+        <div className="min-h-screen bg-white dark:bg-[#050d1f] flex items-center justify-center text-slate-400 dark:text-white/30 text-sm font-mono animate-pulse">
           Loading portfolio…
         </div>
       }
