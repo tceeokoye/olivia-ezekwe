@@ -752,11 +752,8 @@ function PortfolioContent() {
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#050d1f] text-[#0A1628] dark:text-white font-sans transition-colors duration-300">
-      {/* ═══════════════════════════════════════
-          HERO
-      ═══════════════════════════════════════ */}
-
-      <section className="relative overflow-hidden px-5 sm:px-8 lg:px-16 pt-20 pb-16 bg-white dark:bg-[#0A1628] border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+      {/* ─── HERO ─── */}
+      <section className="relative overflow-hidden px-5 sm:px-8 lg:px-16 pt-24 sm:pt-28 pb-16 bg-white dark:bg-[#0A1628] border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
         {/* Background Accent */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#C9A227]/10 dark:bg-[#C9A227]/5 rounded-full blur-[120px] pointer-events-none" />
 

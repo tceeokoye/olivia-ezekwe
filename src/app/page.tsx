@@ -313,7 +313,7 @@ export default function HomePage() {
       {/* ============================================================
           HERO SECTION
       ============================================================ */}
-      <section className="relative bg-[#0A1628] min-h-[85vh] flex items-center justify-center pt-10 sm:pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <section className="relative bg-[#0A1628] min-h-[85vh] flex items-center justify-center pt-24 sm:pt-32 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Image Overlay */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           <Image
