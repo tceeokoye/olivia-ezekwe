@@ -1,10 +1,14 @@
 import { ExperienceItem, EducationItem, SkillCategory } from "@/types";
 
+import MonywiseDoctorLogo from "@/assets/LOGOS/MWD.jpeg";
+import SSDOLogo from "@/assets/LOGOS/SSDO-Logo-full.jpg";
+import LifeMindLogo from "@/assets/LOGOS/LMN.jpg";
+import SunchesVillaLogo from "@/assets/LOGOS/SVH.PNG";
+
 export const experiencesData: ExperienceItem[] = [
   {
     role: "CONTENT & BRAND MANAGER (Remote)",
-    organization:
-      "Moneywise Doctor | Holistic Dimension Ltd, UK 2025 – Present",
+    organization: "Moneywise Doctor | Holistic Dimension Ltd, UK ",
     period: "2025 - Present",
     location: "Remote / London, UK",
     description:
@@ -34,6 +38,34 @@ export const experiencesData: ExperienceItem[] = [
       "Train partner-organisation communications teams on communications planning, content development, and effective digital communication",
     ],
   },
+  {
+    role: "CONTENT & BRAND MANAGER (Remote)",
+    organization: "Life Mind Navigation Psychiatry, USA 2025 ",
+    period: "2025 - Present",
+    location: "Nigeria",
+    description:
+      "Provided communications and digital content support for a US-based mental health brand, developing audience-focused content tailored to the US market.",
+    achievements: [
+      "Developed written and digital content tailored to the interests, language and context of a US audience.",
+      "Supported the brand’s online presence through social media content, website content and audience engagement",
+      "Translated mental health topics into clear, accessible and audience-friendly content.",
+      "Maintained consistency in brand voice and messaging.",
+    ],
+  },
+  {
+    role: "COMMUNICATIONS CONSULTANT | FREELANCE",
+    organization: "Sunches Villa Hotel | Enugu, Nigeria",
+    period: "2025-2026",
+    location: "Nigeria",
+    description:
+      "Provided communications, brand and digital support for a hospitality brand, with a focus on strengthening its public-facing presence and guest-facing content.",
+    achievements: [
+      "Supported brand positioning and messaging across digital platforms and guest-facing materials.",
+      "Developed digital assets, and branding, social media and promotional content aligned with the brand’s hospitality offering.",
+      "Supported visual storytelling through photography and creative direction for the hotel’s digital presence.",
+      "Created digital content aimed at improving the brand’s visibility and guest engagement."
+    ],
+  },
 
   {
     role: "Social Media & Publicity Manager",
@@ -50,20 +82,7 @@ export const experiencesData: ExperienceItem[] = [
     ],
   },
 
-  {
-    role: "Communications Consultant",
-    organization: "Various Non-profits & International Organisations",
-    period: "2018 - Present",
-    location: "Nigeria & International",
-    description:
-      "Providing bespoke advisory services on advocacy campaign development, brand rebranding, media training, and crisis communications.",
-    achievements: [
-      "Designed and executed digital advocacy campaigns for civic governance and health sector reform coalitions reaching 2.5M+ digital impressions.",
-      "Consulted for luxury hospitality brands including Sunches Villa Hotel, increasing direct booking conversions by 65% through visual rebranding.",
-      "Authored high-impact op-eds and media statements featured in top national dailies and international development portals.",
-      "Delivered interactive communication masterclasses for over 200 non-profit professionals and civil society leaders.",
-    ],
-  },
+
 ];
 
 export const educationData: EducationItem[] = [

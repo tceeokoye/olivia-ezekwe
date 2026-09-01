@@ -3,17 +3,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  ArrowRight,
-  Download,
-  Send,
-  Check,
-  ChevronDown,
-} from "lucide-react";
+import { ArrowRight, Download, Send, Check, ChevronDown } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import TiltCard from "@/components/TiltCard";
 import { testimonialsData } from "@/data/portfolioData";
-import { experiencesData, clientLogos, toolsAndPlatforms } from "@/data/resumeData";
+import {
+  experiencesData,
+  clientLogos,
+  toolsAndPlatforms,
+} from "@/data/resumeData";
 import Image from "next/image";
 import heroImage from "@/assets/hero-img.jpeg";
 
@@ -363,7 +361,7 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg sm:text-2xl md:text-2xl font-bold text-white/95 tracking-wide max-w-4xl mx-auto drop-shadow-sm"
           >
-            Communications Strategist, Writer &amp; Visual Storyteller.
+            Communications Strategist | Writer | Visual Storyteller
           </motion.p>
 
           {/* Description */}
@@ -373,9 +371,10 @@ export default function HomePage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-slate-200 text-base sm:text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-normal drop-shadow-sm"
           >
-            I help non-profits, development organisations, and purpose-driven
-            brands communicate their impact through strategic communications,
-            storytelling, digital engagement, and multimedia content.
+            Helping non-profits, development organisations, and purpose-driven
+            brands turn ideas, complex information, and real-world impact into
+            clear stories, engaging digital experiences, and compelling visual
+            content.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -422,11 +421,17 @@ export default function HomePage() {
               },
               {
                 val: "5+ Sectors",
-                label: ["Nonprofit", "UK Finance", "Hospitality", "Mental Health", "Faith"],
+                label: [
+                  "Nonprofit",
+                  "UK Finance",
+                  "Hospitality",
+                  "Mental Health",
+                  "Faith",
+                ],
                 color: "text-[#C9A227]",
               },
               {
-                val: "18+ Platforms",
+                val: "18+ digital platforms",
                 label: "Managed Across Digital Channels",
                 color: "text-[#C9A227]",
               },
@@ -436,7 +441,7 @@ export default function HomePage() {
                 className="p-3 sm:p-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm flex flex-col items-center justify-center text-center h-full transition-all hover:border-[#C9A227]/30 overflow-hidden"
               >
                 <div
-                  className={`text-base sm:text-xl lg:text-2xl font-extrabold leading-tight tracking-tight ${m.color}`}
+                  className={`text-base sm:text-xl  font-semibold  ${m.color}`}
                 >
                   {m.val}
                 </div>
@@ -449,7 +454,7 @@ export default function HomePage() {
                   <div className="w-full flex justify-center mt-1.5">
                     <ul className="text-[9px] sm:text-[11px] text-slate-300 font-mono space-y-0.5 text-left inline-block font-medium">
                       {m.label.map((item, idx) => (
-                        <li key={idx} className="leading-tight">
+                        <li key={idx} className="">
                           • {item}
                         </li>
                       ))}
@@ -465,7 +470,10 @@ export default function HomePage() {
       {/* ============================================================
           ABOUT SECTION
       ============================================================ */}
-      <section id="about" className="bg-white dark:bg-[#050d1f] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <section
+        id="about"
+        className="bg-white dark:bg-[#050d1f] py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
+      >
         <div className="max-w-5xl mx-auto space-y-16">
           {/* Main Narrative */}
           <div className="space-y-6">
@@ -473,24 +481,21 @@ export default function HomePage() {
               ABOUT OLIVIA
             </div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0A1628] dark:text-white leading-tight">
-              Communications, shaped by curiosity, clarity and a love for good
-              stories.
+              Communications shaped by curiosity and a love for good stories.
             </h2>
             <div className="space-y-4 text-slate-600 dark:text-slate-200 text-base sm:text-lg leading-relaxed font-normal">
               <p>
                 I am a communications professional working across writing,
-                storytelling, strategic communications, digital content and
-                visual media. I turn ideas, information and real experiences
-                into stories and content that people can understand and connect
-                with.
+                storytelling, digital media and visual storytelling. I turn
+                ideas, information and real experiences into clear, engaging
+                stories that people can understand and connect with.
               </p>
-              <p className="text-slate-500 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              <p>
                 My work spans development, advocacy, purpose-driven
-                organisations and brands, where I have worked on everything from
-                campaign communications and programme storytelling to editorial
-                content, photography and video. With a background in law, I also
-                bring strong research and analytical skills to the way I
-                approach communication.
+                organisations and brands, from campaign and programme
+                storytelling to editorial work, photography and video. With a
+                background in law, I also bring strong research and analytical
+                thinking to the way I approach my work.
               </p>
             </div>
           </div>
@@ -508,10 +513,7 @@ export default function HomePage() {
 
             <div className="space-y-6">
               {experiencesData.map((exp, idx) => (
-                <div
-                  key={idx}
-                  className="tech-card rounded-2xl p-6 sm:p-8"
-                >
+                <div key={idx} className="tech-card rounded-2xl p-6 sm:p-8">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-100 dark:border-white/10">
                     <div>
                       <h4 className="text-lg sm:text-xl font-bold text-[#0A1628] dark:text-white">
@@ -536,7 +538,9 @@ export default function HomePage() {
                         key={aIdx}
                         className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-500 dark:text-slate-300"
                       >
-                        <span className="text-[#C9A227] shrink-0 font-bold leading-5">–</span>
+                        <span className="text-[#C9A227] shrink-0 font-bold leading-5">
+                          –
+                        </span>
                         <span>{ach}</span>
                       </div>
                     ))}
@@ -556,7 +560,8 @@ export default function HomePage() {
                 Organisations &amp; Brands I Have Worked With
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">
-                Organisations and brands I’ve supported through communications, content, storytelling and digital media.
+                Organisations and brands I’ve supported through communications,
+                content, storytelling and digital media.
               </p>
             </div>
 
@@ -588,11 +593,11 @@ export default function HomePage() {
             </h3>
 
             <p className="text-slate-600 dark:text-slate-200 text-sm sm:text-base leading-relaxed font-normal">
-              Away from deadlines and screens, you'll probably find me with a good
-              book, watching a film, taking photographs, enjoying nature, or
-              having one of those long, device-free conversations where nobody is
-              checking the time. I am drawn to art, poetry, and the little details
-              that make ordinary life interesting.
+              Away from deadlines and screens, you'll probably find me with a
+              good book, watching a film, taking photographs, enjoying nature,
+              or having one of those long, device-free conversations where
+              nobody is checking the time. I am drawn to art, poetry, and the
+              little details that make ordinary life interesting.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-100 dark:border-white/10">
@@ -600,10 +605,14 @@ export default function HomePage() {
                 <span className="text-xs font-semibold">Reading</span>
               </div>
               <div className="text-slate-700 dark:text-slate-200">
-                <span className="text-xs font-semibold">Photography &amp; Nature</span>
+                <span className="text-xs font-semibold">
+                  Photography &amp; Nature
+                </span>
               </div>
               <div className="text-slate-700 dark:text-slate-200">
-                <span className="text-xs font-semibold">Art, Poetry &amp; Conversation</span>
+                <span className="text-xs font-semibold">
+                  Art, Poetry &amp; Conversation
+                </span>
               </div>
             </div>
           </div>
@@ -632,7 +641,7 @@ export default function HomePage() {
                 >
                   <Link
                     href={`/portfolio?category=${encodeURIComponent(
-                      item.portfolioFilter
+                      item.portfolioFilter,
                     )}`}
                     className="block h-full group"
                   >
@@ -796,11 +805,13 @@ export default function HomePage() {
       {/* ============================================================
           CONTACT SECTION (Direct inquiry form on landing page)
       ============================================================ */}
-      <section id="contact" className="bg-[#f8fafc] dark:bg-[#0A1628]/60 py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300">
+      <section
+        id="contact"
+        className="bg-[#f8fafc] dark:bg-[#0A1628]/60 py-20 sm:py-28 px-4 sm:px-6 lg:px-8 transition-colors duration-300"
+      >
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest font-semibold">
-              
               <span>THE NEXT CHAPTER</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black text-[#0A1628] dark:text-white">
@@ -810,7 +821,8 @@ export default function HomePage() {
               </span>
             </h2>
             <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-medium">
-              Have a story to tell, an idea to communicate or a project in mind? Let’s get started.
+              Have a story to tell, an idea to communicate or a project in mind?
+              Let’s get started.
             </p>
           </div>
 
@@ -823,7 +835,8 @@ export default function HomePage() {
                     Direct Contact Channels
                   </h3>
                   <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed font-normal">
-                    Reach out directly via email or start a WhatsApp conversation.
+                    Reach out directly via email or start a WhatsApp
+                    conversation.
                   </p>
                 </div>
                 <div className="space-y-4">
@@ -928,7 +941,8 @@ export default function HomePage() {
                           Send a Project Inquiry
                         </h3>
                         <p className="text-slate-500 dark:text-slate-400 text-sm font-normal">
-                          Fill in the details below — I&apos;ll be in touch shortly.
+                          Fill in the details below — I&apos;ll be in touch
+                          shortly.
                         </p>
                       </div>
 
@@ -937,7 +951,9 @@ export default function HomePage() {
                           label="Your Name"
                           required
                           value={formData.name}
-                          onChange={(v) => setFormData({ ...formData, name: v })}
+                          onChange={(v) =>
+                            setFormData({ ...formData, name: v })
+                          }
                           placeholder="e.g. Dr. Ngozi Adebayo"
                         />
                         <FloatInput
@@ -945,7 +961,9 @@ export default function HomePage() {
                           type="email"
                           required
                           value={formData.email}
-                          onChange={(v) => setFormData({ ...formData, email: v })}
+                          onChange={(v) =>
+                            setFormData({ ...formData, email: v })
+                          }
                           placeholder="name@organisation.org"
                         />
                       </div>
@@ -972,7 +990,9 @@ export default function HomePage() {
                         required
                         rows={5}
                         value={formData.message}
-                        onChange={(v) => setFormData({ ...formData, message: v })}
+                        onChange={(v) =>
+                          setFormData({ ...formData, message: v })
+                        }
                         placeholder="Tell me about your initiative, key challenges, target audiences, and expected timelines..."
                       />
 
@@ -1013,7 +1033,8 @@ export default function HomePage() {
                       </button>
 
                       <p className="text-center text-xs text-slate-400 dark:text-slate-500 font-normal">
-                        No spam, ever. Your information is kept private and secure.
+                        No spam, ever. Your information is kept private and
+                        secure.
                       </p>
                     </motion.form>
                   )}

@@ -46,7 +46,7 @@ export default function AboutPage() {
                     Olivia Ezekwe
                   </h3>
                   <p className="text-xs text-[#e8c96a] font-mono mt-1">
-                    Communications Strategist, Writer &amp; Visual Storyteller.
+                    Communications Strategist | Writer | Visual Storyteller
                   </p>
                 </div>
               </div>

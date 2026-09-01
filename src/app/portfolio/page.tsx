@@ -149,34 +149,17 @@ function Lightbox({
   };
 
   useEffect(() => {
+    // Lock body scroll when lightbox is open
+    document.body.style.overflow = 'hidden';
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-
-      if (e.key === 'ArrowLeft') {
-        setIdx((i) =>
-          i === 0 ? images.length - 1 : i - 1
-        );
-      }
-
-      if (e.key === 'ArrowRight') {
-        setIdx((i) =>
-          i === images.length - 1 ? 0 : i + 1
-        );
-      }
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
+      if (e.key === 'ArrowRight') setIdx((i) => (i === images.length - 1 ? 0 : i + 1));
     };
-
-    document.addEventListener(
-      'keydown',
-      handler
-    );
-
+    document.addEventListener('keydown', handler);
     return () => {
-      document.removeEventListener(
-        'keydown',
-        handler
-      );
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handler);
     };
   }, [images.length, onClose]);
 
@@ -187,65 +170,56 @@ function Lightbox({
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 flex flex-col bg-[#050d1f]/98 backdrop-blur-2xl"
     >
-      {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+      {/* Header bar */}
+      <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-white/10 shrink-0">
         <div>
-          <p className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase">
-            {title}
-          </p>
-
-          <p className="text-white/50 text-xs font-mono mt-0.5">
-            {idx + 1} / {images.length}
-          </p>
+          <p className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase">{title}</p>
+          <p className="text-white/50 text-xs font-mono mt-0.5">{idx + 1} / {images.length}</p>
         </div>
 
+        {/* Close button — prominent on mobile */}
         <button
           onClick={onClose}
-          className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors cursor-pointer"
+          aria-label="Close"
+          className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-colors cursor-pointer border border-white/10"
         >
           <X className="w-4 h-4" />
+          <span className="hidden sm:inline">Close</span>
         </button>
       </div>
 
-      {/* Main Image */}
-      <div className="flex-1 flex items-center justify-center relative p-6 overflow-hidden">
+      {/* Backdrop tap area — clicking outside image closes */}
+      <div
+        className="flex-1 flex items-center justify-center relative overflow-hidden cursor-pointer"
+        onClick={onClose}
+      >
+        {/* Image — stop propagation so tapping image itself doesn't close */}
         <AnimatePresence mode="wait">
           <motion.img
             key={idx}
             src={images[idx]}
             alt=""
-            initial={{
-              opacity: 0,
-              scale: 0.95,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.95,
-            }}
-            transition={{
-              duration: 0.25,
-              ease: SMOOTH_EASE,
-            }}
-            className="max-h-full max-w-full object-contain rounded-xl shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.25, ease: SMOOTH_EASE }}
+            className="max-h-full max-w-full object-contain rounded-xl shadow-2xl m-6 cursor-default"
           />
         </AnimatePresence>
 
+        {/* Prev / Next — stop propagation */}
         {images.length > 1 && (
           <>
             <button
               onClick={prev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg cursor-pointer"
+              className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg cursor-pointer z-10"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-
             <button
               onClick={next}
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg cursor-pointer"
+              className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-lg bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg cursor-pointer z-10"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -253,24 +227,23 @@ function Lightbox({
         )}
       </div>
 
-      {/* Thumbnails */}
+      {/* Tap-to-close hint on mobile */}
+      <div className="sm:hidden text-center py-2 text-white/30 text-[10px] font-mono tracking-wide border-t border-white/5 shrink-0">
+        Tap outside image to close
+      </div>
+
+      {/* Thumbnails strip */}
       {images.length > 1 && (
-        <div className="px-5 py-4 border-t border-white/10 flex gap-2 overflow-x-auto">
+        <div className="px-4 sm:px-5 py-3 sm:py-4 border-t border-white/10 flex gap-2 overflow-x-auto shrink-0">
           {images.map((src, i) => (
             <button
               key={i}
               onClick={() => setIdx(i)}
-              className={`shrink-0 w-12 h-12 rounded-lg overflow-hidden ring-2 transition-all cursor-pointer ${
-                i === idx
-                  ? 'ring-[#C9A227]'
-                  : 'ring-transparent opacity-40 hover:opacity-80'
+              className={`shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-lg overflow-hidden ring-2 transition-all cursor-pointer ${
+                i === idx ? 'ring-[#C9A227]' : 'ring-transparent opacity-40 hover:opacity-80'
               }`}
             >
-              <img
-                src={src}
-                alt=""
-                className="w-full h-full object-cover"
-              />
+              <img src={src} alt="" className="w-full h-full object-cover" />
             </button>
           ))}
         </div>
