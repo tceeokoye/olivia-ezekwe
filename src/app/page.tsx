@@ -569,13 +569,25 @@ export default function HomePage() {
               {clientLogos.map((client, idx) => (
                 <div
                   key={idx}
-                  className="tech-card rounded-2xl p-5 flex flex-col justify-between"
+                  className="tech-card rounded-2xl p-5 flex flex-col gap-4"
                 >
-                  <div className="text-sm sm:text-base font-bold text-[#0A1628] dark:text-white">
-                    {client.name}
+                  {/* Logo */}
+                  <div className="h-14 flex items-center">
+                    <img
+                      src={client.logo}
+                      alt={`${client.name} logo`}
+                      className="max-h-full max-w-[160px] object-contain"
+                    />
                   </div>
-                  <div className="text-xs text-[#C9A227] font-mono font-semibold mt-3">
-                    {client.tag}
+
+                  {/* Name & tag */}
+                  <div>
+                    <div className="text-sm sm:text-base font-bold text-[#0A1628] dark:text-white leading-snug">
+                      {client.name}
+                    </div>
+                    <div className="text-xs text-[#C9A227] font-mono font-semibold mt-1.5">
+                      {client.tag}
+                    </div>
                   </div>
                 </div>
               ))}

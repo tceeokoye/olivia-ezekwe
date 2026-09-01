@@ -1,10 +1,5 @@
 import { ExperienceItem, EducationItem, SkillCategory } from "@/types";
 
-import MonywiseDoctorLogo from "@/assets/LOGOS/MWD.jpeg";
-import SSDOLogo from "@/assets/LOGOS/SSDO-Logo-full.jpg";
-import LifeMindLogo from "@/assets/LOGOS/LMN.jpg";
-import SunchesVillaLogo from "@/assets/LOGOS/SVH.PNG";
-
 export const experiencesData: ExperienceItem[] = [
   {
     role: "CONTENT & BRAND MANAGER (Remote)",
@@ -160,13 +155,14 @@ export const toolsAndPlatforms = [
 ];
 
 export const clientLogos = [
-  { name: "Moneywise Doctor UK", tag: "Medical Finance" },
+  { name: "Moneywise Doctor UK", tag: "Medical Finance", logo: "/logos/MWD.jpeg" },
   {
-    name: "South Saharan Social Development Organisation ",
+    name: "South Saharan Social Development Organisation",
     tag: "Non Profit",
+    logo: "/logos/SSDO-Logo-full.jpg",
   },
-  { name: "Sunches Villa Hotel", tag: "Luxury Hospitality" },
-  { name: "Life Mind Navigation Psychiatry, USA ", tag: "Mental Health" },
-  { name: "DIGC Garriki", tag: "Faith Based" },
-  { name: "Somto Eden Evolution", tag: "Academic & Researcy" },
+  { name: "Sunches Villa Hotel", tag: "Luxury Hospitality", logo: "/logos/SVH.PNG" },
+  { name: "Life Mind Navigation Psychiatry, USA", tag: "Mental Health", logo: "/logos/LMN.jpg" },
+  { name: "DIGC Garriki", tag: "Faith Based", logo: "/logos/DIGC-Garriki.jpeg" },
+  { name: "Somto Eden Evolution", tag: "Academic & Research", logo: "/logos/somto-eden.jpeg" },
 ];
