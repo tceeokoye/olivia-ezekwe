@@ -4,26 +4,25 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
-  Compass,
-  Globe,
-  Sparkles,
-  Camera,
+  Megaphone,
+  BookOpen,
   FileText,
-  Users,
+  Newspaper,
+  PenTool,
   CheckCircle2,
   ArrowRight,
+  Sparkles,
 } from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
 import TiltCard from '@/components/TiltCard';
 import { servicesData } from '@/data/servicesData';
 
 const iconMap: Record<string, any> = {
-  Compass,
-  Globe,
-  Sparkles,
-  Camera,
+  Megaphone,
+  BookOpen,
   FileText,
-  Users,
+  Newspaper,
+  PenTool,
 };
 
 export default function ServicesPage() {
@@ -31,7 +30,7 @@ export default function ServicesPage() {
     {
       num: '01',
       title: 'Discovery & Audience Mapping',
-      desc: 'Deep-dive interviews, stakeholder matrices, donor perception audits, and clear KPI definition.',
+      desc: 'Deep-dive consultations, stakeholder matrices, donor perception audits, and clear KPI definition.',
     },
     {
       num: '02',
@@ -41,12 +40,12 @@ export default function ServicesPage() {
     {
       num: '03',
       title: 'Creative Execution & Production',
-      desc: 'Directing field photography, documentary films, SEO content funnels, and executive publication design.',
+      desc: 'Authoring investigative press dispatches, executive compendiums, legal treatises, and digital campaign flyer suites.',
     },
     {
       num: '04',
       title: 'Multi-Channel Deployment & Analytics',
-      desc: 'Rolling out digital campaigns, media press briefings, donor reports, and real-time impact optimization.',
+      desc: 'Rolling out public advocacy campaigns, media press briefings, donor reports, and real-time impact optimization.',
     },
   ];
 
@@ -54,7 +53,8 @@ export default function ServicesPage() {
     <div className="space-y-20 sm:space-y-28 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-colors duration-300">
       {/* ===================== HERO / HEADER ===================== */}
       <section className="pt-4 sm:pt-8 text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono uppercase tracking-widest font-semibold">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest font-semibold">
+          <Sparkles className="w-3.5 h-3.5" />
           <span>CAPABILITIES &amp; SOLUTIONS</span>
         </div>
 
@@ -66,7 +66,7 @@ export default function ServicesPage() {
         </h1>
 
         <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
-          Bespoke strategic communications, digital ecosystems, brand architecture, and multimedia production designed for measurable non-profit and corporate impact.
+          Bespoke advocacy campaigns, literary creative non-fiction, executive editorial publications, high-impact press dispatches, and rigorous legal writing.
         </p>
       </section>
 
@@ -97,7 +97,7 @@ export default function ServicesPage() {
                     </p>
 
                     <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-white/10">
-                      <h4 className="text-xs font-mono uppercase tracking-wider text-[#C9A227] font-bold">
+                      <h4 className="text-xs font-mono tracking-wider text-[#C9A227] font-bold">
                         Key Deliverables
                       </h4>
                       <div className="space-y-2">
@@ -111,17 +111,25 @@ export default function ServicesPage() {
                     </div>
                   </div>
 
-                  <div className="pt-6 mt-6 border-t border-slate-100 dark:border-white/10">
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400 mb-4">
+                  <div className="pt-6 mt-6 border-t border-slate-100 dark:border-white/10 space-y-4">
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400">
                       <strong className="text-[#0A1628] dark:text-white">Ideal For:</strong> {service.whoItIsFor}
                     </div>
-                    <Link
-                      href={`/contact?service=${encodeURIComponent(service.title)}`}
-                      className="inline-flex items-center gap-2 text-xs font-bold text-[#C9A227] hover:underline uppercase tracking-wider"
-                    >
-                      <span>Inquire About This Service</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
+                    <div className="flex items-center justify-between pt-2">
+                      <Link
+                        href={`/portfolio?category=${encodeURIComponent(service.portfolioCategory)}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C9A227] hover:underline tracking-wide"
+                      >
+                        <span>View Portfolio Works</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </Link>
+                      <Link
+                        href={`/contact?service=${encodeURIComponent(service.title)}`}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-[#C9A227]"
+                      >
+                        <span>Inquire</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </TiltCard>

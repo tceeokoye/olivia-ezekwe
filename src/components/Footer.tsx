@@ -4,19 +4,18 @@ import React, { useState } from "react";
 import Link from "next/link";
 import {
   Mail,
-  Linkedin,
   Phone,
   ArrowUpRight,
   Sparkles,
   Check,
-  Shield,
+  Download,
 } from "lucide-react";
 
 export default function Footer() {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("hello@oliviaezekwe.com");
+    navigator.clipboard.writeText("ezekweolivia@gmail.com");
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 3000);
   };
@@ -27,14 +26,14 @@ export default function Footer() {
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-64 bg-gradient-to-b from-[#C9A227]/10 via-sky-500/5 to-transparent pointer-events-none blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10">
-        {/* Banner: LET'S WORK TOGETHER (Exact Layout Guide Specification) */}
+        {/* Banner: LET'S WORK TOGETHER */}
         <div className="relative rounded-3xl bg-white/5 border-2 border-[#C9A227]/30 p-8 sm:p-12 md:p-16 mb-16 overflow-hidden">
           <div className="absolute top-0 right-0 -mt-8 -mr-8 w-64 h-64 bg-[#C9A227]/15 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 -mb-8 -ml-8 w-64 h-64 bg-sky-400/15 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#e8c96a] text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/30 text-[#e8c96a] text-xs font-mono   tracking-widest mb-4 font-semibold">
                 <Sparkles className="w-3.5 h-3.5" /> Start a Conversation
               </div>
               <h3 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white font-display">
@@ -48,8 +47,8 @@ export default function Footer() {
 
             <div className="flex flex-col sm:flex-row items-center gap-4 shrink-0">
               <Link
-                href="/contact"
-                className="px-8 py-4 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm uppercase tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2"
+                href="/#contact"
+                className="px-8 py-4 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm   tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2"
               >
                 <span>GET IN TOUCH</span>
                 <ArrowUpRight className="w-4 h-4" />
@@ -75,13 +74,13 @@ export default function Footer() {
         </div>
 
         {/* Footer Navigation & Brand Section */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
-          <div className="md:col-span-2 space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+          <div className="space-y-4">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-[#C9A227] text-[#0A1628] font-black text-lg flex items-center justify-center shadow-md">
                 OE
               </div>
-              <span className="text-xl font-bold tracking-wider uppercase text-white font-display">
+              <span className="text-xl font-bold tracking-wider   text-white font-display">
                 Olivia Ezekwe
               </span>
             </div>
@@ -93,48 +92,8 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[#C9A227] mb-4 font-bold">
-              Portfolio Disciplines
-            </h4>
-            <ul className="space-y-2.5 text-sm">
-              <li>
-                <Link
-                  href="/portfolio"
-                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
-                >
-                  • Selected Work &amp; Campaigns
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/writing"
-                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
-                >
-                  • Writing &amp; Publications
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/photography"
-                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
-                >
-                  • Photography &amp; Field Stories
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/videography"
-                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
-                >
-                  • Videography &amp; Media
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-xs font-mono uppercase tracking-widest text-[#C9A227] mb-4 font-bold">
-              Explore &amp; Connect
+            <h4 className="text-xs font-mono   tracking-widest text-[#C9A227] mb-4 font-bold">
+              Quick Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -142,40 +101,60 @@ export default function Footer() {
                   href="/"
                   className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
                 >
-                  Home
+                  • Home
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/portfolio"
                   className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
                 >
-                  About Olivia
+                  • Portfolio &amp; Work
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/services"
-                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                <a
+                  href="/api/download-cv"
+                  download="Olivia_Ezekwe_CV.txt"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium inline-flex items-center gap-1.5"
                 >
-                  Services &amp; Consulting
-                </Link>
+                  <span>• Download CV / Resume</span>
+                  <Download className="w-3.5 h-3.5 text-[#C9A227]" />
+                </a>
               </li>
               <li>
                 <Link
-                  href="/cv"
+                  href="/#contact"
                   className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
                 >
-                  CV / Executive Resume
+                  • Contact &amp; Inquiries
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-mono   tracking-widest text-[#C9A227] mb-4 font-bold">
+              Direct Contact
+            </h4>
+            <ul className="space-y-2.5 text-sm">
               <li>
-                <Link
-                  href="/contact"
-                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium"
+                <a
+                  href="mailto:ezekweolivia@gmail.com"
+                  className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium flex items-center gap-2"
                 >
-                  Contact &amp; Inquiries
-                </Link>
+                  <Mail className="w-4 h-4 text-[#C9A227]" />
+                  <span>ezekweolivia@gmail.com</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/2348067103176"
+                  className="text-slate-300 hover:text-emerald-400 transition-colors font-medium flex items-center gap-2"
+                >
+                  <Phone className="w-4 h-4 text-emerald-400" />
+                  <span>+2348067103176</span>
+                </a>
               </li>
             </ul>
           </div>
@@ -185,21 +164,12 @@ export default function Footer() {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-300">
           <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 font-mono">
             <a
-              href="mailto:hello@oliviaezekwe.com"
+              href="mailto:ezekweolivia@gmail.com"
               className="flex items-center gap-1.5 hover:text-[#C9A227] transition-colors"
             >
               <Mail className="w-3.5 h-3.5 text-[#C9A227]" />
-              <span> ezekweolivia@gmail.com</span>
+              <span>ezekweolivia@gmail.com</span>
             </a>
-            {/* <a
-              href="https://linkedin.com/in/oliviaezekwe"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-sky-400 transition-colors"
-            >
-              <Linkedin className="w-3.5 h-3.5 text-sky-400" />
-              <span>linkedin.com/in/oliviaezekwe</span>
-            </a> */}
             <a
               href="https://wa.me/2348067103176"
               className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors"

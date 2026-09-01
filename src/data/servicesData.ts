@@ -2,87 +2,78 @@ import { ServiceItem } from '@/types';
 
 export const servicesData: ServiceItem[] = [
   {
-    id: 'strategic-communications',
-    title: 'Strategic Communications & Advocacy',
-    iconName: 'Compass',
-    summary: 'Comprehensive communication frameworks that turn organisational missions into measurable public and donor impact.',
-    description: 'I architect end-to-end communication strategies for non-profits, international NGOs, civic institutions, and forward-thinking enterprises. From stakeholder mapping and message framing to multi-channel execution plans and donor intelligence, every campaign is built for maximum resonance.',
+    id: 'campaigns',
+    title: 'Campaigns',
+    portfolioCategory: 'Campaigns',
+    iconName: 'Megaphone',
+    summary: 'High-impact multimedia advocacy, civic mobilization, and behavior-change communication campaigns that drive measurable public and donor impact.',
+    description: 'I design and deploy end-to-end communication and public engagement campaigns for non-profits, international NGOs, civic coalitions, and purpose-driven brands. From strategic framing and multi-part visual graphics to grassroots mobilization, every campaign is built for maximum resonance and action.',
     deliverables: [
-      'Comprehensive 360° Communications Strategy & Narrative Guide',
-      'Stakeholder Analysis & Audience Segmentation Matrices',
-      'Advocacy Campaign Architecture & Policy Brief Toolkits',
-      'Crisis Communication Protocols & Media Relations Playbooks'
+      'Comprehensive 360° Advocacy Campaign Architecture & Messaging Toolkits',
+      'Multi-Slide Social Action Graphic Suites (16 Days, Public Health, Civic Engagement)',
+      'Community Action Scorecards & Stakeholder Briefing Packages',
+      'Post-Campaign Reach & Engagement Impact Reports'
     ],
-    whoItIsFor: 'Development organisations, NGOs, civil society coalitions, and purpose-driven brands needing structured visibility and stakeholder buy-in.'
+    whoItIsFor: 'Development organisations, NGOs, civil society coalitions, and purpose-driven brands needing structured public mobilization and stakeholder buy-in.'
   },
   {
-    id: 'digital-communications',
-    title: 'Digital Communications & Social Strategy',
-    iconName: 'Globe',
-    summary: 'Data-driven digital ecosystems designed to scale organic reach, community engagement, and digital fundraising.',
-    description: 'Transforming passive followers into active advocates. I build cross-platform digital engines encompassing high-converting social media campaigns, SEO-optimized digital hubs, targeted newsletter ecosystems, and viral short-form video series.',
+    id: 'creative-non-fictions',
+    title: 'Creative Non-Fictions',
+    portfolioCategory: 'Creative Non-Fictions',
+    iconName: 'BookOpen',
+    summary: 'Compelling narrative prose, reflective personal essays, and visual memoirs capturing lived human experience with literary flair.',
+    description: 'Storytelling is the heart of human connection. I craft evocative creative non-fiction pieces, personal narratives, and visual memoirs that turn everyday observations, journeys, and complex emotions into memorable, resonant literature.',
     deliverables: [
-      'Multi-Channel Social Media Strategy & 90-Day Content Calendars',
-      'SEO Keyword Architecture & Content Optimization Playbook',
-      'Email Newsletter Engineering & High-Converting Automation Funnels',
-      'Analytics Dashboards & Real-time Performance Tracking'
+      'Narrative Non-Fiction Essays & Reflective Memoirs',
+      'Multi-Slide Visual Storytelling Decks & Audio-Visual Essays',
+      'Human-Interest Features & Literary Non-Fiction Works',
+      'Creative Editorial Contributions for Literary & Culture Outlets'
     ],
-    whoItIsFor: 'Organisations seeking to expand global digital footprints, elevate brand authority, and maintain consistent high-converting digital touchpoints.'
+    whoItIsFor: 'Publications, literary platforms, creative initiatives, and cultural organizations seeking emotive, high-craft storytelling.'
   },
   {
-    id: 'brand-management',
-    title: 'Brand Management & Identity Architecture',
-    iconName: 'Sparkles',
-    summary: 'Elevating brands from ordinary to unforgettable through cohesive visual identities, brand voice, and positioning.',
-    description: 'Your brand is the sum of every impression you make. I craft distinctive brand identities, tone of voice guidelines, visual style manuals, and brand collateral that immediately convey trust, authority, and emotional connection.',
-    deliverables: [
-      'Brand Identity System: Logos, Typography, Color Palette, Assets',
-      'Brand Voice, Tone & Messaging Guidelines',
-      'Corporate Collateral: Pitch Decks, Annual Report Templates, Brochures',
-      'Brand Governance & Implementation Oversight'
-    ],
-    whoItIsFor: 'New ventures launching into competitive spaces or established organisations undergoing strategic repositioning and modern reinvention.'
-  },
-  {
-    id: 'multimedia-production',
-    title: 'Photography & Videography Production',
-    iconName: 'Camera',
-    summary: 'Dignity-first visual storytelling, documentary filmmaking, field photojournalism, and high-impact media production.',
-    description: 'Compelling visuals are the heartbeat of human connection. I direct and produce high-definition photo essays, mini-documentaries, event highlight reels, and social-first video content that capture raw human emotion with utmost dignity and artistic flair.',
-    deliverables: [
-      'On-Location Documentary Film Production & 4K Editing',
-      'High-Resolution Field & Corporate Photo Essay Suites',
-      'Short-Form Social Reels (TikTok, Instagram, YouTube Shorts)',
-      'Audio & Video Podcast Production & Post-Production Mastering'
-    ],
-    whoItIsFor: 'Organisations wanting to bring their field interventions, milestone events, and human transformation stories to life through cinematic media.'
-  },
-  {
-    id: 'reports-publications',
-    title: 'Reports, Publications & Knowledge Products',
+    id: 'editorial',
+    title: 'Editorial',
+    portfolioCategory: 'Editorial',
     iconName: 'FileText',
-    summary: 'Turning complex research, data, and policy insights into visually stunning, executive-ready publications.',
-    description: 'From 80-page national accountability scorecards to crisp policy briefs and donor reports, I synthesize dense analytical data into lucid prose, accompanied by bespoke infographics and publication-grade layouts.',
+    summary: 'Executive annual reports, institutional compendiums, progress scorecards, and knowledge products that document impact with clarity and dignity.',
+    description: 'Turning multi-year research, field data, and institutional milestones into stunning, publication-grade documents. From multi-chapter program compendiums to annual progress reports, I synthesize dense analytical information into lucid prose and structured knowledge products.',
     deliverables: [
-      'Annual Reports, Impact Assessments & Donor Knowledge Products',
-      'Policy Briefs, White Papers & Infographic Executive Summaries',
-      'Op-Eds & Thought Leadership Articles for National/Global Media',
-      'Interactive Digital Publications & Downloadable PDFs'
+      'Annual Reports, Program Compendiums & Impact Story Publications',
+      'Mid-Year & Multi-Year Institutional Progress Reports',
+      'Executive Briefings, Donor Scorecards & Infographic Summaries',
+      'Publication Layouts & Knowledge Product Documentation'
     ],
-    whoItIsFor: 'Research institutes, development funds, government task forces, and corporate boards requiring elite knowledge documentation.'
+    whoItIsFor: 'Development organisations, donor foundations, research institutes, and executive leadership teams requiring elite editorial documentation.'
   },
   {
-    id: 'training-workshops',
-    title: 'Capacity Building & Media Masterclasses',
-    iconName: 'Users',
-    summary: 'Equipping teams and grassroots champions with the practical skills to tell their own stories effectively.',
-    description: 'Empowerment through knowledge transfer. I facilitate tailored workshops on mobile journalism, digital advocacy, ethical storytelling, and media management for NGO staff, volunteers, and grassroots community champions.',
+    id: 'press',
+    title: 'Press',
+    portfolioCategory: 'Press',
+    iconName: 'Newspaper',
+    summary: 'Official press statements, diplomatic media dispatches, media briefing packs, and high-pickup news releases for national and global outlets.',
+    description: 'Media relations that command attention and drive narrative authority. I author official press statements, diplomatic delegation briefs, investigative community dispatches, and policy validation releases that achieve widespread media pickup across broadcast, print, and digital wires.',
     deliverables: [
-      'Interactive Custom Training Curriculum & Handbooks',
-      'Hands-on Mobile Storytelling & Photography Masterclasses',
-      'Digital Advocacy & Social Media Safety Workshops',
-      'Post-Training Mentorship & Execution Frameworks'
+      'Official Press Statements & Regulatory Collaboration Releases',
+      'Diplomatic Working Visit Briefings & Bilateral Partnership Dispatches',
+      'Media Briefing Dossiers, Q&A Talking Points & Press Kits',
+      'Investigative Field Releases & Community Advocacy Statements'
     ],
-    whoItIsFor: 'Field teams, non-profit staff, communication teams, and youth networks seeking to level up their internal communication capabilities.'
+    whoItIsFor: 'Organizations launching milestone reports, hosting diplomatic delegations, announcing major initiatives, or managing crisis communications.'
+  },
+  {
+    id: 'writing-samples',
+    title: 'Writing Samples',
+    portfolioCategory: 'Writing Samples',
+    iconName: 'PenTool',
+    summary: 'Rigorous legal analysis, comparative statutory research, constitutional human rights papers, and institutional capacity-building manuals.',
+    description: 'With a solid background in law and policy research, I deliver rigorous comparative legal studies, intellectual property jurisprudence analyses, human rights treatises, and comprehensive training handbooks for development professionals.',
+    deliverables: [
+      'Comparative Legal Research Papers & Statutory Policy Analyses',
+      'Intellectual Property & Jurisprudence Position Papers',
+      'Constitutional Human Rights & Gender Jurisprudence Studies',
+      'Capacity-Building Workshop Manuals & Training Curricula'
+    ],
+    whoItIsFor: 'Legal think tanks, research bodies, development coalitions, policy institutes, and professional training programs.'
   }
 ];

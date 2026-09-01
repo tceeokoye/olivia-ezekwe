@@ -17,6 +17,10 @@
 # misc
 .DS_Store
 *.pem
+*.zip
+
+# raw asset duplicates
+/src/assets/portfolio/
 
 # debug
 npm-debug.log*

@@ -36,7 +36,7 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-xs font-mono tracking-widest text-amber-400 uppercase mb-3 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 inline-block font-bold"
+          className="text-xs font-mono tracking-widest text-amber-400   mb-3 px-3 py-1 rounded-full bg-amber-400/10 border border-amber-400/30 inline-block font-bold"
         >
           {label}
         </motion.span>

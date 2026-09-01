@@ -72,7 +72,7 @@ export default function WritingPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`shrink-0 snap-start px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all duration-200 whitespace-nowrap ${
+                className={`shrink-0 snap-start px-4 py-2 rounded-full text-[11px] font-bold   tracking-wider transition-all duration-200 whitespace-nowrap ${
                   isActive
                     ? 'bg-[#C9A227] text-[#0A1628] shadow-sm font-black'
                     : 'tech-pill text-[#0A1628] dark:text-slate-200'
@@ -92,7 +92,7 @@ export default function WritingPage() {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full text-xs font-bold   tracking-wider transition-all duration-300 ${
                   isActive
                     ? 'bg-[#C9A227] text-[#0A1628] shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] scale-105 font-black'
                     : 'tech-pill text-[#0A1628] dark:text-slate-200 hover:border-[#C9A227]/40'
@@ -215,7 +215,7 @@ export default function WritingPage() {
               </div>
 
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9A227] mb-3 flex items-center gap-2">
+                <h4 className="text-xs font-bold   tracking-wider text-[#C9A227] mb-3 flex items-center gap-2">
                   <Sparkles className="w-3.5 h-3.5" /> Core Insights &amp; Methodologies
                 </h4>
                 <div className="space-y-3">
@@ -232,7 +232,7 @@ export default function WritingPage() {
                 <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">Authored by Olivia Ezekwe</span>
                 <button
                   onClick={() => setSelectedArticle(null)}
-                  className="px-6 py-2.5 rounded-full bg-[#C9A227] text-[#0A1628] font-black text-xs uppercase shadow-sm whitespace-nowrap hover:bg-[#e8c96a]"
+                  className="px-6 py-2.5 rounded-full bg-[#C9A227] text-[#0A1628] font-black text-xs   shadow-sm whitespace-nowrap hover:bg-[#e8c96a]"
                 >
                   Close Article
                 </button>

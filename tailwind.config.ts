@@ -14,24 +14,22 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         brand: {
-          // Brand Gold palette
-          gold: "#C9A227",        // primary brand gold
-          goldLight: "#e8c96a",   // light gold for text
-          goldPale: "#f5e7b2",    // very light gold tint
-          // Brand Navy palette
-          navy: "#0A1628",        // mid navy (cards, surfaces)
-          navyDeep: "#050d1f",    // deepest background
-          navyLight: "#0f1e36",   // slightly lighter navy for cards
-          navySurface: "#122040", // surface/card background
-          // Supporting
+          gold: "#C9A227",
+          goldLight: "#e8c96a",
+          goldPale: "#f5e7b2",
+          navy: "#0A1628",
+          navyDeep: "#050d1f",
+          navyLight: "#0f1e36",
+          navySurface: "#122040",
           accentCyan: "#38bdf8",
           accentEmerald: "#10b981",
         },
       },
       fontFamily: {
-        sans: ["var(--font-jakarta)", "sans-serif"],
-        display: ["var(--font-syne)", "sans-serif"],
-        serif: ["var(--font-playfair)", "serif"],
+        sans: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        serif: ["Inter", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "monospace"],
       },
       animation: {
         "float-slow": "float 6s ease-in-out infinite",

@@ -1,5 +1,7 @@
 ﻿"use client";
 
+export const dynamic = 'force-static';
+
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -15,16 +17,11 @@ import {
 } from "lucide-react";
 
 const SERVICES = [
-  { value: "Strategic Communications" },
-  { value: "Content Strategy & Development" },
-  { value: "Photography, Videography & Documentary" },
-  { value: "Storytelling & Editorial" },
-  { value: "Digital Communications" },
-  { value: "Social Media Management" },
-  { value: "Brand Management" },
-  { value: "Reports & Publications" },
-  { value: "SEO & Website Management" },
-  { value: "Campaigns & Advocacy" },
+  { value: "Campaigns" },
+  { value: "Creative Non-Fictions" },
+  { value: "Editorial" },
+  { value: "Press" },
+  { value: "Writing Samples" },
   { value: "Others" },
 ];
 
@@ -51,7 +48,7 @@ function FloatInput({
         className={`absolute left-4 transition-all duration-200 pointer-events-none font-sans z-10
         ${
           active
-            ? "top-2 text-[10px] font-semibold text-[#C9A227] uppercase tracking-widest"
+            ? "top-2 text-[10px] font-semibold text-[#C9A227]   tracking-widest"
             : "top-1/2 -translate-y-1/2 text-sm text-slate-400 dark:text-slate-500"
         }`}
       >
@@ -101,7 +98,7 @@ function FloatTextarea({
         className={`absolute left-4 transition-all duration-200 pointer-events-none font-sans z-10
         ${
           active
-            ? "top-2 text-[10px] font-semibold text-[#C9A227] uppercase tracking-widest"
+            ? "top-2 text-[10px] font-semibold text-[#C9A227]   tracking-widest"
             : "top-4 text-sm text-slate-400 dark:text-slate-500"
         }`}
       >
@@ -161,7 +158,7 @@ function ServiceDropdown({
               : "border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
           }`}
       >
-        <span className="absolute left-4 top-2 text-[10px] font-semibold text-[#C9A227] uppercase tracking-widest pointer-events-none">
+        <span className="absolute left-4 top-2 text-[10px] font-semibold text-[#C9A227]   tracking-widest pointer-events-none">
           Service of Interest
         </span>
         <span className="flex items-center gap-2 text-[#0A1628] dark:text-white">
@@ -247,8 +244,8 @@ export default function ContactPage() {
   return (
     <div className="space-y-16 sm:space-y-24 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-colors duration-300">
       <section className="pt-4 sm:pt-8 text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono uppercase tracking-widest font-semibold">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono   tracking-widest font-semibold">
+         
           <span>THE NEXT CHAPTER</span>
         </div>
         <h1 className="text-3xl sm:text-5xl lg:text-5xl font-black text-[#0A1628] dark:text-white font-display">
@@ -373,7 +370,7 @@ export default function ContactPage() {
                         message: "",
                       });
                     }}
-                    className="px-8 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs uppercase tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
+                    className="px-8 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs   tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
                   >
                     Send Another Inquiry
                   </button>
@@ -443,7 +440,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="relative w-full py-4 rounded-2xl bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm uppercase tracking-wider shadow-[0_4px_24px_-4px_rgba(201,162,39,0.45)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 overflow-hidden group"
+                    className="relative w-full py-4 rounded-2xl bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm   tracking-wider shadow-[0_4px_24px_-4px_rgba(201,162,39,0.45)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 overflow-hidden group"
                   >
                     <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-in-out" />
                     {isSubmitting ? (

@@ -101,7 +101,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono uppercase tracking-widest font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono  tracking-widest font-semibold">
               <span>MY STORY &amp; EXPERTISE</span>
             </div>
 
@@ -137,13 +137,13 @@ export default function AboutPage() {
             <div className="pt-4 flex flex-wrap gap-4">
               <Link
                 href="/portfolio"
-                className="px-6 py-3.5 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs uppercase tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
+                className="px-6 py-3.5 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs  tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
               >
                 View Selected Work
               </Link>
               <Link
                 href="/cv"
-                className="px-6 py-3.5 rounded-full tech-pill text-[#0A1628] dark:text-white font-bold text-xs uppercase tracking-wider hover:border-[#C9A227]/50 transition-all"
+                className="px-6 py-3.5 rounded-full tech-pill text-[#0A1628] dark:text-white font-bold text-xs  tracking-wider hover:border-[#C9A227]/50 transition-all"
               >
                 View Full CV / Resume
               </Link>
@@ -343,7 +343,7 @@ export default function AboutPage() {
       {/* ===================== OUTSIDE THE BRIEF ===================== */}
       <section className="tech-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono uppercase tracking-widest mb-4 font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono  tracking-widest mb-4 font-semibold">
             <Heart className="w-3.5 h-3.5" />
             <span>OUTSIDE THE BRIEF</span>
           </div>

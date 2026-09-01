@@ -1,16 +1,29 @@
+export type PortfolioCategory =
+  | 'Campaigns'
+  | 'Creative Non-Fictions'
+  | 'Editorial'
+  | 'Press'
+  | 'Writing Samples';
+
 export interface Project {
   id: string;
   title: string;
-  category: 'Communications' | 'Digital' | 'Branding' | 'Photography' | 'Videography' | 'Reports';
-  client: string;
-  year: string;
-  role: string;
+  category: PortfolioCategory | 'Communications' | 'Digital' | 'Branding' | 'Photography' | 'Videography' | 'Reports';
+  client?: string;
+  year?: string;
+  role?: string;
   summary: string;
-  challenge: string;
-  solution: string;
-  deliverables: string[];
-  metrics: { label: string; value: string }[];
-  image: string;
+  challenge?: string;
+  solution?: string;
+  deliverables?: string[];
+  metrics?: { label: string; value: string }[];
+  image?: string;
+  coverImage?: string;
+  fileUrl?: string;
+  fileType?: 'pdf' | 'pptx' | 'gallery' | 'article';
+  fileSize?: string;
+  images?: string[];
+  highlights?: string[];
   featured?: boolean;
   tags: string[];
 }
@@ -18,12 +31,13 @@ export interface Project {
 export interface WritingItem {
   id: string;
   title: string;
-  category: 'Articles & Blogs' | 'Reports & Publications' | 'Success Stories' | 'Press Releases & News' | 'Newsletters';
+  category: string;
   publication: string;
   date: string;
   readTime: string;
   excerpt: string;
   link?: string;
+  fileUrl?: string;
   featured?: boolean;
   highlights: string[];
 }
@@ -31,7 +45,7 @@ export interface WritingItem {
 export interface PhotoItem {
   id: string;
   title: string;
-  category: 'Community & Development' | 'Events & Conferences' | 'Training & Workshops' | 'Advocacy & Campaigns' | 'Portraits' | 'Documentary Photography';
+  category: string;
   location: string;
   year: string;
   image: string;
@@ -41,7 +55,7 @@ export interface PhotoItem {
 export interface VideoItem {
   id: string;
   title: string;
-  category: 'Documentaries' | 'Interviews' | 'Campaign Videos' | 'Event Highlights' | 'Reels / Short-form Videos';
+  category: string;
   duration: string;
   client: string;
   role: string;
@@ -58,6 +72,7 @@ export interface ServiceItem {
   description: string;
   deliverables: string[];
   whoItIsFor: string;
+  portfolioCategory: PortfolioCategory;
 }
 
 export interface ExperienceItem {

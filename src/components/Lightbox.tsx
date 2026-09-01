@@ -94,7 +94,7 @@ export default function Lightbox({
             animate={{ opacity: 1, y: 0 }}
             className="mt-4 text-center max-w-2xl px-4 text-white"
           >
-            <div className="flex items-center justify-center gap-3 text-xs text-brand-gold font-mono uppercase tracking-wider mb-1">
+            <div className="flex items-center justify-center gap-3 text-xs text-brand-gold font-mono   tracking-wider mb-1">
               <span className="flex items-center gap-1">
                 <Camera className="w-3.5 h-3.5" /> {currentPhoto.category}
               </span>

@@ -61,7 +61,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             {/* Header Image with Gradient */}
             <div className="relative h-60 sm:h-72 w-full overflow-hidden rounded-t-3xl">
               <img
-                src={project.image}
+                src={project.image || project.coverImage || '/portfolio/16days-campaign-messaging/a.jpg'}
                 alt={project.title}
                 className="w-full h-full object-cover"
               />
@@ -104,21 +104,21 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
                   <Briefcase className="w-5 h-5 text-[#C9A227] shrink-0" />
                   <div>
-                    <div className="text-[10px] text-slate-400 font-mono uppercase font-semibold">Client</div>
+                    <div className="text-[10px] text-slate-400 font-mono   font-semibold">Client</div>
                     <div className="text-xs font-bold text-white mt-0.5 leading-tight">{project.client}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
                   <User className="w-5 h-5 text-sky-400 shrink-0" />
                   <div>
-                    <div className="text-[10px] text-slate-400 font-mono uppercase font-semibold">Role</div>
+                    <div className="text-[10px] text-slate-400 font-mono   font-semibold">Role</div>
                     <div className="text-xs font-bold text-white mt-0.5 leading-tight">{project.role}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 rounded-2xl bg-white/5 border border-white/10">
                   <Calendar className="w-5 h-5 text-emerald-400 shrink-0" />
                   <div>
-                    <div className="text-[10px] text-slate-400 font-mono uppercase font-semibold">Timeline</div>
+                    <div className="text-[10px] text-slate-400 font-mono   font-semibold">Timeline</div>
                     <div className="text-xs font-bold text-white mt-0.5">{project.year}</div>
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <div>
                   <div className="flex items-center gap-2 mb-4">
                     <Award className="w-4 h-4 text-[#C9A227]" />
-                    <h4 className="text-xs font-mono uppercase tracking-widest text-[#C9A227] font-bold">
+                    <h4 className="text-xs font-mono   tracking-widest text-[#C9A227] font-bold">
                       Quantifiable Impact
                     </h4>
                   </div>
@@ -161,7 +161,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 >
                   <div className="flex items-center gap-2">
                     <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
-                    <h5 className="text-xs font-mono font-bold text-red-400 uppercase tracking-widest">
+                    <h5 className="text-xs font-mono font-bold text-red-400   tracking-widest">
                       The Challenge
                     </h5>
                   </div>
@@ -180,7 +180,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 >
                   <div className="flex items-center gap-2">
                     <Lightbulb className="w-4 h-4 text-emerald-400 shrink-0" />
-                    <h5 className="text-xs font-mono font-bold text-emerald-400 uppercase tracking-widest">
+                    <h5 className="text-xs font-mono font-bold text-emerald-400   tracking-widest">
                       The Solution
                     </h5>
                   </div>
@@ -191,19 +191,21 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
 
               {/* Key Deliverables */}
-              <div>
-                <h4 className="text-xs font-mono font-bold text-white uppercase tracking-widest mb-4">
-                  Key Deliverables &amp; Assets
-                </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {project.deliverables.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3 text-sm text-slate-200">
-                      <CheckCircle2 className="w-4 h-4 text-[#C9A227] shrink-0 mt-0.5" />
-                      <span className="font-normal leading-snug">{item}</span>
-                    </div>
-                  ))}
+              {project.deliverables && project.deliverables.length > 0 && (
+                <div>
+                  <h4 className="text-xs font-mono font-bold text-white tracking-widest mb-4">
+                    Key Deliverables &amp; Assets
+                  </h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {project.deliverables.map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-3 text-sm text-slate-200">
+                        <CheckCircle2 className="w-4 h-4 text-[#C9A227] shrink-0 mt-0.5" />
+                        <span className="font-normal leading-snug">{item}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Tags + CTA */}
               <div className="pt-5 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -222,7 +224,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 <Link
                   href="/contact"
                   onClick={onClose}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs uppercase tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105 whitespace-nowrap"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs   tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105 whitespace-nowrap"
                 >
                   <span>Discuss Similar Project</span>
                   <ArrowRight className="w-4 h-4" />

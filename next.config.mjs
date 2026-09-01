@@ -19,6 +19,45 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/about',
+        destination: '/#about',
+        permanent: false,
+      },
+      {
+        source: '/contact',
+        destination: '/#contact',
+        permanent: false,
+      },
+      {
+        source: '/services',
+        destination: '/portfolio',
+        permanent: false,
+      },
+      {
+        source: '/cv',
+        destination: '/api/download-cv',
+        permanent: false,
+      },
+      {
+        source: '/writing',
+        destination: '/portfolio?category=Content%20%26%20Writing',
+        permanent: false,
+      },
+      {
+        source: '/photography',
+        destination: '/portfolio?category=Photography%20%26%20Visual',
+        permanent: false,
+      },
+      {
+        source: '/videography',
+        destination: '/portfolio?category=Videography%20%26%20Media',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
