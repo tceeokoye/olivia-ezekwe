@@ -3,63 +3,22 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  GraduationCap,
-  FolderKanban,
-  Camera,
-  Megaphone,
-  Coffee,
-  CheckCircle2,
-  Compass,
-  PenTool,
-  Heart,
-  MonitorSmartphone,
-  Palette,
-  Image,
-  Globe,
-  PanelsTopLeft,
-  Share2,
-  Mail,
-  FileSpreadsheet,
-  Users,
-  Video,
-  Cloud,
-  Sparkles,
-  BookOpen,
-  Leaf,
-  MessageCircle,
-  type LucideIcon,
-} from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import TiltCard from "@/components/TiltCard";
 import {
   experiencesData,
-  educationData,
   toolsAndPlatforms,
   clientLogos,
 } from "@/data/resumeData";
 
-const toolIconMap: Record<string, LucideIcon> = {
-  Palette,
-  Image,
-  Globe,
-  PanelsTopLeft,
-  Share2,
-  Mail,
-  FileSpreadsheet,
-  Users,
-  Video,
-  Cloud,
-};
-
 export default function AboutPage() {
   const expertiseList = [
-    { name: "Strategic Communications", icon: Compass },
-    { name: "Writing & Storytelling", icon: PenTool },
-    { name: "Content Direction & Management", icon: FolderKanban },
-    { name: "Advocacy & Public Engagement", icon: Megaphone },
-    { name: "Visual Storytelling", icon: Camera },
-    { name: "Brand & Digital Communications", icon: MonitorSmartphone },
+    { name: "Strategic Communications", tag: "Strategy" },
+    { name: "Writing & Storytelling", tag: "Editorial" },
+    { name: "Content Direction & Management", tag: "Content" },
+    { name: "Advocacy & Public Engagement", tag: "Advocacy" },
+    { name: "Visual Storytelling", tag: "Media" },
+    { name: "Brand & Digital Communications", tag: "Digital" },
   ];
 
   return (
@@ -75,7 +34,7 @@ export default function AboutPage() {
             className="lg:col-span-5 relative"
           >
             <TiltCard maxTilt={8}>
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#C9A227]/40 group">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C9A227]/40 group">
                 <img
                   src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80"
                   alt="Olivia Ezekwe"
@@ -87,7 +46,7 @@ export default function AboutPage() {
                     Olivia Ezekwe
                   </h3>
                   <p className="text-xs text-[#e8c96a] font-mono mt-1">
-                    ommunications Strategist, Writer & Visual Storyteller.
+                    Communications Strategist, Writer &amp; Visual Storyteller.
                   </p>
                 </div>
               </div>
@@ -101,7 +60,7 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono  tracking-widest font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest font-semibold">
               <span>MY STORY &amp; EXPERTISE</span>
             </div>
 
@@ -114,9 +73,8 @@ export default function AboutPage() {
 
             <div className="space-y-4 text-slate-700 dark:text-slate-200 text-base sm:text-lg leading-relaxed">
               <p>
-                I&apos;am a{" "}
+                I&apos;m a{" "}
                 <strong className="text-[#0A1628] dark:text-white">
-                  {" "}
                   communications professional
                 </strong>{" "}
                 working across writing, storytelling, strategic communications,
@@ -137,13 +95,13 @@ export default function AboutPage() {
             <div className="pt-4 flex flex-wrap gap-4">
               <Link
                 href="/portfolio"
-                className="px-6 py-3.5 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs  tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
+                className="px-6 py-3.5 rounded-lg bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
               >
                 View Selected Work
               </Link>
               <Link
                 href="/cv"
-                className="px-6 py-3.5 rounded-full tech-pill text-[#0A1628] dark:text-white font-bold text-xs  tracking-wider hover:border-[#C9A227]/50 transition-all"
+                className="px-6 py-3.5 rounded-lg tech-pill text-[#0A1628] dark:text-white font-bold text-xs tracking-wider hover:border-[#C9A227]/50 transition-all"
               >
                 View Full CV / Resume
               </Link>
@@ -157,33 +115,30 @@ export default function AboutPage() {
         <SectionHeader
           badge="Skills"
           title="AREAS OF EXPERTISE"
-          description=" The skills I bring across writing, communications, storytelling, visual media and digital work."
+          description="The skills I bring across writing, communications, storytelling, visual media and digital work."
         />
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-          {expertiseList.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.04 }}
-              >
-                <TiltCard maxTilt={10} className="h-full">
-                  <div className="tech-card rounded-2xl p-6 h-full flex flex-col items-center text-center justify-center group">
-                    <div className="w-12 h-12 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center text-[#C9A227] group-hover:bg-[#C9A227] group-hover:text-[#0A1628] transition-colors mb-3">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors">
-                      {item.name}
-                    </span>
-                  </div>
-                </TiltCard>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6">
+          {expertiseList.map((item, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.04 }}
+            >
+              <TiltCard maxTilt={10} className="h-full">
+                <div className="tech-card rounded-2xl p-6 h-full flex flex-col justify-between group">
+                  <span className="text-[11px] font-mono text-[#C9A227] font-semibold">
+                    {item.tag}
+                  </span>
+                  <span className="text-base font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors mt-3">
+                    {item.name}
+                  </span>
+                </div>
+              </TiltCard>
+            </motion.div>
+          ))}
         </div>
       </section>
 
@@ -214,7 +169,7 @@ export default function AboutPage() {
                     {exp.organization}
                   </div>
                 </div>
-                <div className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 text-xs font-mono text-slate-600 dark:text-slate-300 self-start sm:self-auto border border-slate-200 dark:border-slate-700">
+                <div className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-xs font-mono text-slate-600 dark:text-slate-300 self-start sm:self-auto border border-slate-200 dark:border-slate-700">
                   {exp.period}
                 </div>
               </div>
@@ -229,7 +184,7 @@ export default function AboutPage() {
                     key={aIdx}
                     className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-500 dark:text-slate-300"
                   >
-                    <CheckCircle2 className="w-4 h-4 text-[#C9A227] shrink-0 mt-0.5" />
+                    <span className="text-[#C9A227] shrink-0 font-bold leading-5">–</span>
                     <span>{ach}</span>
                   </div>
                 ))}
@@ -264,49 +219,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===================== EDUCATION & LEGAL BACKGROUND ===================== */}
-      {/* <section>
-        <SectionHeader
-          badge="ACADEMIC RIGOR"
-          title="LEGAL EDUCATION &amp; CREDENTIALS"
-          description="Combining advanced legal scholarship with strategic public advocacy and communications ethics."
-        />
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {educationData.map((edu, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-            >
-              <TiltCard className="h-full">
-                <div className="tech-card rounded-2xl p-6 sm:p-8 h-full flex flex-col justify-between">
-                  <div className="space-y-3">
-                    <div className="w-12 h-12 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center text-[#C9A227]">
-                      <GraduationCap className="w-6 h-6" />
-                    </div>
-                    <div className="text-xs font-mono text-[#C9A227] font-bold">
-                      {edu.year}
-                    </div>
-                    <h3 className="text-lg font-bold text-[#0A1628] dark:text-white font-display">
-                      {edu.degree}
-                    </h3>
-                    <div className="text-xs text-slate-500 dark:text-slate-300 font-semibold">
-                      {edu.institution}
-                    </div>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed pt-2 border-t border-slate-100 dark:border-white/10">
-                      {edu.details}
-                    </p>
-                  </div>
-                </div>
-              </TiltCard>
-            </motion.div>
-          ))}
-        </div>
-      </section> */}
-
       {/* ===================== TOOLS & PLATFORMS ===================== */}
       <section>
         <SectionHeader
@@ -321,14 +233,6 @@ export default function AboutPage() {
               key={idx}
               className="tech-card rounded-xl p-4 flex flex-col items-center text-center justify-center hover:border-[#C9A227]/60"
             >
-              {(() => {
-                const Icon = toolIconMap[tool.icon] || Sparkles;
-                return (
-                  <span className="text-[#C9A227] mb-2">
-                    <Icon size={26} />
-                  </span>
-                );
-              })()}
               <span className="text-xs font-bold text-[#0A1628] dark:text-white mb-1">
                 {tool.name}
               </span>
@@ -343,8 +247,7 @@ export default function AboutPage() {
       {/* ===================== OUTSIDE THE BRIEF ===================== */}
       <section className="tech-card rounded-3xl p-8 sm:p-12 relative overflow-hidden">
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono  tracking-widest mb-4 font-semibold">
-            <Heart className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest mb-4 font-semibold">
             <span>OUTSIDE THE BRIEF</span>
           </div>
 
@@ -361,20 +264,17 @@ export default function AboutPage() {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8 pt-8 border-t border-slate-100 dark:border-white/10">
-            <div className="flex items-center gap-3 text-slate-700 dark:text-slate-200">
-              <BookOpen className="w-5 h-5 text-[#C9A227] shrink-0" />
+            <div className="text-slate-700 dark:text-slate-200">
               <span className="text-xs font-semibold">
                 Reading
               </span>
             </div>
-            <div className="flex items-center gap-3 text-slate-700 dark:text-slate-200">
-              <Leaf className="w-5 h-5 text-sky-500 shrink-0" />
+            <div className="text-slate-700 dark:text-slate-200">
               <span className="text-xs font-semibold">
                 Photography &amp; Nature
               </span>
             </div>
-            <div className="flex items-center gap-3 text-slate-700 dark:text-slate-200">
-              <MessageCircle className="w-5 h-5 text-[#C9A227] shrink-0" />
+            <div className="text-slate-700 dark:text-slate-200">
               <span className="text-xs font-semibold">
                 Art, Poetry &amp; Conversation
               </span>

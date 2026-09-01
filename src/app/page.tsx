@@ -6,29 +6,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Download,
-  Sparkles,
-  Compass,
-  Globe,
-  Camera,
-  FileText,
-  Search,
-  Share2,
-  HeartHandshake,
-  Layers,
-  PenTool,
-  CheckCircle2,
-  Mail,
-  Phone,
   Send,
   Check,
   ChevronDown,
-  Clock,
-  MapPin,
-  Heart,
-  BookOpen,
-  Leaf,
-  MessageCircle,
-  Newspaper,
 } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import TiltCard from "@/components/TiltCard";
@@ -268,70 +248,60 @@ export default function HomePage() {
   const whatIDoItems = [
     {
       title: "Strategic Communications",
-      icon: Compass,
       desc: "Developing communication plans, messaging and approaches that help organisations and brand communicate with clarity.",
       tag: "Strategy",
       portfolioFilter: "Editorial",
     },
     {
       title: "Content Strategy & Development",
-      icon: Layers,
       desc: "Planning and creating content that fits the audience, platform and communication goal.",
       tag: "Content",
       portfolioFilter: "Writing Samples",
     },
     {
       title: "Photography, Videography & Documentary",
-      icon: Camera,
       desc: "Capturing people, places, events and impact through photography, video and documentary storytelling.",
       tag: "Media",
       portfolioFilter: "Campaigns",
     },
     {
       title: "Storytelling & Editorial",
-      icon: PenTool,
       desc: "Turning complex ideas, experiences and information into clear, engaging stories, articles and editorial content.",
       tag: "Editorial",
       portfolioFilter: "Editorial",
     },
     {
       title: "Digital Communications",
-      icon: Globe,
       desc: "Building consistent communication across websites, social platforms, email and other digital channels.",
       tag: "Digital",
       portfolioFilter: "Press",
     },
     {
       title: "Social Media Management",
-      icon: Share2,
       desc: "Managing social platforms from strategy and content creation to publishing, community engagement and performance tracking.",
       tag: "Social",
       portfolioFilter: "Campaigns",
     },
     {
       title: "Brand Management",
-      icon: Sparkles,
       desc: "Shaping brand voice, messaging and digital presence to create a consistent and recognisable identity.",
       tag: "Identity",
       portfolioFilter: "Creative Non-Fictions",
     },
     {
       title: "Reports & Publications",
-      icon: FileText,
       desc: "Creating reports, newsletters, publications and organisational documents that communicate information clearly and professionally.",
       tag: "Knowledge",
       portfolioFilter: "Editorial",
     },
     {
       title: "SEO & Website Management",
-      icon: Search,
       desc: "Improving website content, structure and visibility while keeping digital platforms relevant, accessible and up to date.",
       tag: "Tech",
       portfolioFilter: "Writing Samples",
     },
     {
       title: "Campaigns & Advocacy",
-      icon: HeartHandshake,
       desc: "Developing communication and content for campaigns that raise awareness, encourage action and amplify important issues.",
       tag: "Advocacy",
       portfolioFilter: "Press",
@@ -417,7 +387,7 @@ export default function HomePage() {
           >
             <Link
               href="/portfolio"
-              className="w-full sm:w-auto px-9 py-4 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-9 py-4 rounded-lg bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm tracking-wider shadow-[0_0_30px_-5px_rgba(201,162,39,0.5)] transition-all hover:scale-105 flex items-center justify-center gap-2"
             >
               <span>VIEW MY WORK</span>
               <ArrowRight className="w-4 h-4" />
@@ -425,7 +395,7 @@ export default function HomePage() {
             <a
               href="/api/download-cv"
               download="Olivia_Ezekwe_CV.txt"
-              className="w-full sm:w-auto px-8 py-4 rounded-full border border-white/20 hover:border-[#C9A227]/60 text-white font-bold text-sm tracking-wider hover:bg-white/5 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 rounded-lg border border-white/20 hover:border-[#C9A227]/60 text-white font-bold text-sm tracking-wider hover:bg-white/5 transition-all flex items-center justify-center gap-2"
             >
               <Download className="w-4 h-4 text-[#C9A227]" />
               <span>DOWNLOAD CV</span>
@@ -566,7 +536,7 @@ export default function HomePage() {
                         key={aIdx}
                         className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-500 dark:text-slate-300"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-[#C9A227] shrink-0 mt-0.5" />
+                        <span className="text-[#C9A227] shrink-0 font-bold leading-5">–</span>
                         <span>{ach}</span>
                       </div>
                     ))}
@@ -610,7 +580,6 @@ export default function HomePage() {
           {/* Outside the brief */}
           <div className="tech-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest mb-4 font-semibold">
-              <Heart className="w-3.5 h-3.5" />
               <span>OUTSIDE THE BRIEF</span>
             </div>
 
@@ -619,7 +588,7 @@ export default function HomePage() {
             </h3>
 
             <p className="text-slate-600 dark:text-slate-200 text-sm sm:text-base leading-relaxed font-normal">
-              Away from deadlines and screens, you’ll probably find me with a good
+              Away from deadlines and screens, you'll probably find me with a good
               book, watching a film, taking photographs, enjoying nature, or
               having one of those long, device-free conversations where nobody is
               checking the time. I am drawn to art, poetry, and the little details
@@ -627,16 +596,13 @@ export default function HomePage() {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-100 dark:border-white/10">
-              <div className="flex items-center gap-3 text-slate-700 dark:text-slate-200">
-                <BookOpen className="w-5 h-5 text-[#C9A227] shrink-0" />
+              <div className="text-slate-700 dark:text-slate-200">
                 <span className="text-xs font-semibold">Reading</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-700 dark:text-slate-200">
-                <Leaf className="w-5 h-5 text-sky-500 shrink-0" />
+              <div className="text-slate-700 dark:text-slate-200">
                 <span className="text-xs font-semibold">Photography &amp; Nature</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-700 dark:text-slate-200">
-                <MessageCircle className="w-5 h-5 text-[#C9A227] shrink-0" />
+              <div className="text-slate-700 dark:text-slate-200">
                 <span className="text-xs font-semibold">Art, Poetry &amp; Conversation</span>
               </div>
             </div>
@@ -656,7 +622,6 @@ export default function HomePage() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
             {whatIDoItems.map((item, idx) => {
-              const Icon = item.icon;
               return (
                 <motion.div
                   key={idx}
@@ -675,9 +640,6 @@ export default function HomePage() {
                       <div className="tech-card rounded-2xl p-6 h-full flex flex-col justify-between group-hover:border-[#C9A227] transition-all">
                         <div>
                           <div className="flex items-center justify-between mb-4">
-                            <div className="w-12 h-12 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center text-[#C9A227] group-hover:bg-[#C9A227] group-hover:text-white transition-colors">
-                              <Icon className="w-6 h-6" />
-                            </div>
                             <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10">
                               {item.tag}
                             </span>
@@ -718,7 +680,6 @@ export default function HomePage() {
             {[
               {
                 title: "Campaigns",
-                icon: HeartHandshake,
                 desc: "High-impact multimedia advocacy and civic engagement campaigns that mobilize communities and drive action.",
                 tag: "Advocacy & Action",
                 count: "3 Initiatives",
@@ -726,7 +687,6 @@ export default function HomePage() {
               },
               {
                 title: "Creative Non-Fictions",
-                icon: BookOpen,
                 desc: "Narrative storytelling, personal memoirs and essays blending vivid observations, lived emotion and literature.",
                 tag: "Narrative & Essays",
                 count: "4 Works",
@@ -734,7 +694,6 @@ export default function HomePage() {
               },
               {
                 title: "Editorial",
-                icon: FileText,
                 desc: "Organisational impact documents, annual progress reports and compendiums synthesizing complex achievements.",
                 tag: "Publications",
                 count: "3 Publications",
@@ -742,7 +701,6 @@ export default function HomePage() {
               },
               {
                 title: "Press",
-                icon: Newspaper,
                 desc: "Official press statements, diplomatic dispatches, media briefing kits and high-pickup news releases.",
                 tag: "Media & PR",
                 count: "6 Releases",
@@ -750,14 +708,12 @@ export default function HomePage() {
               },
               {
                 title: "Writing Samples",
-                icon: PenTool,
                 desc: "Rigorous legal research, comparative policy analysis, constitutional human rights treatises and workshop manuals.",
                 tag: "Legal & Research",
                 count: "4 Papers",
                 filter: "Writing Samples",
               },
             ].map((item, idx) => {
-              const Icon = item.icon;
               return (
                 <motion.div
                   key={idx}
@@ -774,9 +730,6 @@ export default function HomePage() {
                       <div className="tech-card rounded-2xl p-6 h-full flex flex-col justify-between group-hover:border-[#C9A227] transition-all">
                         <div>
                           <div className="flex items-center justify-between mb-4">
-                            <div className="w-12 h-12 rounded-xl bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center text-[#C9A227] group-hover:bg-[#C9A227] group-hover:text-white transition-colors">
-                              <Icon className="w-6 h-6" />
-                            </div>
                             <span className="text-[10px] font-mono text-[#C9A227] px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20 font-semibold">
                               {item.count}
                             </span>
@@ -876,11 +829,8 @@ export default function HomePage() {
                 <div className="space-y-4">
                   <a
                     href="mailto:ezekweolivia@gmail.com"
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-[#C9A227]/50 transition-all group"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-[#C9A227]/50 transition-all group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-[#C9A227]/10 text-[#C9A227] flex items-center justify-center group-hover:bg-[#C9A227] group-hover:text-[#0A1628] transition-colors">
-                      <Mail className="w-5 h-5" />
-                    </div>
                     <div>
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                         Email Address
@@ -894,11 +844,8 @@ export default function HomePage() {
                     href="https://wa.me/2348067103176"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all group"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-colors">
-                      <Phone className="w-5 h-5" />
-                    </div>
                     <div>
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
                         WhatsApp &amp; Phone
@@ -909,15 +856,9 @@ export default function HomePage() {
                     </div>
                   </a>
                 </div>
-                <div className="pt-6 border-t border-slate-100 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400 space-y-2 font-mono">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-3.5 h-3.5 text-[#C9A227]" />
-                    <span>Response Time: Within 24 business hours</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-3.5 h-3.5 text-sky-500" />
-                    <span>Global Remote &amp; On-Site Consultations Available</span>
-                  </div>
+                <div className="pt-6 border-t border-slate-100 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400 space-y-1.5 font-mono">
+                  <div>Response Time: Within 24 business hours</div>
+                  <div>Global Remote &amp; On-Site Consultations Available</div>
                 </div>
               </div>
             </div>
@@ -944,9 +885,9 @@ export default function HomePage() {
                           stiffness: 200,
                           damping: 14,
                         }}
-                        className="w-20 h-20 rounded-full bg-emerald-500/20 text-emerald-500 border border-emerald-500/40 flex items-center justify-center mx-auto"
+                        className="w-20 h-20 rounded-lg bg-emerald-500/20 text-emerald-500 border border-emerald-500/40 flex items-center justify-center mx-auto"
                       >
-                        <CheckCircle2 className="w-10 h-10" />
+                        <Check className="w-10 h-10" />
                       </motion.div>
                       <div className="space-y-2">
                         <h3 className="text-2xl sm:text-3xl font-bold text-[#0A1628] dark:text-white font-display">
@@ -968,7 +909,7 @@ export default function HomePage() {
                             message: "",
                           });
                         }}
-                        className="px-8 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
+                        className="px-8 py-3 rounded-lg bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] transition-all hover:scale-105"
                       >
                         Send Another Inquiry
                       </button>
@@ -1038,7 +979,7 @@ export default function HomePage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="relative w-full py-4 rounded-2xl bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm tracking-wider shadow-[0_4px_24px_-4px_rgba(201,162,39,0.45)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 overflow-hidden group cursor-pointer"
+                        className="relative w-full py-4 rounded-lg bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-sm tracking-wider shadow-[0_4px_24px_-4px_rgba(201,162,39,0.45)] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-60 overflow-hidden group cursor-pointer"
                       >
                         <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-in-out" />
                         {isSubmitting ? (
@@ -1067,7 +1008,6 @@ export default function HomePage() {
                         ) : (
                           <span className="flex items-center gap-2 relative z-10">
                             <span>Send Inquiry</span>
-                            <Send className="w-4 h-4" />
                           </span>
                         )}
                       </button>

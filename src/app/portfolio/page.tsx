@@ -1,299 +1,253 @@
 'use client';
 
-import React, { useState, useRef, Suspense, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ChevronDown,
   ChevronUp,
-  BookOpen,
-  FileText,
-  Newspaper,
-  PenTool,
-  Megaphone,
-  Sparkles,
-  Images,
-  Eye,
   X,
   ChevronLeft,
   ChevronRight,
-  Maximize2,
-  Layers,
+  ArrowRight,
 } from 'lucide-react';
 import { projectsData } from '@/data/portfolioData';
 import { Project } from '@/types';
 
-// ── Category Configuration ───────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// Section Config (no icons — numbers only)
+// ─────────────────────────────────────────────
 const SECTIONS = [
   {
     id: 'Campaigns',
+    label: '01',
     title: 'Campaigns & Advocacy',
-    badge: 'Civic & Health Mobilization',
-    icon: Megaphone,
+    subtitle: 'Civic & Health Mobilization',
     description:
-      'High-impact multimedia advocacy and civic engagement campaigns designed to mobilize communities, shift public narratives, and drive action across development, healthcare, and democratic governance.',
+      'High-impact multimedia advocacy and civic engagement campaigns designed to mobilize communities, shift public narratives, and drive measurable action across development, healthcare, and democratic governance sectors.',
   },
   {
     id: 'Creative Non-Fictions',
+    label: '02',
     title: 'Creative Non-Fictions',
-    badge: 'Essays & Literary Memoirs',
-    icon: BookOpen,
+    subtitle: 'Essays & Literary Memoirs',
     description:
-      'Introspective narratives, personal memoirs, and literary essays written at the intersection of lived experience, keen observation, and evocative prose craft.',
+      'Introspective narratives, personal memoirs, and literary essays crafted at the intersection of lived experience, keen social observation, and evocative prose.',
   },
   {
     id: 'Editorial',
+    label: '03',
     title: 'Editorial Publications',
-    badge: 'Reports & Compendiums',
-    icon: FileText,
+    subtitle: 'Reports & Compendiums',
     description:
-      'Comprehensive institutional impact documentation, annual progress scorecards, and compendiums that synthesize complex programmatic achievements into executive knowledge products.',
+      'Comprehensive institutional impact documentation, annual progress scorecards, and editorial compendiums that synthesise complex programmatic achievements into executive-ready knowledge products.',
   },
   {
     id: 'Press',
-    title: 'Press & Media Dispatches',
-    badge: 'Public Relations & Dispatches',
-    icon: Newspaper,
+    label: '04',
+    title: 'Press & Media',
+    subtitle: 'Public Relations & Dispatches',
     description:
-      'Official press statements, diplomatic delegation briefs, media kits, and public interest dispatches crafted for high newsroom uptake and stakeholder transparency.',
+      'Official press statements, diplomatic delegation briefs, media kits, and public-interest dispatches crafted for high newsroom uptake and stakeholder transparency.',
   },
   {
     id: 'Writing Samples',
-    title: 'Writing Samples & Legal Research',
-    badge: 'Jurisprudence & Policy',
-    icon: PenTool,
+    label: '05',
+    title: 'Writing Samples',
+    subtitle: 'Legal Research & Policy',
     description:
-      'Rigorous legal research treatises, comparative African labor law analyses, constitutional human rights frameworks, and specialized capacity-building workshop curricula.',
+      'Rigorous legal research treatises, comparative African labour law analyses, constitutional human rights frameworks, and specialised capacity-building curricula.',
   },
 ];
 
-// ── Image Lightbox Modal ──────────────────────────────────────────────────────
-function ImageLightbox({
+// ─────────────────────────────────────────────
+// Lightbox
+// ─────────────────────────────────────────────
+function Lightbox({
   images,
-  initialIndex,
-  campaignTitle,
+  startIndex,
+  title,
   onClose,
 }: {
   images: string[];
-  initialIndex: number;
-  campaignTitle: string;
+  startIndex: number;
+  title: string;
   onClose: () => void;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const [idx, setIdx] = useState(startIndex);
 
-  const handlePrev = (e: React.MouseEvent) => {
+  const prev = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
+  };
+  const next = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIdx((i) => (i === images.length - 1 ? 0 : i + 1));
   };
 
-  const handleNext = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-  };
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
+      if (e.key === 'ArrowRight') setIdx((i) => (i === images.length - 1 ? 0 : i + 1));
+    };
+    document.addEventListener('keydown', handler);
+    return () => document.removeEventListener('keydown', handler);
+  }, [images.length, onClose]);
 
   return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+    <div className="fixed inset-0 z-50 flex flex-col bg-[#050d1f]/98 backdrop-blur-2xl">
+      {/* Header */}
+      <div className="flex items-center justify-between px-5 py-4 border-b border-white/8">
+        <div>
+          <p className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase">{title}</p>
+          <p className="text-white/50 text-xs font-mono mt-0.5">
+            {idx + 1} / {images.length}
+          </p>
+        </div>
+        <button
           onClick={onClose}
-          className="absolute inset-0 bg-[#0A1628]/95 backdrop-blur-xl cursor-pointer"
-        />
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95, y: 12 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.95, y: 12 }}
-          transition={{ duration: 0.2, ease: 'easeOut' }}
-          className="relative max-w-4xl w-full max-h-[92vh] flex flex-col items-center z-10"
+          className="w-9 h-9 rounded-full bg-white/8 hover:bg-white/15 flex items-center justify-center text-white transition-colors"
         >
-          {/* Top Bar */}
-          <div className="w-full flex items-center justify-between px-4 py-3 bg-[#0A1628]/90 backdrop-blur-md rounded-t-2xl border-b border-white/10 text-white">
-            <div>
-              <span className="text-xs font-mono text-[#C9A227] font-semibold">
-                {campaignTitle}
-              </span>
-              <div className="text-sm font-bold text-white">
-                Asset {currentIndex + 1} of {images.length}
-              </div>
-            </div>
-
-            <button
-              onClick={onClose}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
-            >
-              <X className="w-5 h-5" />
-            </button>
-          </div>
-
-          {/* Main Image View */}
-          <div className="relative w-full flex items-center justify-center bg-black/70 p-4 sm:p-8 overflow-hidden">
-            <img
-              src={images[currentIndex]}
-              alt={`Campaign visual ${currentIndex + 1}`}
-              className="max-h-[68vh] w-auto object-contain rounded-xl shadow-2xl transition-all duration-200"
-            />
-
-            {/* Prev / Next Controls */}
-            {images.length > 1 && (
-              <>
-                <button
-                  onClick={handlePrev}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-[#0A1628]/80 hover:bg-[#C9A227] text-white hover:text-[#0A1628] shadow-2xl backdrop-blur-md transition-all cursor-pointer"
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-[#0A1628]/80 hover:bg-[#C9A227] text-white hover:text-[#0A1628] shadow-2xl backdrop-blur-md transition-all cursor-pointer"
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </>
-            )}
-          </div>
-
-          {/* Thumbnail Bar */}
-          <div className="w-full bg-[#0A1628]/95 backdrop-blur-md px-4 py-3 rounded-b-2xl border-t border-white/10 flex items-center gap-2 overflow-x-auto custom-scrollbar">
-            {images.map((src, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentIndex(i)}
-                className={`relative shrink-0 w-12 h-12 rounded-lg overflow-hidden transition-all cursor-pointer ${
-                  currentIndex === i
-                    ? 'ring-2 ring-[#C9A227] scale-105'
-                    : 'opacity-50 hover:opacity-100'
-                }`}
-              >
-                <img src={src} alt="" className="w-full h-full object-cover" />
-              </button>
-            ))}
-          </div>
-        </motion.div>
+          <X className="w-4 h-4" />
+        </button>
       </div>
-    </AnimatePresence>
+
+      {/* Image */}
+      <div className="flex-1 flex items-center justify-center relative p-6 overflow-hidden">
+        <motion.img
+          key={idx}
+          src={images[idx]}
+          alt=""
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          className="max-h-full max-w-full object-contain rounded-xl shadow-2xl"
+        />
+        {images.length > 1 && (
+          <>
+            <button
+              onClick={prev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={next}
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] flex items-center justify-center transition-all shadow-lg"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Thumbnail strip */}
+      {images.length > 1 && (
+        <div className="px-5 py-4 border-t border-white/8 flex gap-2 overflow-x-auto">
+          {images.map((src, i) => (
+            <button
+              key={i}
+              onClick={() => setIdx(i)}
+              className={`shrink-0 w-12 h-12 rounded-lg overflow-hidden ring-2 transition-all ${
+                i === idx ? 'ring-[#C9A227]' : 'ring-transparent opacity-40 hover:opacity-80'
+              }`}
+            >
+              <img src={src} alt="" className="w-full h-full object-cover" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
-// ── Campaigns Component with Sub-sections ────────────────────────────────────
-function CampaignSubsections({
+// ─────────────────────────────────────────────
+// Campaign Gallery Section
+// ─────────────────────────────────────────────
+function CampaignGallery({
   items,
-  onImageClick,
+  onOpen,
 }: {
   items: Project[];
-  onImageClick: (images: string[], index: number, campaignTitle: string) => void;
+  onOpen: (images: string[], idx: number, title: string) => void;
 }) {
   return (
-    <div className="space-y-12">
+    <div className="space-y-10">
       {items.map((campaign, cIdx) => {
-        const campaignImages = campaign.images || [];
-        const [isExpanded, setIsExpanded] = useState(false);
-        const INITIAL_LIMIT = 8;
-        const visibleImages = isExpanded
-          ? campaignImages
-          : campaignImages.slice(0, INITIAL_LIMIT);
-        const hiddenCount = campaignImages.length - INITIAL_LIMIT;
+        const imgs = campaign.images || [];
+        const [expanded, setExpanded] = useState(false);
+        const LIMIT = 8;
+        const visible = expanded ? imgs : imgs.slice(0, LIMIT);
+        const remaining = imgs.length - LIMIT;
 
         return (
-          <div
-            key={campaign.id}
-            className="rounded-3xl bg-white dark:bg-[#0e1d38] p-6 sm:p-8 shadow-[0_12px_45px_-8px_rgba(10,22,40,0.06)] dark:shadow-[0_12px_45px_-8px_rgba(0,0,0,0.5)] transition-all duration-300"
-          >
-            {/* Sub-section Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 mb-6 border-b border-slate-100 dark:border-white/5">
-              <div className="space-y-1.5 max-w-2xl">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold bg-[#C9A227]/15 text-[#C9A227]">
-                    Campaign #{cIdx + 1}
+          <div key={campaign.id} className="space-y-5">
+            {/* Sub-section label */}
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-3">
+                  <span className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase font-semibold">
+                    Campaign {cIdx + 1}
                   </span>
-                  {campaign.year && (
-                    <span className="text-xs font-mono text-slate-400 dark:text-slate-500">
-                      • {campaign.year}
-                    </span>
-                  )}
                   {campaign.client && (
-                    <span className="text-xs font-mono text-[#C9A227] font-semibold">
-                      • {campaign.client}
-                    </span>
+                    <span className="text-[11px] font-mono text-white/40">— {campaign.client}</span>
                   )}
                 </div>
-
-                <h3 className="text-xl sm:text-2xl font-black text-[#0A1628] dark:text-white tracking-tight">
+                <h4 className="text-base sm:text-lg font-bold text-white leading-snug">
                   {campaign.title}
-                </h3>
-
-                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
-                  {campaign.summary}
-                </p>
+                </h4>
+                {campaign.summary && (
+                  <p className="text-white/50 text-sm leading-relaxed max-w-2xl">{campaign.summary}</p>
+                )}
               </div>
-
-              <div className="flex items-center gap-2 self-start sm:self-auto">
-                <div className="px-3.5 py-1.5 rounded-full bg-[#0A1628]/5 dark:bg-white/5 text-[#0A1628] dark:text-white text-xs font-mono font-bold flex items-center gap-1.5 shadow-sm">
-                  <Layers className="w-3.5 h-3.5 text-[#C9A227]" />
-                  <span>{campaignImages.length} Visual Assets</span>
-                </div>
-              </div>
+              <span className="self-start shrink-0 text-xs font-mono text-white/30 bg-white/5 px-3 py-1 rounded-full">
+                {imgs.length} visuals
+              </span>
             </div>
 
-            {/* Campaign Visual Assets Grid */}
-            <div className="columns-2 sm:columns-3 lg:columns-4 gap-3.5 space-y-3.5">
-              {visibleImages.map((src, i) => (
-                <motion.div
-                  key={src + i}
-                  initial={{ opacity: 0, y: 24 }}
+            {/* Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {visible.map((src, i) => (
+                <motion.button
+                  key={i}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-20px' }}
-                  transition={{
-                    duration: 0.35,
-                    delay: (i % 8) * 0.03,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  onClick={() => onImageClick(campaignImages, i, campaign.title)}
-                  className="break-inside-avoid group relative rounded-2xl overflow-hidden cursor-pointer shadow-[0_6px_25px_-6px_rgba(10,22,40,0.12)] hover:shadow-[0_16px_36px_-6px_rgba(201,162,39,0.35)] transition-all duration-300 bg-[#0A1628]"
+                  viewport={{ once: true, margin: '-10px' }}
+                  transition={{ duration: 0.3, delay: (i % 8) * 0.02, ease: [0.22, 1, 0.36, 1] }}
+                  onClick={() => onOpen(imgs, i, campaign.title)}
+                  className="group relative aspect-square rounded-xl overflow-hidden bg-[#0A1628] cursor-pointer shadow-md hover:shadow-xl transition-shadow"
                 >
                   <img
                     src={src}
-                    alt={campaign.title}
+                    alt=""
                     loading={i < 4 ? 'eager' : 'lazy'}
                     decoding="async"
-                    className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-
-                  {/* Hover Glass Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/90 via-[#0A1628]/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-end justify-between p-3.5">
-                    <span className="text-[11px] font-bold text-white flex items-center gap-1">
-                      <Eye className="w-3.5 h-3.5 text-[#C9A227]" />
-                      <span>View Full Image</span>
-                    </span>
-                    <span className="w-7 h-7 rounded-full bg-[#C9A227] text-[#0A1628] flex items-center justify-center font-bold shadow-lg">
-                      <Maximize2 className="w-3.5 h-3.5" />
+                  <div className="absolute inset-0 bg-[#0A1628]/0 group-hover:bg-[#0A1628]/40 transition-colors duration-200 flex items-center justify-center">
+                    <span className="text-xs font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity bg-black/60 px-3 py-1.5 rounded-lg border border-white/20">
+                      View
                     </span>
                   </div>
-                </motion.div>
+                </motion.button>
               ))}
             </div>
 
-            {/* Expand / Collapse More Graphics */}
-            {hiddenCount > 0 && (
-              <div className="flex justify-center pt-8">
+            {/* Show more / less */}
+            {remaining > 0 && (
+              <div className="flex justify-start pt-1">
                 <button
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  className="flex items-center gap-2.5 px-7 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] text-xs font-black tracking-wider shadow-[0_8px_25px_-5px_rgba(201,162,39,0.4)] hover:shadow-[0_12px_30px_-5px_rgba(201,162,39,0.55)] transition-all hover:scale-105 cursor-pointer"
+                  onClick={() => setExpanded(!expanded)}
+                  className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors"
                 >
-                  {isExpanded ? (
+                  {expanded ? (
                     <>
-                      <ChevronUp className="w-4 h-4" />
-                      <span>Show Less Assets</span>
+                      <ChevronUp className="w-4 h-4" /> Show less
                     </>
                   ) : (
                     <>
-                      <Images className="w-4 h-4" />
-                      <span>Show {hiddenCount} More Graphics</span>
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-4 h-4" /> Show {remaining} more visuals
                     </>
                   )}
                 </button>
@@ -306,157 +260,137 @@ function CampaignSubsections({
   );
 }
 
-// ── Document Preview Component (Document Sharing Card Style) ────────────────
-function DocumentWorksSection({ items }: { items: Project[] }) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const INITIAL_LIMIT = 4;
-  const visible = isExpanded ? items : items.slice(0, INITIAL_LIMIT);
-  const hiddenCount = items.length - INITIAL_LIMIT;
+// ─────────────────────────────────────────────
+// Document Preview Card (WhatsApp-style)
+// ─────────────────────────────────────────────
+function DocumentCard({ doc }: { doc: Project }) {
+  const isPptx = doc.fileType === 'pptx';
 
-  // Extract clean filename from fileUrl
-  const getFileName = (url?: string, title?: string) => {
-    if (!url) return `${title || 'Document'}.pdf`;
-    const parts = url.split('/');
-    return parts[parts.length - 1] || `${title}.pdf`;
-  };
+  const rawName = doc.fileUrl?.split('/').pop() ?? `${doc.title}.pdf`;
+  // Decode URI-encoded chars like %20 → space
+  const fileName = decodeURIComponent(rawName);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-15px' }}
+      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className="flex flex-col"
+    >
+      {/* Context write-up above the card */}
+      <div className="mb-4 space-y-1.5">
+        <div className="flex flex-wrap items-center gap-2">
+          {doc.year && (
+            <span className="text-[11px] font-mono text-[#C9A227] font-semibold tracking-wider">
+              {doc.year}
+            </span>
+          )}
+          {doc.client && (
+            <span className="text-[11px] font-mono text-white/40">— {doc.client}</span>
+          )}
+        </div>
+        <h3 className="text-base sm:text-lg font-bold text-white leading-snug">{doc.title}</h3>
+        {doc.summary && (
+          <p className="text-white/50 text-sm leading-relaxed line-clamp-3">{doc.summary}</p>
+        )}
+      </div>
+
+      {/* WhatsApp-style document preview card */}
+      <div className="rounded-2xl overflow-hidden bg-[#1f2c34] shadow-lg w-full max-w-xs">
+        {/* Document page thumbnail */}
+        <div className="bg-white p-5 flex flex-col items-center justify-center min-h-[120px] text-center gap-2.5 select-none">
+          {doc.client && (
+            <div className="bg-[#0A1628] text-white text-[10px] font-bold px-3 py-1 rounded tracking-wide truncate max-w-full">
+              {doc.client.toUpperCase()}
+            </div>
+          )}
+          <p className="text-[11px] font-semibold text-slate-700 leading-tight line-clamp-2 px-2">
+            {doc.title}
+          </p>
+          <div className="w-full space-y-1.5 px-2 pt-1">
+            <div className="h-1 bg-slate-200 rounded-full w-5/6 mx-auto" />
+            <div className="h-1 bg-slate-200 rounded-full w-4/6 mx-auto" />
+            <div className="h-1 bg-slate-200 rounded-full w-3/5 mx-auto" />
+          </div>
+        </div>
+
+        {/* File info row */}
+        <div className="flex items-center gap-3 px-4 py-3 bg-[#1f2c34]">
+          <div className="relative w-9 h-11 bg-rose-600 rounded flex flex-col items-center justify-end pb-1 shrink-0 shadow-sm overflow-hidden">
+            <div className="absolute top-0 right-0 w-3 h-3 bg-[#1f2c34] rounded-bl-sm" />
+            <span className="text-[8px] font-black text-white tracking-tighter leading-none">
+              {isPptx ? 'PPT' : 'PDF'}
+            </span>
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-semibold text-white truncate leading-snug">{fileName}</p>
+            <p className="text-[11px] text-white/40 font-mono mt-0.5">
+              {doc.fileSize ? `${doc.fileSize} · ` : ''}
+              {isPptx ? 'Presentation' : 'PDF document'}
+            </p>
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="grid grid-cols-2 divide-x divide-white/10 border-t border-white/10 bg-[#172228]">
+          {doc.fileUrl ? (
+            <a
+              href={doc.fileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-3 text-center text-[13px] font-bold text-[#25D366] hover:bg-white/5 transition-colors"
+            >
+              View
+            </a>
+          ) : (
+            <span className="py-3 text-center text-[13px] text-white/25 cursor-not-allowed">View</span>
+          )}
+          {doc.fileUrl ? (
+            <a
+              href={doc.fileUrl}
+              download
+              className="py-3 text-center text-[13px] font-bold text-[#25D366] hover:bg-white/5 transition-colors"
+            >
+              Save as…
+            </a>
+          ) : (
+            <span className="py-3 text-center text-[13px] text-white/25 cursor-not-allowed">
+              Save as…
+            </span>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function DocumentGrid({ items }: { items: Project[] }) {
+  const [expanded, setExpanded] = useState(false);
+  const LIMIT = 4;
+  const visible = expanded ? items : items.slice(0, LIMIT);
+  const remaining = items.length - LIMIT;
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {visible.map((doc, idx) => {
-          const isPptx = doc.fileType === 'pptx';
-          const fileName = getFileName(doc.fileUrl, doc.title);
-
-          return (
-            <motion.div
-              key={doc.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-20px' }}
-              transition={{
-                duration: 0.35,
-                delay: (idx % 4) * 0.04,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="rounded-3xl p-6 sm:p-7 bg-white dark:bg-[#0e1d38] shadow-[0_10px_35px_-8px_rgba(10,22,40,0.07)] dark:shadow-[0_10px_35px_-8px_rgba(0,0,0,0.4)] flex flex-col justify-between"
-            >
-              {/* Surrounding Context Write-up */}
-              <div className="space-y-2 mb-5">
-                <div className="flex items-center justify-between gap-2">
-                  <span className="text-[11px] font-mono text-[#C9A227] font-bold uppercase tracking-wider">
-                    {doc.category || 'Publication'}
-                  </span>
-                  {doc.year && (
-                    <span className="text-xs font-mono text-slate-400 dark:text-slate-500">
-                      {doc.year}
-                    </span>
-                  )}
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-bold text-[#0A1628] dark:text-white leading-snug">
-                  {doc.title}
-                </h3>
-
-                {doc.client && (
-                  <p className="text-xs font-semibold text-[#C9A227]">
-                    {doc.client}
-                  </p>
-                )}
-
-                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
-                  {doc.summary}
-                </p>
-              </div>
-
-              {/* Exact Document Sharing Preview Card */}
-              <div className="w-full rounded-2xl overflow-hidden shadow-md bg-[#1f2c34] border border-black/20 text-white flex flex-col">
-                {/* Top Half: Document First-Page Sheet Preview */}
-                <div className="w-full h-36 sm:h-40 bg-white p-4 sm:p-5 flex flex-col items-center justify-center text-center relative overflow-hidden select-none border-b border-slate-200">
-                  {/* Subtle document page lines texture */}
-                  <div className="w-full max-w-[280px] space-y-2 opacity-90">
-                    <div className="h-4 bg-slate-800 rounded mx-auto w-3/4 mb-3 font-bold text-[11px] text-white flex items-center justify-center tracking-tight truncate px-2">
-                      {doc.client || 'PUBLICATION OVERVIEW'}
-                    </div>
-                    <div className="text-[10px] text-slate-700 font-semibold leading-tight line-clamp-2 px-2">
-                      {doc.title}
-                    </div>
-                    <div className="h-1.5 bg-slate-200 rounded w-5/6 mx-auto mt-2" />
-                    <div className="h-1.5 bg-slate-200 rounded w-4/6 mx-auto" />
-                    <div className="h-1.5 bg-slate-200 rounded w-2/3 mx-auto" />
-                  </div>
-                </div>
-
-                {/* Middle File Info Bar */}
-                <div className="p-3.5 sm:p-4 bg-[#1f2c34] flex items-center gap-3">
-                  {/* Red PDF Icon with Folded Corner */}
-                  <div className="relative w-9 h-11 bg-rose-600 rounded flex flex-col justify-end p-1 shrink-0 shadow-sm">
-                    {/* Folded corner triangle */}
-                    <div className="absolute top-0 right-0 w-3 h-3 bg-[#1f2c34] border-b border-l border-white/20" />
-                    <span className="text-[8px] font-black text-white tracking-tighter uppercase leading-none">
-                      {isPptx ? 'PPTX' : 'PDF'}
-                    </span>
-                  </div>
-
-                  <div className="min-w-0 flex-1">
-                    <p className="text-xs sm:text-sm font-bold text-white truncate">
-                      {fileName}
-                    </p>
-                    <p className="text-[11px] text-slate-400 font-mono mt-0.5">
-                      {doc.fileSize ? `${doc.fileSize} · ` : ''}{isPptx ? 'PPTX Presentation' : 'PDF'}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Bottom Action Footer */}
-                <div className="grid grid-cols-2 border-t border-white/10 bg-[#172228] text-center font-bold text-xs sm:text-sm divide-x divide-white/10">
-                  {doc.fileUrl ? (
-                    <a
-                      href={doc.fileUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="py-3 text-[#25D366] hover:bg-white/5 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-                    >
-                      <span>View</span>
-                    </a>
-                  ) : (
-                    <span className="py-3 text-slate-500 cursor-not-allowed">Unavailable</span>
-                  )}
-
-                  {doc.fileUrl ? (
-                    <a
-                      href={doc.fileUrl}
-                      download
-                      className="py-3 text-[#25D366] hover:bg-white/5 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
-                    >
-                      <span>Save as...</span>
-                    </a>
-                  ) : (
-                    <span className="py-3 text-slate-500 cursor-not-allowed">Save as...</span>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          );
-        })}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+        {visible.map((doc) => (
+          <DocumentCard key={doc.id} doc={doc} />
+        ))}
       </div>
-
-      {/* Show More / Show Less for documents */}
-      {hiddenCount > 0 && (
-        <div className="flex justify-center pt-6">
+      {remaining > 0 && (
+        <div className="pt-2">
           <button
-            onClick={() => setIsExpanded(!isExpanded)}
-            className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-white dark:bg-[#0e1d38] text-[#C9A227] text-xs font-black tracking-wider shadow-[0_6px_20px_-3px_rgba(10,22,40,0.08)] hover:shadow-[0_10px_25px_-4px_rgba(201,162,39,0.3)] transition-all hover:scale-105 cursor-pointer"
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors"
           >
-            {isExpanded ? (
+            {expanded ? (
               <>
-                <ChevronUp className="w-3.5 h-3.5" />
-                <span>Show Fewer Documents</span>
+                <ChevronUp className="w-4 h-4" /> Show fewer documents
               </>
             ) : (
               <>
-                <FileText className="w-3.5 h-3.5" />
-                <span>Show {hiddenCount} More Documents</span>
-                <ChevronDown className="w-3.5 h-3.5" />
+                <ChevronDown className="w-4 h-4" /> Show {remaining} more documents
               </>
             )}
           </button>
@@ -466,21 +400,20 @@ function DocumentWorksSection({ items }: { items: Project[] }) {
   );
 }
 
-// ── Main Portfolio Page ───────────────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// Main Portfolio Content
+// ─────────────────────────────────────────────
 function PortfolioContent() {
   const searchParams = useSearchParams();
   const categoryParam = searchParams.get('category');
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Modals state
-  const [lightboxData, setLightboxData] = useState<{
+  const [lightbox, setLightbox] = useState<{
     images: string[];
     index: number;
     title: string;
   } | null>(null);
 
-  // Open/Close Accordion state
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>(() => {
+  const [open, setOpen] = useState<Record<string, boolean>>(() => {
     const init: Record<string, boolean> = {};
     SECTIONS.forEach((s) => {
       init[s.id] = categoryParam ? s.id === categoryParam : true;
@@ -488,194 +421,198 @@ function PortfolioContent() {
     return init;
   });
 
-  const toggleSection = (id: string) => {
-    setOpenSections((prev) => ({ ...prev, [id]: !prev[id] }));
-  };
+  const toggle = (id: string) => setOpen((prev) => ({ ...prev, [id]: !prev[id] }));
 
-  const handleOpenImage = (images: string[], index: number, title: string) => {
-    setLightboxData({ images, index, title });
-  };
-
-  // Auto-scroll to selected section when navigating from landing page
   useEffect(() => {
     if (categoryParam) {
-      const timeoutId = setTimeout(() => {
-        const sectionElement = document.getElementById(`section-${categoryParam}`);
-        if (sectionElement) {
-          sectionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-
-      return () => clearTimeout(timeoutId);
+      setTimeout(() => {
+        document
+          .getElementById(`section-${categoryParam}`)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 150);
     }
   }, [categoryParam]);
 
   return (
-    <div
-      ref={containerRef}
-      className="min-h-screen bg-[#fcfcfd] dark:bg-[#050d1f] relative overflow-x-hidden transition-colors duration-300 font-sans"
-    >
-      {/* Background Ambient Glow Accents */}
-      <div className="absolute top-24 right-[-10%] w-[500px] h-[500px] rounded-full bg-radial from-[#C9A227]/10 to-transparent blur-[120px] pointer-events-none z-0" />
-      <div className="absolute top-[45%] left-[-15%] w-[550px] h-[550px] rounded-full bg-radial from-[#0A1628]/8 dark:from-[#C9A227]/6 to-transparent blur-[130px] pointer-events-none z-0" />
+    <div className="min-h-screen bg-[#0A1628] text-white font-sans">
+      {/* ─── HERO ─── */}
+      <section className="relative overflow-hidden px-5 sm:px-8 lg:px-16 pt-24 pb-20 border-b border-white/8">
+        {/* Background accent */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C9A227]/5 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* ===================== HERO HEADER ===================== */}
-      <section className="relative bg-[#0A1628] text-white pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden z-10">
-        <div className="max-w-6xl mx-auto space-y-5 text-center sm:text-left">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#C9A227]/15 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest font-semibold shadow-sm">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>PORTFOLIO ARCHIVE &amp; CASE STUDIES</span>
+        <div className="max-w-5xl mx-auto">
+          {/* Breadcrumb-style label */}
+          <div className="flex items-center gap-2 mb-8">
+            <span className="text-[11px] font-mono text-white/30 tracking-widest uppercase">
+              Olivia Ezekwe
+            </span>
+            <span className="text-white/20">/</span>
+            <span className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase font-semibold">
+              Portfolio
+            </span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black font-sans tracking-tight leading-[1.05]">
-            Selected{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] via-[#C9A227] to-[#a07a10]">
-              Works
-            </span>
-          </h1>
+          {/* Headline */}
+          <div className="space-y-5 max-w-3xl">
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.04]">
+              Selected
+              <br />
+              <span className="text-[#C9A227]">Works.</span>
+            </h1>
+            <p className="text-white/55 text-base sm:text-lg leading-relaxed font-normal max-w-2xl">
+              A curated archive of campaigns, creative writing, editorial publications, press
+              statements, and legal research spanning civic engagement, development communications,
+              and literary non-fiction.
+            </p>
+          </div>
 
-          <p className="text-slate-300 text-base sm:text-lg lg:text-xl max-w-3xl leading-relaxed font-normal">
-            A comprehensive archive of multimedia campaigns, creative non-fiction essays, institutional editorial compendiums, high-pickup press statements, and legal research papers.
-          </p>
+          {/* Quick-jump links */}
+          <div className="mt-10 flex flex-wrap gap-2">
+            {SECTIONS.map((s) => (
+              <button
+                key={s.id}
+                onClick={() => {
+                  setOpen((prev) => ({ ...prev, [s.id]: true }));
+                  setTimeout(() => {
+                    document
+                      .getElementById(`section-${s.id}`)
+                      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
+                className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold text-white/60 hover:text-white bg-white/6 hover:bg-white/10 border border-white/8 hover:border-white/20 transition-all"
+              >
+                <span className="font-mono text-[#C9A227]">{s.label}</span>
+                <span>{s.title}</span>
+              </button>
+            ))}
+          </div>
 
-          {/* Quick Category Jump Pills */}
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2.5 pt-4">
-            {SECTIONS.map((s) => {
-              const Icon = s.icon;
-              return (
-                <button
-                  key={s.id}
-                  onClick={() => {
-                    setOpenSections((prev) => ({ ...prev, [s.id]: true }));
-                    setTimeout(() => {
-                      document
-                        .getElementById(`section-${s.id}`)
-                        ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
-                  }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-[#C9A227] text-white hover:text-[#0A1628] text-xs font-bold tracking-wider shadow-sm backdrop-blur-md transition-all hover:scale-105 cursor-pointer"
-                >
-                  <Icon className="w-3.5 h-3.5 text-[#C9A227] hover:text-inherit" />
-                  <span>{s.title}</span>
-                </button>
-              );
-            })}
+          {/* Stats row */}
+          <div className="mt-12 flex flex-wrap gap-8 pt-8 border-t border-white/8">
+            {[
+              { number: '55+', label: 'Campaign Visuals' },
+              { number: '12+', label: 'Publications' },
+              { number: '5', label: 'Disciplines' },
+            ].map((stat) => (
+              <div key={stat.label} className="space-y-0.5">
+                <div className="text-2xl font-black text-white">{stat.number}</div>
+                <div className="text-xs font-mono text-white/35 tracking-wider uppercase">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ===================== SECTION CLIMBING STACK ACCORDION ===================== */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-10 relative z-10">
+      {/* ─── SECTIONS ─── */}
+      <div className="max-w-5xl mx-auto px-5 sm:px-8 lg:px-16 py-14 space-y-0 divide-y divide-white/6">
         {SECTIONS.map((section, sIdx) => {
-          const Icon = section.icon;
           const items = projectsData.filter((p) => p.category === section.id);
           if (items.length === 0) return null;
-          const isOpen = openSections[section.id];
           const isCampaign = section.id === 'Campaigns';
-
-          // Climbing sticky top offset & stacking z-index
-          const stickyTop = `calc(80px + ${sIdx * 10}px)`;
+          const isOpen = open[section.id];
 
           return (
-            <div
-              key={section.id}
-              id={`section-${section.id}`}
-              style={{
-                top: stickyTop,
-                zIndex: sIdx + 10,
-              }}
-              className="sticky transition-all duration-300"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{
-                  duration: 0.4,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                className="rounded-3xl overflow-hidden bg-white dark:bg-[#0a152b] shadow-[0_-8px_35px_rgba(10,22,40,0.08),0_20px_50px_rgba(10,22,40,0.08)] dark:shadow-[0_-8px_35px_rgba(0,0,0,0.4),0_20px_50px_rgba(0,0,0,0.6)] transition-all duration-300"
+            <div key={section.id} id={`section-${section.id}`}>
+              {/* Section Header — click to toggle */}
+              <button
+                onClick={() => toggle(section.id)}
+                className="w-full flex items-start sm:items-center justify-between gap-4 py-8 text-left group"
               >
-                {/* Accordion Header (Click to toggle) */}
-                <button
-                  onClick={() => toggleSection(section.id)}
-                  className="w-full flex items-center justify-between gap-4 p-6 sm:p-8 text-left group hover:bg-[#C9A227]/5 transition-colors cursor-pointer"
-                >
-                  <div className="flex items-center gap-4 sm:gap-5">
-                    <div className="w-14 h-14 rounded-2xl bg-[#C9A227]/10 flex items-center justify-center text-[#C9A227] group-hover:bg-[#C9A227] group-hover:text-[#0A1628] transition-all shrink-0 shadow-sm">
-                      <Icon className="w-7 h-7" />
-                    </div>
+                <div className="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
+                  {/* Number label */}
+                  <span className="shrink-0 text-[11px] font-mono text-[#C9A227] tracking-widest pt-1 sm:pt-0">
+                    {section.label}
+                  </span>
 
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[11px] font-mono text-[#C9A227] font-bold uppercase tracking-wider">
-                          {section.badge}
-                        </span>
-                      </div>
-
-                      <h2 className="text-2xl sm:text-3xl font-black text-[#0A1628] dark:text-white font-sans group-hover:text-[#C9A227] transition-colors leading-tight">
+                  <div className="min-w-0 space-y-1">
+                    <div className="flex flex-wrap items-baseline gap-3">
+                      <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-white group-hover:text-[#C9A227] transition-colors leading-tight">
                         {section.title}
                       </h2>
-
-                      <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm leading-relaxed max-w-3xl line-clamp-2">
-                        {section.description}
-                      </p>
+                      <span className="text-xs font-mono text-white/30 font-normal hidden sm:inline">
+                        {section.subtitle}
+                      </span>
                     </div>
+                    <p className="text-white/40 text-sm leading-relaxed max-w-2xl line-clamp-2">
+                      {section.description}
+                    </p>
                   </div>
+                </div>
 
-                  <div className="flex items-center gap-3 shrink-0">
-                    <span className="hidden md:inline-block px-3.5 py-1.5 rounded-full text-xs font-mono font-bold bg-[#C9A227]/10 text-[#C9A227]">
-                      {isCampaign
-                        ? `${items.length} Campaigns`
-                        : `${items.length} Works`}
-                    </span>
+                <div className="shrink-0 flex items-center gap-3 self-start sm:self-auto mt-1 sm:mt-0">
+                  <span className="hidden md:block text-xs font-mono text-white/25">
+                    {isCampaign
+                      ? `${items.length} campaigns`
+                      : `${items.length} ${items.length === 1 ? 'work' : 'works'}`}
+                  </span>
+                  <div className="w-8 h-8 rounded-full border border-white/12 group-hover:border-[#C9A227]/60 flex items-center justify-center text-white/40 group-hover:text-[#C9A227] transition-all">
+                    {isOpen ? (
+                      <ChevronUp className="w-4 h-4" />
+                    ) : (
+                      <ChevronDown className="w-4 h-4" />
+                    )}
+                  </div>
+                </div>
+              </button>
 
-                    <div className="w-10 h-10 rounded-full bg-[#0A1628]/5 dark:bg-white/5 flex items-center justify-center text-[#C9A227] group-hover:bg-[#C9A227] group-hover:text-[#0A1628] transition-colors shadow-sm">
-                      {isOpen ? (
-                        <ChevronUp className="w-5 h-5" />
+              {/* Expandable content */}
+              <AnimatePresence initial={false}>
+                {isOpen && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-10">
+                      {isCampaign ? (
+                        <CampaignGallery
+                          items={items}
+                          onOpen={(images, idx, title) => setLightbox({ images, index: idx, title })}
+                        />
                       ) : (
-                        <ChevronDown className="w-5 h-5" />
+                        <DocumentGrid items={items} />
                       )}
                     </div>
-                  </div>
-                </button>
-
-                {/* Accordion Expandable Content */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-6 sm:p-8 pt-2 sm:pt-4 border-t border-slate-100 dark:border-white/5 bg-[#fafafa]/60 dark:bg-[#071120]/40">
-                        {isCampaign ? (
-                          <CampaignSubsections
-                            items={items}
-                            onImageClick={handleOpenImage}
-                          />
-                        ) : (
-                          <DocumentWorksSection items={items} />
-                        )}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           );
         })}
       </div>
 
-      {/* Image Lightbox Modal */}
-      {lightboxData && (
-        <ImageLightbox
-          images={lightboxData.images}
-          initialIndex={lightboxData.index}
-          campaignTitle={lightboxData.title}
-          onClose={() => setLightboxData(null)}
+      {/* ─── Footer CTA ─── */}
+      <section className="border-t border-white/8 px-5 sm:px-8 lg:px-16 py-16">
+        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="space-y-1">
+            <p className="text-white/40 text-xs font-mono uppercase tracking-widest">
+              Open to opportunities
+            </p>
+            <p className="text-xl sm:text-2xl font-bold text-white">
+              Interested in working together?
+            </p>
+          </div>
+          <a
+            href="/contact"
+            className="flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#C9A227] text-[#0A1628] text-sm font-bold hover:bg-[#e8c96a] transition-colors shadow-lg hover:shadow-[0_8px_24px_-4px_rgba(201,162,39,0.5)] shrink-0"
+          >
+            Get in touch
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </section>
+
+      {/* Lightbox overlay */}
+      {lightbox && (
+        <Lightbox
+          images={lightbox.images}
+          startIndex={lightbox.index}
+          title={lightbox.title}
+          onClose={() => setLightbox(null)}
         />
       )}
     </div>
@@ -686,8 +623,8 @@ export default function PortfolioPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen flex items-center justify-center text-[#C9A227] font-mono text-sm animate-pulse">
-          Loading portfolio archive...
+        <div className="min-h-screen bg-[#0A1628] flex items-center justify-center text-white/30 text-sm font-mono animate-pulse">
+          Loading portfolio…
         </div>
       }
     >

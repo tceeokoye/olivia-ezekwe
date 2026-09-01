@@ -3,27 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import {
-  Megaphone,
-  BookOpen,
-  FileText,
-  Newspaper,
-  PenTool,
-  CheckCircle2,
-  ArrowRight,
-  Sparkles,
-} from 'lucide-react';
 import SectionHeader from '@/components/SectionHeader';
 import TiltCard from '@/components/TiltCard';
 import { servicesData } from '@/data/servicesData';
-
-const iconMap: Record<string, any> = {
-  Megaphone,
-  BookOpen,
-  FileText,
-  Newspaper,
-  PenTool,
-};
 
 export default function ServicesPage() {
   const steps = [
@@ -53,8 +35,7 @@ export default function ServicesPage() {
     <div className="space-y-20 sm:space-y-28 py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto transition-colors duration-300">
       {/* ===================== HERO / HEADER ===================== */}
       <section className="pt-4 sm:pt-8 text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest font-semibold">
-          <Sparkles className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest font-semibold">
           <span>CAPABILITIES &amp; SOLUTIONS</span>
         </div>
 
@@ -72,70 +53,66 @@ export default function ServicesPage() {
 
       {/* ===================== SERVICES GRID ===================== */}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {servicesData.map((service, idx) => {
-          const Icon = iconMap[service.iconName] || Sparkles;
-          return (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-            >
-              <TiltCard maxTilt={8} className="h-full">
-                <div className="tech-card rounded-2xl p-6 sm:p-8 h-full flex flex-col justify-between">
-                  <div>
-                    <div className="w-14 h-14 rounded-2xl bg-[#C9A227]/10 border border-[#C9A227]/30 flex items-center justify-center text-[#C9A227] mb-6 group-hover:bg-[#C9A227] group-hover:text-[#0A1628] transition-colors font-bold">
-                      <Icon className="w-7 h-7" />
-                    </div>
+        {servicesData.map((service, idx) => (
+          <motion.div
+            key={service.id}
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: idx * 0.08 }}
+          >
+            <TiltCard maxTilt={8} className="h-full">
+              <div className="tech-card rounded-2xl p-6 sm:p-8 h-full flex flex-col justify-between">
+                <div>
+                  <span className="text-xs font-mono font-bold text-[#C9A227] uppercase tracking-wider block mb-2">
+                    Service 0{idx + 1}
+                  </span>
 
-                    <h3 className="text-xl font-bold text-[#0A1628] dark:text-white font-display mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
-                      {service.description}
-                    </p>
+                  <h3 className="text-xl font-bold text-[#0A1628] dark:text-white font-display mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
+                    {service.description}
+                  </p>
 
-                    <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-white/10">
-                      <h4 className="text-xs font-mono tracking-wider text-[#C9A227] font-bold">
-                        Key Deliverables
-                      </h4>
-                      <div className="space-y-2">
-                        {service.deliverables.map((d, dIdx) => (
-                          <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A227] shrink-0 mt-0.5" />
-                            <span>{d}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="pt-6 mt-6 border-t border-slate-100 dark:border-white/10 space-y-4">
-                    <div className="text-[11px] text-slate-500 dark:text-slate-400">
-                      <strong className="text-[#0A1628] dark:text-white">Ideal For:</strong> {service.whoItIsFor}
-                    </div>
-                    <div className="flex items-center justify-between pt-2">
-                      <Link
-                        href={`/portfolio?category=${encodeURIComponent(service.portfolioCategory)}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C9A227] hover:underline tracking-wide"
-                      >
-                        <span>View Portfolio Works</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
-                      <Link
-                        href={`/contact?service=${encodeURIComponent(service.title)}`}
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-[#C9A227]"
-                      >
-                        <span>Inquire</span>
-                      </Link>
+                  <div className="space-y-4 pt-4 border-t border-slate-100 dark:border-white/10">
+                    <h4 className="text-xs font-mono tracking-wider text-[#C9A227] font-bold">
+                      Key Deliverables
+                    </h4>
+                    <div className="space-y-2">
+                      {service.deliverables.map((d, dIdx) => (
+                        <div key={dIdx} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-200">
+                          <span className="text-[#C9A227] shrink-0 font-bold leading-5">–</span>
+                          <span>{d}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </TiltCard>
-            </motion.div>
-          );
-        })}
+
+                <div className="pt-6 mt-6 border-t border-slate-100 dark:border-white/10 space-y-4">
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400">
+                    <strong className="text-[#0A1628] dark:text-white">Ideal For:</strong> {service.whoItIsFor}
+                  </div>
+                  <div className="flex items-center justify-between pt-2">
+                    <Link
+                      href={`/portfolio?category=${encodeURIComponent(service.portfolioCategory)}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C9A227] hover:underline tracking-wide"
+                    >
+                      <span>View Portfolio Works</span>
+                    </Link>
+                    <Link
+                      href={`/contact?service=${encodeURIComponent(service.title)}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-slate-200 hover:text-[#C9A227]"
+                    >
+                      <span>Inquire</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </TiltCard>
+          </motion.div>
+        ))}
       </section>
 
       {/* ===================== HOW WE COLLABORATE ===================== */}

@@ -1,19 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  Printer,
-  GraduationCap,
-  Briefcase,
-  Award,
-  CheckCircle2,
-  Mail,
-  Linkedin,
-  Globe,
-  Sparkles,
-  Layers,
-} from 'lucide-react';
 import { experiencesData, educationData, skillCategoriesData, toolsAndPlatforms } from '@/data/resumeData';
 
 export default function ResumePage() {
@@ -26,7 +13,7 @@ export default function ResumePage() {
       {/* ===================== HEADER & ACTIONS ===================== */}
       <section className="pt-4 sm:pt-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono   tracking-widest mb-4 font-semibold">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-[#C9A227]/10 text-[#C9A227] border border-[#C9A227]/30 text-xs font-mono tracking-widest mb-4 font-semibold">
             <span>CREDENTIALS &amp; TRACK RECORD</span>
           </div>
 
@@ -44,9 +31,8 @@ export default function ResumePage() {
         <div className="flex items-center gap-3">
           <button
             onClick={handlePrint}
-            className="px-6 py-3 rounded-full bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs   tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] flex items-center gap-2 transition-transform hover:scale-105"
+            className="px-6 py-3 rounded-lg bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer"
           >
-            <Printer className="w-4 h-4" />
             <span>Print / Save PDF</span>
           </button>
         </div>
@@ -63,22 +49,16 @@ export default function ResumePage() {
             </div>
           </div>
           <div className="text-xs text-slate-600 dark:text-slate-300 font-mono space-y-1">
-            <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5 text-[#C9A227]" /> hello@oliviaezekwe.com
-            </div>
-            <div className="flex items-center gap-2">
-              <Linkedin className="w-3.5 h-3.5 text-sky-500" /> linkedin.com/in/oliviaezekwe
-            </div>
-            <div className="flex items-center gap-2">
-              <Globe className="w-3.5 h-3.5 text-emerald-500" /> Nigeria &amp; International Remote
-            </div>
+            <div>hello@oliviaezekwe.com</div>
+            <div>linkedin.com/in/oliviaezekwe</div>
+            <div>Nigeria &amp; International Remote</div>
           </div>
         </div>
 
         {/* Executive Summary */}
         <div>
-          <h3 className="text-xs font-mono   tracking-widest text-[#C9A227] mb-3 flex items-center gap-2 font-bold">
-            <Sparkles className="w-4 h-4" /> Professional Summary
+          <h3 className="text-xs font-mono tracking-widest text-[#C9A227] mb-3 font-bold uppercase">
+            Professional Summary
           </h3>
           <p className="text-slate-600 dark:text-slate-200 text-sm sm:text-base leading-relaxed font-normal">
             Seasoned Communications Strategist and Brand Manager with over 8 years of experience leading strategic storytelling, advocacy campaigns, and digital brand development across non-profits, international development organisations, and corporate enterprises. Holds a Master of Laws (LL.M) and Barrister-at-Law (B.L), uniting rigorous public policy insight with creative multimedia production to maximize public impact and donor investment.
@@ -87,8 +67,8 @@ export default function ResumePage() {
 
         {/* Professional Experience */}
         <div>
-          <h3 className="text-xs font-mono   tracking-widest text-[#C9A227] mb-6 flex items-center gap-2 font-bold">
-            <Briefcase className="w-4 h-4" /> Professional Experience
+          <h3 className="text-xs font-mono tracking-widest text-[#C9A227] mb-6 font-bold uppercase">
+            Professional Experience
           </h3>
           <div className="space-y-8">
             {experiencesData.map((exp, idx) => (
@@ -107,7 +87,7 @@ export default function ResumePage() {
                 <div className="space-y-1.5 pt-1">
                   {exp.achievements.map((ach, aIdx) => (
                     <div key={aIdx} className="flex items-start gap-2 text-xs text-slate-500 dark:text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#C9A227] shrink-0 mt-0.5" />
+                      <span className="text-[#C9A227] shrink-0 font-bold leading-5">–</span>
                       <span>{ach}</span>
                     </div>
                   ))}
@@ -119,8 +99,8 @@ export default function ResumePage() {
 
         {/* Education & Legal Credentials */}
         <div>
-          <h3 className="text-xs font-mono   tracking-widest text-[#C9A227] mb-6 flex items-center gap-2 font-bold">
-            <GraduationCap className="w-4 h-4" /> Education &amp; Legal Qualifications
+          <h3 className="text-xs font-mono tracking-widest text-[#C9A227] mb-6 font-bold uppercase">
+            Education &amp; Legal Qualifications
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {educationData.map((edu, idx) => (
@@ -138,13 +118,13 @@ export default function ResumePage() {
 
         {/* Core Competencies & Skills Matrix */}
         <div>
-          <h3 className="text-xs font-mono   tracking-widest text-[#C9A227] mb-6 flex items-center gap-2 font-bold">
-            <Award className="w-4 h-4" /> Core Competencies &amp; Skills Matrix
+          <h3 className="text-xs font-mono tracking-widest text-[#C9A227] mb-6 font-bold uppercase">
+            Core Competencies &amp; Skills Matrix
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {skillCategoriesData.map((cat, idx) => (
               <div key={idx} className="p-5 rounded-2xl border border-slate-100 dark:border-white/10 bg-slate-50/50 dark:bg-white/5 space-y-3">
-                <h4 className="text-xs font-bold text-[#0A1628] dark:text-white   tracking-wider">{cat.category}</h4>
+                <h4 className="text-xs font-bold text-[#0A1628] dark:text-white tracking-wider">{cat.category}</h4>
                 <div className="space-y-3 pt-2">
                   {cat.skills.map((skill, sIdx) => (
                     <div key={sIdx} className="space-y-1">
@@ -168,8 +148,8 @@ export default function ResumePage() {
 
         {/* Tools & Tech Platforms */}
         <div>
-          <h3 className="text-xs font-mono   tracking-widest text-[#C9A227] mb-4 flex items-center gap-2 font-bold">
-            <Layers className="w-4 h-4" /> Tools &amp; Platforms Mastered
+          <h3 className="text-xs font-mono tracking-widest text-[#C9A227] mb-4 font-bold uppercase">
+            Tools &amp; Platforms Mastered
           </h3>
           <div className="flex flex-wrap gap-2">
             {toolsAndPlatforms.map((tool, idx) => (
