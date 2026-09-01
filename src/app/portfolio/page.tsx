@@ -61,29 +61,9 @@ const SECTIONS = [
 ];
 
 // ─────────────────────────────────────────────
-// Animation Variants
+// Smooth Easing Curve
 // ─────────────────────────────────────────────
-const EASE_SPRING = [0.21, 0.47, 0.32, 0.98];
-
-const fadeIn = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5, ease: EASE_SPRING } },
-};
-
-const slideFromLeft = {
-  hidden: { opacity: 0, x: -35 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: EASE_SPRING } },
-};
-
-const slideFromRight = {
-  hidden: { opacity: 0, x: 35 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.55, ease: EASE_SPRING } },
-};
-
-const slideFromBottom = {
-  hidden: { opacity: 0, y: 35 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: EASE_SPRING } },
-};
+const SMOOTH_EASE = [0.21, 0.47, 0.32, 0.98];
 
 // ─────────────────────────────────────────────
 // Lightbox
@@ -146,7 +126,7 @@ function Lightbox({
           alt=""
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.25, ease: EASE_SPRING }}
+          transition={{ duration: 0.25, ease: SMOOTH_EASE }}
           className="max-h-full max-w-full object-contain rounded-xl shadow-2xl"
         />
         {images.length > 1 && (
@@ -209,19 +189,16 @@ function CampaignGallery({
         return (
           <motion.div
             key={campaign.id}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            variants={slideFromBottom}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5, ease: SMOOTH_EASE }}
             className="tech-card rounded-2xl p-6 sm:p-8 bg-white dark:bg-[#0c1a2e] border border-slate-200/80 dark:border-white/10 shadow-lg dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] space-y-6"
           >
             {/* Sub-section label & context */}
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 pb-5 border-b border-slate-100 dark:border-white/10">
               <div className="space-y-2">
-                <motion.div
-                  variants={slideFromLeft}
-                  className="flex flex-wrap items-center gap-2"
-                >
+                <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs font-mono text-[#C9A227] tracking-wider uppercase font-bold px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20">
                     Campaign 0{cIdx + 1}
                   </span>
@@ -230,42 +207,33 @@ function CampaignGallery({
                       {campaign.client}
                     </span>
                   )}
-                </motion.div>
-                <motion.h3
-                  variants={slideFromLeft}
-                  className="text-xl sm:text-2xl font-bold text-[#0A1628] dark:text-white leading-snug"
-                >
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-[#0A1628] dark:text-white leading-snug">
                   {campaign.title}
-                </motion.h3>
+                </h3>
                 {campaign.summary && (
-                  <motion.p
-                    variants={fadeIn}
-                    className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl font-normal"
-                  >
+                  <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl font-normal">
                     {campaign.summary}
-                  </motion.p>
+                  </p>
                 )}
               </div>
-              <motion.span
-                variants={slideFromRight}
-                className="self-start shrink-0 text-xs font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1 rounded-md"
-              >
+              <span className="self-start shrink-0 text-xs font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1 rounded-md">
                 {imgs.length} visuals
-              </motion.span>
+              </span>
             </div>
 
-            {/* Grid with staggered emerge */}
+            {/* Grid with smooth upward emerge on mobile and desktop */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
               {visible.map((src, i) => (
                 <motion.button
                   key={i}
-                  initial={{ opacity: 0, y: 25, scale: 0.94 }}
+                  initial={{ opacity: 0, y: 22, scale: 0.95 }}
                   whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, margin: '-20px' }}
+                  viewport={{ once: true, amount: 0.05 }}
                   transition={{
-                    duration: 0.45,
-                    delay: (i % 8) * 0.04,
-                    ease: EASE_SPRING,
+                    duration: 0.4,
+                    delay: (i % 4) * 0.04,
+                    ease: SMOOTH_EASE,
                   }}
                   whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
                   whileTap={{ scale: 0.98 }}
@@ -315,11 +283,10 @@ function CampaignGallery({
 }
 
 // ─────────────────────────────────────────────
-// Document Preview Card (with professional entrance & shadow)
+// Document Preview Card (smooth mobile + desktop scroll reveal)
 // ─────────────────────────────────────────────
 function DocumentCard({ doc, index }: { doc: Project; index: number }) {
   const isPptx = doc.fileType === 'pptx';
-  const isLeft = index % 2 === 0;
 
   const rawName = doc.fileUrl?.split('/').pop() ?? `${doc.title}.pdf`;
   const fileName = decodeURIComponent(rawName);
@@ -328,34 +295,26 @@ function DocumentCard({ doc, index }: { doc: Project; index: number }) {
     <motion.div
       initial={{
         opacity: 0,
-        y: 40,
-        x: isLeft ? -18 : 18,
-        scale: 0.97,
+        y: 32,
+        scale: 0.96,
       }}
       whileInView={{
         opacity: 1,
         y: 0,
-        x: 0,
         scale: 1,
       }}
-      viewport={{ once: true, margin: '-40px' }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{
-        duration: 0.6,
-        delay: (index % 2) * 0.1,
-        ease: EASE_SPRING,
+        duration: 0.5,
+        delay: (index % 2) * 0.08,
+        ease: SMOOTH_EASE,
       }}
-      whileHover={{ y: -5, transition: { duration: 0.25 } }}
+      whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className="tech-card rounded-2xl p-6 sm:p-7 bg-white dark:bg-[#0c1a2e] border border-slate-200/80 dark:border-white/10 shadow-lg dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] flex flex-col justify-between hover:shadow-2xl transition-all duration-300 group"
     >
       {/* Context write-up inside the card with generous breathing room */}
       <div className="mb-6 space-y-3">
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.15 }}
-          className="flex flex-wrap items-center gap-2"
-        >
+        <div className="flex flex-wrap items-center gap-2">
           {doc.year && (
             <span className="text-xs font-mono text-[#C9A227] font-bold tracking-wider px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20">
               {doc.year}
@@ -366,39 +325,21 @@ function DocumentCard({ doc, index }: { doc: Project; index: number }) {
               {doc.client}
             </span>
           )}
-        </motion.div>
+        </div>
 
-        <motion.h3
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: 0.2 }}
-          className="text-lg sm:text-xl font-bold text-[#0A1628] dark:text-white leading-snug group-hover:text-[#C9A227] transition-colors"
-        >
+        <h3 className="text-lg sm:text-xl font-bold text-[#0A1628] dark:text-white leading-snug group-hover:text-[#C9A227] transition-colors">
           {doc.title}
-        </motion.h3>
+        </h3>
 
         {doc.summary && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-normal"
-          >
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed font-normal">
             {doc.summary}
-          </motion.p>
+          </p>
         )}
       </div>
 
-      {/* WhatsApp-style document preview card (animated entrance from bottom) */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.3, ease: EASE_SPRING }}
-        className="rounded-xl overflow-hidden bg-[#1f2c34] shadow-md border border-slate-300/40 dark:border-white/5 w-full max-w-sm mt-auto"
-      >
+      {/* WhatsApp-style document preview card */}
+      <div className="rounded-xl overflow-hidden bg-[#1f2c34] shadow-md border border-slate-300/40 dark:border-white/5 w-full max-w-sm mt-auto">
         {/* Document page thumbnail */}
         <div className="bg-white p-5 flex flex-col items-center justify-center min-h-[110px] text-center gap-2 select-none border-b border-slate-200/60">
           {doc.client && (
@@ -461,7 +402,7 @@ function DocumentCard({ doc, index }: { doc: Project; index: number }) {
             </span>
           )}
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
@@ -549,9 +490,9 @@ function PortfolioContent() {
         <div className="max-w-6xl mx-auto">
           {/* Breadcrumb-style label */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: EASE_SPRING }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: SMOOTH_EASE }}
             className="flex items-center gap-2 mb-6"
           >
             <span className="text-[11px] font-mono text-slate-400 dark:text-white/40 tracking-widest uppercase">
@@ -566,9 +507,9 @@ function PortfolioContent() {
           {/* Headline */}
           <div className="space-y-4 max-w-3xl">
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: EASE_SPRING }}
+              transition={{ duration: 0.55, delay: 0.08, ease: SMOOTH_EASE }}
               className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-[#0A1628] dark:text-white leading-[1.05]"
             >
               Selected
@@ -578,9 +519,9 @@ function PortfolioContent() {
               </span>
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2, ease: EASE_SPRING }}
+              transition={{ duration: 0.55, delay: 0.16, ease: SMOOTH_EASE }}
               className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal max-w-2xl"
             >
               A curated archive of campaigns, creative writing, editorial publications, press
@@ -591,18 +532,18 @@ function PortfolioContent() {
 
           {/* Quick-jump links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: EASE_SPRING }}
+            transition={{ duration: 0.5, delay: 0.22, ease: SMOOTH_EASE }}
             className="mt-8 flex flex-wrap gap-2"
           >
             {SECTIONS.map((s, i) => (
               <motion.button
                 key={s.id}
-                initial={{ opacity: 0, scale: 0.92 }}
+                initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.35, delay: 0.35 + i * 0.05 }}
-                whileHover={{ scale: 1.04, transition: { duration: 0.15 } }}
+                transition={{ duration: 0.3, delay: 0.25 + i * 0.04 }}
+                whileHover={{ scale: 1.03, transition: { duration: 0.15 } }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => {
                   setOpen((prev) => ({ ...prev, [s.id]: true }));
@@ -622,9 +563,9 @@ function PortfolioContent() {
 
           {/* Stats row */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.45, ease: EASE_SPRING }}
+            transition={{ duration: 0.5, delay: 0.35, ease: SMOOTH_EASE }}
             className="mt-10 flex flex-wrap gap-8 pt-8 border-t border-slate-200 dark:border-white/10"
           >
             {[
@@ -634,9 +575,9 @@ function PortfolioContent() {
             ].map((stat, idx) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.5 + idx * 0.08 }}
+                transition={{ duration: 0.35, delay: 0.4 + idx * 0.06 }}
                 className="space-y-0.5"
               >
                 <div className="text-2xl sm:text-3xl font-black text-[#0A1628] dark:text-white">
@@ -663,10 +604,10 @@ function PortfolioContent() {
             <motion.div
               key={section.id}
               id={`section-${section.id}`}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
-              transition={{ duration: 0.55, ease: EASE_SPRING }}
+              viewport={{ once: true, amount: 0.05 }}
+              transition={{ duration: 0.45, ease: SMOOTH_EASE }}
             >
               {/* Section Header — click to toggle */}
               <button
@@ -717,7 +658,7 @@ function PortfolioContent() {
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: EASE_SPRING }}
+                    transition={{ duration: 0.35, ease: SMOOTH_EASE }}
                     className="overflow-hidden"
                   >
                     <div className="pb-12 pt-2">
@@ -740,10 +681,10 @@ function PortfolioContent() {
 
       {/* ─── Footer CTA ─── */}
       <motion.section
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: EASE_SPRING }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5, ease: SMOOTH_EASE }}
         className="border-t border-slate-200 dark:border-white/10 px-5 sm:px-8 lg:px-16 py-16 bg-white dark:bg-[#0A1628] transition-colors duration-300"
       >
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
