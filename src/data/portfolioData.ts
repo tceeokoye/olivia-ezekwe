@@ -502,21 +502,21 @@ export const projectsData: Project[] = [
 export const testimonialsData: Testimonial[] = [
   {
     id: '1',
-    quote: 'Olivia is gifted, and I truly enjoyed working with her. Her legal background gives her an advantage because she can see an idea or communication from different angles, and she knows how to translate it in interesting ways. I look forward to working with her again.',
+    quote: 'Olivia is gifted, and I genuinely enjoyed working with her. She brings a thoughtful perspective to her work, and her legal background gives her a unique ability to look at situations from different angles. She is creative, intentional, and knows how to communicate an idea in a way that connects with people. I would be very happy to work with her again.',
     author: 'Mary E.A.',
     role: 'HR Executive',
     organization: ''
   },
   {
     id: '2',
-    quote: 'Olivia is a really good writer. One of the best I know actually. She has a way of turning an idea (no matter how abstract or how mundane), into something magical.',
+    quote: 'Olivia is an excellent writer. What stands out to me is her ability to make you see an idea differently through her words. She has a natural creativity that comes through strongly in her writing.',
     author: 'John-Martins, O. (Esq).',
     role: 'Creative Director',
     organization: 'Shatili'
   },
   {
     id: '3',
-    quote: 'She has a really good eye for detail. She pays attention to the little things that others may overlook and has a way of turning ordinary moments into stories through her visual work.',
+    quote: 'One thing I really appreciate about Olivia is her attention to detail. She notices things that are easy to miss and has a natural instinct for finding the story within a moment. You can see that in her visual work, where even simple photographs or everyday scenes feel intentional and thoughtfully captured.',
     author: 'Daniel N.',
     role: 'Cinematographer',
     organization: ''

@@ -271,7 +271,7 @@ export default function AboutPage() {
             Away from deadlines and screens, you’ll probably find me with a good
             book, watching a film, taking photographs, enjoying nature, or
             having one of those long, device-free conversations where nobody is
-            checking the time. I am drawn to art, poetry, and the little details
+            checking the time. I am also drawn to art, poetry, and the little details
             that make ordinary life interesting.
           </p>
 

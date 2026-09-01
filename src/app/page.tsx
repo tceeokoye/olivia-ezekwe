@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Download, Send, Check, ChevronDown } from "lucide-react";
+import { ArrowRight, Download, Send, Check, ChevronDown, Copy } from "lucide-react";
 import SectionHeader from "@/components/SectionHeader";
 import TiltCard from "@/components/TiltCard";
 import { testimonialsData } from "@/data/portfolioData";
@@ -70,7 +70,7 @@ function FloatInput({
         onBlur={() => setFocused(false)}
         onChange={(e) => onChange(e.target.value)}
         placeholder={focused ? placeholder : ""}
-        className={`w-full pt-7 pb-3 px-4 rounded-2xl text-sm text-[#0A1628] dark:text-white font-normal bg-slate-50 dark:bg-[#0d1f3c] border-2 outline-none transition-all duration-200 ${
+        className={`w-full pt-7 pb-3 px-4 rounded-2xl text-sm text-[#0A1628] dark:text-white font-normal bg-white dark:bg-[#0d1f3c] border-2 outline-none transition-all duration-200 ${
           focused
             ? "border-[#C9A227] shadow-[0_0_0_4px_rgba(201,162,39,0.08)]"
             : "border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
@@ -117,7 +117,7 @@ function FloatTextarea({
         onBlur={() => setFocused(false)}
         onChange={(e) => onChange(e.target.value)}
         placeholder={focused ? placeholder : ""}
-        className={`w-full pt-8 pb-3 px-4 rounded-2xl text-sm text-[#0A1628] dark:text-white font-normal bg-slate-50 dark:bg-[#0d1f3c] border-2 outline-none transition-all duration-200 resize-none ${
+        className={`w-full pt-8 pb-3 px-4 rounded-2xl text-sm text-[#0A1628] dark:text-white font-normal bg-white dark:bg-[#0d1f3c] border-2 outline-none transition-all duration-200 resize-none ${
           focused
             ? "border-[#C9A227] shadow-[0_0_0_4px_rgba(201,162,39,0.08)]"
             : "border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
@@ -232,6 +232,13 @@ export default function HomePage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("ezekweolivia@gmail.com");
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -608,8 +615,8 @@ export default function HomePage() {
               Away from deadlines and screens, you'll probably find me with a
               good book, watching a film, taking photographs, enjoying nature,
               or having one of those long, device-free conversations where
-              nobody is checking the time. I am drawn to art, poetry, and the
-              little details that make ordinary life interesting.
+              nobody is checking the time. I am also drawn to art, poetry, and
+              the little details that make ordinary life interesting.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 pt-6 border-t border-slate-100 dark:border-white/10">
@@ -695,7 +702,7 @@ export default function HomePage() {
           <SectionHeader
             badge="PORTFOLIO"
             title="Selected Works"
-            description="A curated selection of my writing, publications, press work and research across five categories."
+            description="A collection of writing, publications, press features and stories."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
             {[
@@ -703,35 +710,35 @@ export default function HomePage() {
                 title: "Campaigns",
                 desc: "High-impact multimedia advocacy and civic engagement campaigns that mobilize communities and drive action.",
                 tag: "Advocacy & Action",
-                count: "3 Initiatives",
+
                 filter: "Campaigns",
               },
               {
                 title: "Creative Non-Fictions",
                 desc: "Narrative storytelling, personal memoirs and essays blending vivid observations, lived emotion and literature.",
                 tag: "Narrative & Essays",
-                count: "4 Works",
+
                 filter: "Creative Non-Fictions",
               },
               {
                 title: "Editorial",
                 desc: "Organisational impact documents, annual progress reports and compendiums synthesizing complex achievements.",
                 tag: "Publications",
-                count: "3 Publications",
+
                 filter: "Editorial",
               },
               {
                 title: "Press",
                 desc: "Official press statements, diplomatic dispatches, media briefing kits and high-pickup news releases.",
                 tag: "Media & PR",
-                count: "6 Releases",
+
                 filter: "Press",
               },
               {
                 title: "Writing Samples",
                 desc: "Rigorous legal research, comparative policy analysis, constitutional human rights treatises and workshop manuals.",
                 tag: "Legal & Research",
-                count: "4 Papers",
+
                 filter: "Writing Samples",
               },
             ].map((item, idx) => {
@@ -750,11 +757,7 @@ export default function HomePage() {
                     <TiltCard className="h-full">
                       <div className="tech-card rounded-2xl p-6 h-full flex flex-col justify-between group-hover:border-[#C9A227] transition-all">
                         <div>
-                          <div className="flex items-center justify-between mb-4">
-                            <span className="text-[10px] font-mono text-[#C9A227] px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20 font-semibold">
-                              {item.count}
-                            </span>
-                          </div>
+                          <div className="flex items-center justify-between mb-4"></div>
                           <h3 className="text-sm font-bold text-[#0A1628] dark:text-white mb-2 group-hover:text-[#C9A227] transition-colors">
                             {item.title}
                           </h3>
@@ -852,24 +855,51 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="space-y-4">
-                  <a
-                    href="mailto:ezekweolivia@gmail.com"
-                    className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-[#C9A227]/50 transition-all group"
-                  >
-                    <div>
+                  {/* Email Address with Clickable Link + Copy Button */}
+                  <div className="flex items-center justify-between gap-3 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-[#C9A227]/50 transition-all group">
+                    <a
+                      href="mailto:ezekweolivia@gmail.com"
+                      className="flex-1 min-w-0"
+                      title="Click to send email"
+                    >
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                        Email Address
+                        Email Address (Click to send)
                       </div>
-                      <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors">
+                      <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors truncate">
                         ezekweolivia@gmail.com
                       </div>
-                    </div>
-                  </a>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={handleCopyEmail}
+                      className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer border ${
+                        emailCopied
+                          ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/30"
+                          : "bg-slate-200/80 dark:bg-white/10 hover:bg-[#C9A227] hover:text-[#0A1628] text-slate-700 dark:text-white border-transparent"
+                      }`}
+                      title="Copy email address"
+                      aria-label="Copy email address"
+                    >
+                      {emailCopied ? (
+                        <>
+                          <Check className="w-3.5 h-3.5 text-emerald-500" />
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <Copy className="w-3.5 h-3.5" />
+                          <span>Copy</span>
+                        </>
+                      )}
+                    </button>
+                  </div>
+
+                  {/* WhatsApp Direct Link */}
                   <a
-                    href="https://wa.me/2348067103176"
+                    href="https://wa.me/qr/R72NWYJBVVFYK1"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all group"
+                    className="flex items-center justify-between gap-3 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all group cursor-pointer"
                   >
                     <div>
                       <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
@@ -879,6 +909,9 @@ export default function HomePage() {
                         +2348067103176
                       </div>
                     </div>
+                    <span className="shrink-0 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                      Chat on WhatsApp &rarr;
+                    </span>
                   </a>
                 </div>
                 <div className="pt-6 border-t border-slate-100 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400 space-y-1.5 font-mono">
@@ -953,7 +986,7 @@ export default function HomePage() {
                           Send a Project Inquiry
                         </h3>
                         <p className="text-slate-500 dark:text-slate-400 text-sm font-normal">
-                          Fill in the details below — I&apos;ll be in touch
+                          Fill in the details below. I will be in touch shortly
                           shortly.
                         </p>
                       </div>

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
   Check,
+  Copy,
 } from "lucide-react";
 
 const SERVICES = [
@@ -222,6 +223,13 @@ export default function ContactPage() {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("ezekweolivia@gmail.com");
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -267,24 +275,51 @@ export default function ContactPage() {
               </p>
             </div>
             <div className="space-y-4">
-              <a
-                href="mailto:ezekweolivia@gmail.com"
-                className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-[#C9A227]/50 transition-all group"
-              >
-                <div>
+              {/* Email Address with Clickable Link + Copy Button */}
+              <div className="flex items-center justify-between gap-3 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-[#C9A227]/50 transition-all group">
+                <a
+                  href="mailto:ezekweolivia@gmail.com"
+                  className="flex-1 min-w-0"
+                  title="Click to send email"
+                >
                   <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                    Email Address
+                    Email Address (Click to send)
                   </div>
-                  <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors">
+                  <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors truncate">
                     ezekweolivia@gmail.com
                   </div>
-                </div>
-              </a>
+                </a>
+                <button
+                  type="button"
+                  onClick={handleCopyEmail}
+                  className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-mono font-semibold transition-all cursor-pointer border ${
+                    emailCopied
+                      ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/30"
+                      : "bg-slate-200/80 dark:bg-white/10 hover:bg-[#C9A227] hover:text-[#0A1628] text-slate-700 dark:text-white border-transparent"
+                  }`}
+                  title="Copy email address"
+                  aria-label="Copy email address"
+                >
+                  {emailCopied ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-emerald-500" />
+                      <span>Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>Copy</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              {/* WhatsApp Direct Link */}
               <a
-                href="https://wa.me/2348067103176"
+                href="https://wa.me/qr/R72NWYJBVVFYK1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all group"
+                className="flex items-center justify-between gap-3 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all group cursor-pointer"
               >
                 <div>
                   <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
@@ -294,6 +329,9 @@ export default function ContactPage() {
                     +2348067103176
                   </div>
                 </div>
+                <span className="shrink-0 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                  Chat on WhatsApp &rarr;
+                </span>
               </a>
             </div>
             <div className="pt-6 border-t border-slate-100 dark:border-white/10 text-xs text-slate-500 dark:text-slate-400 space-y-2 font-mono">
@@ -367,7 +405,7 @@ export default function ContactPage() {
                       Send a Project Inquiry
                     </h3>
                     <p className="text-slate-500 dark:text-slate-400 text-sm font-normal">
-                      Fill in the details below — I&apos;ll be in touch shortly.
+                     Fill in the details below. I will be in touch shortly
                     </p>
                   </div>
 

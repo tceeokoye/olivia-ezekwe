@@ -132,10 +132,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/2348067103176"
+                  href="https://wa.me/qr/R72NWYJBVVFYK1"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-300 hover:text-emerald-400 transition-colors font-medium"
                 >
-                  +2348067103176
+                  +2348067103176 (WhatsApp)
                 </a>
               </li>
             </ul>
@@ -152,10 +154,12 @@ export default function Footer() {
               ezekweolivia@gmail.com
             </a>
             <a
-              href="https://wa.me/2348067103176"
+              href="https://wa.me/qr/R72NWYJBVVFYK1"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-emerald-400 transition-colors"
             >
-              +2348067103176
+              WhatsApp (+2348067103176)
             </a>
           </div>
 
