@@ -28,7 +28,7 @@ export async function GET() {
       });
     }
 
-    return new Response('CV file not found', { status: 404 }) ;
+    return new Response('CV file not found', { status: 404 });
   } catch {
     return new Response('Error loading CV file', { status: 500 });
   }
