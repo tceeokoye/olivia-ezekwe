@@ -38,6 +38,7 @@ export default function VideoModal({ video, onClose }: VideoModalProps) {
 
   const isLocalVideo =
     video.videoUrl.endsWith('.mp4') ||
+    video.videoUrl.includes('.mp4') ||
     video.videoUrl.startsWith('/portfolio') ||
     video.videoUrl.startsWith('/');
 

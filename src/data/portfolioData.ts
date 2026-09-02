@@ -1,5 +1,10 @@
 import { Project, Testimonial } from '@/types';
 
+const GITHUB_MEDIA_DOCS_BASE =
+  'https://media.githubusercontent.com/media/tceeokoye/olivia-ezekwe/main/public/portfolio/documentry-videos%26pictures';
+const docVideo = (filename: string) =>
+  `${GITHUB_MEDIA_DOCS_BASE}/${encodeURIComponent(filename)}`;
+
 export const projectsData: Project[] = [
   // =================================================================
   // CAMPAIGNS
@@ -563,8 +568,8 @@ export const projectsData: Project[] = [
       'Grassroots Advocacy Policy Brief'
     ],
     coverImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/Sister Guardian Initiative_ Building Women’s Agency for Advocacy and Leadership.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/Sister Guardian Initiative_ Building Women’s Agency for Advocacy and Leadership.mp4',
+    videoUrl: docVideo('Sister Guardian Initiative_ Building Women’s Agency for Advocacy and Leadership.mp4'),
+    fileUrl: docVideo('Sister Guardian Initiative_ Building Women’s Agency for Advocacy and Leadership.mp4'),
     fileType: 'video',
     featured: true,
     tags: ['Sister Guardian', 'Women Leadership', 'Gender Justice', 'Grassroots Advocacy', 'Documentary']
@@ -586,8 +591,8 @@ export const projectsData: Project[] = [
       'Stakeholder & Donor Distribution Package'
     ],
     coverImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/The Cost of Justice Anthology Launch _ Stories, Art & Justice Reform in Nigeria.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/The Cost of Justice Anthology Launch _ Stories, Art & Justice Reform in Nigeria.mp4',
+    videoUrl: docVideo('The Cost of Justice Anthology Launch _ Stories, Art & Justice Reform in Nigeria.mp4'),
+    fileUrl: docVideo('The Cost of Justice Anthology Launch _ Stories, Art & Justice Reform in Nigeria.mp4'),
     fileType: 'video',
     featured: true,
     tags: ['Cost of Justice', 'Legal Reform', 'Human Rights', 'Anthology Launch', 'Documentary']
@@ -609,8 +614,8 @@ export const projectsData: Project[] = [
       'Institutional Sensitization Screening Asset'
     ],
     coverImage: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/Raped! Her Journey to Healing.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/Raped! Her Journey to Healing.mp4',
+    videoUrl: docVideo('Raped! Her Journey to Healing.mp4'),
+    fileUrl: docVideo('Raped! Her Journey to Healing.mp4'),
     fileType: 'video',
     featured: true,
     tags: ['GBV Recovery', 'Survivor Story', 'Human Rights', 'Mental Health', 'Advocacy Film']
@@ -632,8 +637,8 @@ export const projectsData: Project[] = [
       'Traditional Rulers Reform Communiqué'
     ],
     coverImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/Silenced by Tradition. Exploited by Culture..mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/Silenced by Tradition. Exploited by Culture..mp4',
+    videoUrl: docVideo('Silenced by Tradition. Exploited by Culture..mp4'),
+    fileUrl: docVideo('Silenced by Tradition. Exploited by Culture..mp4'),
     fileType: 'video',
     featured: true,
     tags: ['Cultural Reform', 'Widow Rights', 'Customary Law', 'Investigative Documentary']
@@ -655,8 +660,8 @@ export const projectsData: Project[] = [
       'IWD 2025 Impact Video Reel'
     ],
     coverImage: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Empowering Girls at Affa-Amozolla _ Rights, Equality & Ending GBV.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Empowering Girls at Affa-Amozolla _ Rights, Equality & Ending GBV.mp4',
+    videoUrl: docVideo('IWD 2025_ Empowering Girls at Affa-Amozolla _ Rights, Equality & Ending GBV.mp4'),
+    fileUrl: docVideo('IWD 2025_ Empowering Girls at Affa-Amozolla _ Rights, Equality & Ending GBV.mp4'),
     fileType: 'video',
     featured: true,
     tags: ['IWD', 'Girl Child Education', 'GBV Prevention', 'Rural Outreach', 'Community Film']
@@ -678,8 +683,8 @@ export const projectsData: Project[] = [
       'Grassroots Gender Justice Toolkit'
     ],
     coverImage: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Raising Awareness on GBV in Affa-Amozolla, Enugu.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Raising Awareness on GBV in Affa-Amozolla, Enugu.mp4',
+    videoUrl: docVideo('IWD 2025_ Raising Awareness on GBV in Affa-Amozolla, Enugu.mp4'),
+    fileUrl: docVideo('IWD 2025_ Raising Awareness on GBV in Affa-Amozolla, Enugu.mp4'),
     fileType: 'video',
     featured: false,
     tags: ['Community Sensitization', 'Enugu State', 'GBV Awareness', 'Grassroots Dialogue']
@@ -701,8 +706,8 @@ export const projectsData: Project[] = [
       'Social Impact Showcase Reel'
     ],
     coverImage: 'https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/From Germany to Enugu_ Learning, Exchange and Social Impact.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/From Germany to Enugu_ Learning, Exchange and Social Impact.mp4',
+    videoUrl: docVideo('From Germany to Enugu_ Learning, Exchange and Social Impact.mp4'),
+    fileUrl: docVideo('From Germany to Enugu_ Learning, Exchange and Social Impact.mp4'),
     fileType: 'video',
     featured: true,
     tags: ['Cross-Cultural Exchange', 'International Development', 'Social Impact', 'Fellowship']
@@ -724,8 +729,8 @@ export const projectsData: Project[] = [
       'Social Media Mobilization Clip Package'
     ],
     coverImage: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/Youth Demand Charter.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/Youth Demand Charter.mp4',
+    videoUrl: docVideo('Youth Demand Charter.mp4'),
+    fileUrl: docVideo('Youth Demand Charter.mp4'),
     fileType: 'video',
     featured: false,
     tags: ['Youth Demand Charter', 'Civic Action', 'Youth Mobilization', 'Policy Advocacy']
@@ -747,8 +752,8 @@ export const projectsData: Project[] = [
       'Parliamentary Reform Campaign Clip'
     ],
     coverImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/Reserved Seats for Women_ The Conversation Continues.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/Reserved Seats for Women_ The Conversation Continues.mp4',
+    videoUrl: docVideo('Reserved Seats for Women_ The Conversation Continues.mp4'),
+    fileUrl: docVideo('Reserved Seats for Women_ The Conversation Continues.mp4'),
     fileType: 'video',
     featured: true,
     tags: ['Affirmative Action', 'Women In Politics', 'Legislative Advocacy', 'Constitutional Reform']
@@ -771,8 +776,8 @@ export const projectsData: Project[] = [
       'Institutional Knowledge Distribution Package'
     ],
     coverImage: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/Sub Grantee & Peer Learning.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/Sub Grantee & Peer Learning.mp4',
+    videoUrl: docVideo('Sub Grantee & Peer Learning.mp4'),
+    fileUrl: docVideo('Sub Grantee & Peer Learning.mp4'),
     fileType: 'video',
     featured: true,
     tags: ['Sub Grantee', 'Peer Learning', 'Institutional Documentary', 'Capacity Building', 'SSDO']
@@ -798,12 +803,12 @@ export const projectsData: Project[] = [
       'Parliamentary Reform Extended Campaign Clip'
     ],
     coverImage: 'https://images.unsplash.com/photo-1560439513-74b037a25d84?auto=format&fit=crop&w=1200&q=80',
-    videoUrl: '/portfolio/documentry-videos&pictures/📣 Reserved Seats for Women_ The Conversation Continues!👩🏾_⚖.mp4',
-    fileUrl: '/portfolio/documentry-videos&pictures/📣 Reserved Seats for Women_ The Conversation Continues!👩🏾_⚖.mp4',
+    videoUrl: docVideo('📣 Reserved Seats for Women_ The Conversation Continues!👩🏾_⚖.mp4'),
+    fileUrl: docVideo('📣 Reserved Seats for Women_ The Conversation Continues!👩🏾_⚖.mp4'),
     fileType: 'video',
     featured: false,
     tags: ['Affirmative Action', 'Women In Politics', 'Legislative Advocacy', 'Constitutional Reform']
-  },
+  }
 ];
 
 export const testimonialsData: Testimonial[] = [

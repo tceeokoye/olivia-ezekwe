@@ -210,13 +210,21 @@ export default function AboutPage() {
             >
               {/* Logo */}
               <div className="h-16 flex items-center">
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className={`max-h-14 max-w-[170px] object-contain transition-all duration-300 ${
-                    client.noEffect ? "hover:scale-105" : "client-logo-img"
-                  }`}
-                />
+                <div
+                  className={
+                    client.name === "Sunches Villa Hotel"
+                      ? "bg-[#0A1628] px-3.5 py-2 rounded-xl flex items-center shadow-sm"
+                      : ""
+                  }
+                >
+                  <img
+                    src={client.logo}
+                    alt={`${client.name} logo`}
+                    className={`max-h-14 max-w-[170px] object-contain transition-all duration-300 ${
+                      client.noEffect ? "hover:scale-105" : "client-logo-img"
+                    }`}
+                  />
+                </div>
               </div>
 
               {/* Name & tag */}
