@@ -75,5 +75,20 @@ export const servicesData: ServiceItem[] = [
       'Capacity-Building Workshop Manuals & Training Curricula'
     ],
     whoItIsFor: 'Legal think tanks, research bodies, development coalitions, policy institutes, and professional training programs.'
+  },
+  {
+    id: 'documentaries-visual-storytelling',
+    title: 'Documentaries & Visual Storytelling',
+    portfolioCategory: 'Documentaries & Visual Storytelling',
+    iconName: 'Video',
+    summary: 'Advocacy films, grassroots impact documentaries, sensitive survivor narratives, and cinematic field stories that humanize complex issues.',
+    description: 'Directing, producing, and editing human rights documentaries, advocacy films, community field stories, and visual chronicles that inspire action and foster empathy.',
+    deliverables: [
+      'Feature-Length & Short Impact Documentaries',
+      'Community Sensitization & Advocacy Film Packages',
+      'Survivor-Centered & Field Dialogue Visual Narratives',
+      'Digital Storytelling Motion Assets & Social Reel Series'
+    ],
+    whoItIsFor: 'NGOs, development programs, human rights coalitions, and creative initiatives seeking powerful audiovisual storytelling.'
   }
 ];

@@ -206,14 +206,16 @@ export default function AboutPage() {
           {clientLogos.map((client, idx) => (
             <div
               key={idx}
-              className="tech-card rounded-2xl p-6 flex flex-col gap-4 hover:border-[#C9A227]/60"
+              className="tech-card rounded-2xl p-6 flex flex-col justify-between gap-4 hover:border-[#C9A227]/60"
             >
               {/* Logo */}
-              <div className="h-14 flex items-center">
+              <div className="h-16 flex items-center">
                 <img
                   src={client.logo}
                   alt={`${client.name} logo`}
-                  className="max-h-full max-w-[160px] object-contain"
+                  className={`max-h-14 max-w-[170px] object-contain transition-all duration-300 ${
+                    client.noEffect ? "hover:scale-105" : "client-logo-img"
+                  }`}
                 />
               </div>
 

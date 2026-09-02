@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Download } from 'lucide-react';
 import { experiencesData, educationData, skillCategoriesData, toolsAndPlatforms } from '@/data/resumeData';
 
 export default function ResumePage() {
@@ -28,12 +29,22 @@ export default function ResumePage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={handlePrint}
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href="/Olivia_Ezekwe_CV.pdf"
+            download="Olivia_Ezekwe_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 rounded-lg bg-[#C9A227] hover:bg-[#e8c96a] text-[#0A1628] font-black text-xs tracking-wider shadow-[0_4px_20px_-4px_rgba(201,162,39,0.4)] flex items-center gap-2 transition-transform hover:scale-105 cursor-pointer"
           >
-            <span>Print / Save PDF</span>
+            <Download className="w-4 h-4" />
+            <span>Download PDF CV</span>
+          </a>
+          <button
+            onClick={handlePrint}
+            className="px-5 py-3 rounded-lg border border-slate-300 dark:border-white/10 hover:border-[#C9A227] text-slate-700 dark:text-white font-mono text-xs font-bold transition-all cursor-pointer"
+          >
+            <span>Print</span>
           </button>
         </div>
       </section>

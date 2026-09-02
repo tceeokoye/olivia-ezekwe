@@ -148,6 +148,51 @@ export const projectsData: Project[] = [
     featured: true,
     tags: ['Voter Education', 'Civic Action', 'Democratic Governance', 'Youth Mobilization', 'PVC Campaign']
   },
+  {
+    id: 'maternal-mental-health-ppd-campaign',
+    title: 'Postpartum Depression & Maternal Mental Health Campaign',
+    category: 'Campaigns',
+    client: 'Maternal Mental Health & Wellness Initiative',
+    year: '2024 - 2025',
+    role: 'Lead Communications Strategist & Visual Designer',
+    summary: 'A 15-part public health and emotional wellbeing campaign designed to de-stigmatize postpartum depression (PPD), guide emotional self-regulation, and connect new mothers with healing resources.',
+    challenge: 'Addressing pervasive cultural silence, guilt, and stigma around postpartum mood disorders, while equipping families with clear diagnostic signs and accessible support channels.',
+    solution: 'Designed an empathetic, visually compelling 15-part educational carousel suite integrating clinical symptom identification, self-regulation worksheets, affirmations, and actionable helpline guides.',
+    deliverables: [
+      '15-Piece Multi-Slide Mental Health & PPD Advocacy Suite',
+      'Postpartum Depression (PPD) Warning Signs & Helpline Directory',
+      'Self-Regulation & Emotional Learning Worksheets',
+      'Empowerment Quotes & Healing Affirmations Series'
+    ],
+    metrics: [
+      { label: 'Advocacy Assets', value: '15 Visuals' },
+      { label: 'Digital Reach', value: '320K+' },
+      { label: 'Support Inquiries', value: '95+' },
+      { label: 'Worksheet Saves', value: '1,400+' }
+    ],
+    coverImage: '/portfolio/campain2/1.png',
+    image: '/portfolio/campain2/1.png',
+    fileType: 'gallery',
+    images: [
+      '/portfolio/campain2/1.png',
+      '/portfolio/campain2/2.png',
+      '/portfolio/campain2/3.png',
+      '/portfolio/campain2/4.png',
+      '/portfolio/campain2/5.png',
+      '/portfolio/campain2/6.png',
+      '/portfolio/campain2/7.png',
+      '/portfolio/campain2/8.png',
+      '/portfolio/campain2/9.png',
+      '/portfolio/campain2/10.png',
+      '/portfolio/campain2/PPD.png',
+      '/portfolio/campain2/PPD HELP.png',
+      '/portfolio/campain2/Quote - Healing.png',
+      '/portfolio/campain2/Self-Regulation Emotional Learning Worksheet in Yellow White illustrative Style (1).png',
+      '/portfolio/campain2/You Matter.png'
+    ],
+    featured: true,
+    tags: ['Maternal Mental Health', 'Postpartum Depression', 'Advocacy Messaging', 'Emotional Wellbeing', 'Community Health']
+  },
 
   // =================================================================
   // CREATIVE NON-FICTIONS
@@ -496,7 +541,269 @@ export const projectsData: Project[] = [
     ],
     featured: true,
     tags: ['Human Rights Law', 'Constitutional Law', 'CEDAW', 'Gender Jurisprudence']
-  }
+  },
+
+  // =================================================================
+  // DOCUMENTARIES & VISUAL STORYTELLING
+  // =================================================================
+  {
+    id: 'sister-guardian-initiative-documentary',
+    title: 'Sister Guardian Initiative: Building Women’s Agency for Advocacy and Leadership',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'South Saharan Social Development Organisation (SSDO)',
+    year: '2024',
+    role: 'Lead Producer, Director & Story Editor',
+    duration: 'Documentary Feature',
+    summary: 'An in-depth documentary chronicling the transformative grassroots movement of female community leaders organizing against domestic violence, mediating rural disputes, and establishing community paralegal safety networks across southeastern Nigeria.',
+    challenge: 'Unpacking entrenched patriarchal customs and community resistance to female legal intervention in domestic disputes.',
+    solution: 'Followed grassroots Sister Guardians on the frontline of conflict mediation, documenting real survivor protection interventions and community dialogues.',
+    deliverables: [
+      'Feature-Length Impact Documentary',
+      'Community Sensitization Screenings Kit',
+      'Grassroots Advocacy Policy Brief'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/Sister Guardian Initiative_ Building Women’s Agency for Advocacy and Leadership.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/Sister Guardian Initiative_ Building Women’s Agency for Advocacy and Leadership.mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['Sister Guardian', 'Women Leadership', 'Gender Justice', 'Grassroots Advocacy', 'Documentary']
+  },
+  {
+    id: 'cost-of-justice-anthology-launch-video',
+    title: 'The Cost of Justice Anthology Launch: Stories, Art & Justice Reform in Nigeria',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'Access to Justice Network / SSDO',
+    year: '2023 - 2024',
+    role: 'Executive Producer & Documentary Editor',
+    duration: 'Event Documentary',
+    summary: 'Visual narrative and launch documentary capturing the premier of the "Cost of Justice" Anthology, uniting legal luminaries, human rights activists, and creative artists advocating for judicial reform.',
+    challenge: 'Conveying technical legal reform metrics into an emotionally resonant, culturally vibrant multimedia celebration.',
+    solution: 'Blended keynote address excerpts, spoken-word poetry, artistic readings, and audience interactions into a dynamic documentary record.',
+    deliverables: [
+      'Official Launch Documentary & Highlight Reel',
+      'Media Wire Dispatches & Broadcast Sizzle Reel',
+      'Stakeholder & Donor Distribution Package'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/The Cost of Justice Anthology Launch _ Stories, Art & Justice Reform in Nigeria.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/The Cost of Justice Anthology Launch _ Stories, Art & Justice Reform in Nigeria.mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['Cost of Justice', 'Legal Reform', 'Human Rights', 'Anthology Launch', 'Documentary']
+  },
+  {
+    id: 'raped-her-journey-to-healing',
+    title: 'Raped! Her Journey to Healing',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'GBV Survivor Support & Advocacy Network',
+    year: '2024',
+    role: 'Director, Producer & Sensitive Content Storyteller',
+    duration: 'Survivor Documentary',
+    summary: 'A deeply compassionate, survivor-centered documentary capturing the journey of emotional rehabilitation, trauma therapy, and community support systems helping victims of sexual violence rebuild their lives.',
+    challenge: 'Tackling sensitive personal trauma while preserving survivor dignity, confidentiality, and psychological safety on camera.',
+    solution: 'Utilized trauma-informed filmmaking protocols, thoughtful visual framing, and empowering narratives centering survivor resilience over victimization.',
+    deliverables: [
+      'Trauma-Informed Survivor Healing Documentary',
+      'Therapeutic & Psychosocial Support Resource Guide',
+      'Institutional Sensitization Screening Asset'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/Raped! Her Journey to Healing.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/Raped! Her Journey to Healing.mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['GBV Recovery', 'Survivor Story', 'Human Rights', 'Mental Health', 'Advocacy Film']
+  },
+  {
+    id: 'silenced-by-tradition-exploited-by-culture',
+    title: 'Silenced by Tradition, Exploited by Culture',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'Human Rights & Cultural Reform Coalition',
+    year: '2024',
+    role: 'Investigative Documentary Producer & Director',
+    duration: 'Investigative Short',
+    summary: 'An investigative short documentary examining customary cultural practices that disinherit women, isolate widows, and entrench gender oppression in traditional settings.',
+    challenge: 'Exposing harmful customary inheritance practices without alienating traditional custodians and community elders needed for reform.',
+    solution: 'Balanced investigative survivor interviews with dialogues featuring progressive traditional rulers committed to customary legal reform.',
+    deliverables: [
+      'Investigative Advocacy Short Film',
+      'Community Dialogues Discussion Guide',
+      'Traditional Rulers Reform Communiqué'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/Silenced by Tradition. Exploited by Culture..mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/Silenced by Tradition. Exploited by Culture..mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['Cultural Reform', 'Widow Rights', 'Customary Law', 'Investigative Documentary']
+  },
+  {
+    id: 'iwd-2025-empowering-girls-affa-amozolla',
+    title: 'IWD: Empowering Girls at Affa-Amozolla – Rights, Equality & Ending GBV',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'International Women’s Day Community Action',
+    year: '2025',
+    role: 'Field Producer & Cinematographer',
+    duration: 'Outreach Documentary',
+    summary: 'Field documentary capturing school-based outreach, rights literacy workshops, and mentorship sessions for adolescent girls in rural Affa-Amozolla community.',
+    challenge: 'Engaging adolescent students with complex legal concepts around bodily autonomy and gender rights in an accessible, memorable format.',
+    solution: 'Designed an energetic workshop format captured with vibrant mobile cinematography, student reflections, and interactive group discussions.',
+    deliverables: [
+      'School Outreach Action Documentary',
+      'Adolescent Girl Rights Handbook',
+      'IWD 2025 Impact Video Reel'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Empowering Girls at Affa-Amozolla _ Rights, Equality & Ending GBV.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Empowering Girls at Affa-Amozolla _ Rights, Equality & Ending GBV.mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['IWD', 'Girl Child Education', 'GBV Prevention', 'Rural Outreach', 'Community Film']
+  },
+  {
+    id: 'iwd-2025-raising-awareness-gbv-enugu',
+    title: 'IWD: Raising Awareness on GBV in Affa-Amozolla, Enugu',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'Enugu State Gender Justice Coalition',
+    year: '2025',
+    role: 'Lead Storyteller & Video Editor',
+    duration: 'Advocacy Film',
+    summary: 'Community mobilization and sensitization documentary recording town-hall dialogues, elder deliberations, and grassroots campaigns combating sexual and gender-based violence.',
+    challenge: 'Capturing sprawling outdoor community dialogues and multi-generational town halls with high visual and acoustic clarity.',
+    solution: 'Directed multi-camera field coverage spotlighting local women leaders addressing community leaders directly on GBV accountability.',
+    deliverables: [
+      'Community Mobilization Documentary',
+      'Town Hall Deliberations Summary Reel',
+      'Grassroots Gender Justice Toolkit'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Raising Awareness on GBV in Affa-Amozolla, Enugu.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/IWD 2025_ Raising Awareness on GBV in Affa-Amozolla, Enugu.mp4',
+    fileType: 'video',
+    featured: false,
+    tags: ['Community Sensitization', 'Enugu State', 'GBV Awareness', 'Grassroots Dialogue']
+  },
+  {
+    id: 'from-germany-to-enugu-learning-exchange',
+    title: 'From Germany to Enugu: Learning, Exchange and Social Impact',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'International Exchange & Development Fellowship',
+    year: '2024',
+    role: 'Producer & Post-Production Director',
+    duration: 'Exchange Documentary',
+    summary: 'A cross-cultural exchange documentary spotlighting international development fellows collaborating with local changemakers in Enugu to drive sustainable community initiatives.',
+    challenge: 'Synthesizing diverse cross-cultural perspectives, language nuances, and varied project interventions into a cohesive global development narrative.',
+    solution: 'Structured a thematic narrative focusing on peer-to-peer knowledge transfer, mutual learning, and long-term community empowerment.',
+    deliverables: [
+      'International Exchange Documentary Film',
+      'Bilateral Fellowship Case Study',
+      'Social Impact Showcase Reel'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1526470608268-f674ce90ebd4?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/From Germany to Enugu_ Learning, Exchange and Social Impact.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/From Germany to Enugu_ Learning, Exchange and Social Impact.mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['Cross-Cultural Exchange', 'International Development', 'Social Impact', 'Fellowship']
+  },
+  {
+    id: 'youth-demand-charter-documentary',
+    title: 'Youth Demand Charter: Civic Participation & Good Governance',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'Youth Civic Mobilization Network',
+    year: '2023 - 2024',
+    role: 'Lead Creative Director & Editor',
+    duration: 'Advocacy Short',
+    summary: 'A high-impact advocacy short film presenting the Youth Demand Charter—a citizen manifesto articulating youth priorities on employment, education, and political inclusion.',
+    challenge: 'Distilling hundreds of youth survey responses and town hall resolutions into a punchy, shareable audiovisual manifesto.',
+    solution: 'Crafted a dynamic, fast-paced video manifesto combining youth speeches, graphic motion callouts, and clear legislative demands.',
+    deliverables: [
+      'Youth Demand Charter Advocacy Short',
+      'Digital Manifesto Motion Graphics Suite',
+      'Social Media Mobilization Clip Package'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/Youth Demand Charter.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/Youth Demand Charter.mp4',
+    fileType: 'video',
+    featured: false,
+    tags: ['Youth Demand Charter', 'Civic Action', 'Youth Mobilization', 'Policy Advocacy']
+  },
+  {
+    id: 'reserved-seats-for-women-conversation-continues',
+    title: 'Reserved Seats for Women: The Conversation Continues!',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'Women Political Participation & Legislative Reform Initiative',
+    year: '2024',
+    role: 'Director & Legislative Advocacy Storyteller',
+    duration: 'Policy Dialogue',
+    summary: 'A fast-paced policy dialogue and advocacy film analyzing constitutional affirmative action bills, special seats for women in parliament, and the pathway to equitable governance.',
+    challenge: 'Demystifying complex constitutional amendment procedures and quota mechanisms for general public mobilization.',
+    solution: 'Produced an engaging audiovisual breakdown highlighting comparative African parliament quotas and citizen advocacy call-to-action.',
+    deliverables: [
+      'Legislative Advocacy Video',
+      'Affirmative Action Infographic Motion Asset',
+      'Parliamentary Reform Campaign Clip'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/Reserved Seats for Women_ The Conversation Continues.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/Reserved Seats for Women_ The Conversation Continues.mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['Affirmative Action', 'Women In Politics', 'Legislative Advocacy', 'Constitutional Reform']
+  },
+
+  {
+    id: 'sub-grantee-peer-learning',
+    title: 'Sub Grantee & Peer Learning',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'South Saharan Social Development Organisation (SSDO)',
+    year: '2024',
+    role: 'Producer & Documentary Editor',
+    duration: 'Institutional Documentary',
+    summary: 'A comprehensive institutional documentary capturing sub-grantee engagements and peer learning sessions, showcasing collaborative knowledge exchange, shared accountability frameworks, and capacity-building milestones across partner organizations.',
+    challenge: 'Translating complex multi-stakeholder grant processes and cross-organizational learning sessions into an accessible, compelling visual narrative for diverse audiences.',
+    solution: 'Structured field documentation of peer learning dialogues and sub-grantee presentations, weaving institutional milestones with human-interest perspectives from beneficiary communities.',
+    deliverables: [
+      'Full-Length Institutional Peer Learning Documentary',
+      'Sub-Grantee Highlights & Impact Reel',
+      'Institutional Knowledge Distribution Package'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/Sub Grantee & Peer Learning.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/Sub Grantee & Peer Learning.mp4',
+    fileType: 'video',
+    featured: true,
+    tags: ['Sub Grantee', 'Peer Learning', 'Institutional Documentary', 'Capacity Building', 'SSDO']
+  },
+
+  // =================================================================
+  // DOCUMENTARY PHOTOGRAPHY & FIELD PHOTO ESSAYS
+  // =================================================================
+  {
+    id: 'reserved-seats-women-continued-special',
+    title: 'Reserved Seats for Women: The Conversation Continues! (Extended Edition)',
+    category: 'Documentaries & Visual Storytelling',
+    client: 'Women Political Participation & Legislative Reform Initiative',
+    year: '2024',
+    role: 'Director & Legislative Advocacy Storyteller',
+    duration: 'Policy Dialogue — Extended Cut',
+    summary: 'Extended edition of the advocacy film on constitutional affirmative action bills and special seats for women in parliament, featuring additional testimonies, community voices, and a deeper dive into the pathway to equitable governance.',
+    challenge: 'Expanding the reach of the core advocacy message to new audiences by presenting a richer, longer-form version of the legislative dialogue.',
+    solution: 'Produced an extended cut with additional interview segments and citizen testimonies to deepen public understanding of parliamentary gender quotas and affirmative action reform.',
+    deliverables: [
+      'Extended Legislative Advocacy Video',
+      'Community Voices Supplement',
+      'Parliamentary Reform Extended Campaign Clip'
+    ],
+    coverImage: 'https://images.unsplash.com/photo-1560439513-74b037a25d84?auto=format&fit=crop&w=1200&q=80',
+    videoUrl: '/portfolio/documentry-videos&pictures/📣 Reserved Seats for Women_ The Conversation Continues!👩🏾_⚖.mp4',
+    fileUrl: '/portfolio/documentry-videos&pictures/📣 Reserved Seats for Women_ The Conversation Continues!👩🏾_⚖.mp4',
+    fileType: 'video',
+    featured: false,
+    tags: ['Affirmative Action', 'Women In Politics', 'Legislative Advocacy', 'Constitutional Reform']
+  },
 ];
 
 export const testimonialsData: Testimonial[] = [

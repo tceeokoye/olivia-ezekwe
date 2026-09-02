@@ -155,14 +155,14 @@ export const toolsAndPlatforms = [
 ];
 
 export const clientLogos = [
-  { name: "Moneywise Doctor UK", tag: "Medical Finance", logo: "/logos/MWD.jpeg" },
+  { name: "Moneywise Doctor UK", tag: "Medical Finance", logo: "/logos/MWD.png", noEffect: true },
   {
     name: "South Saharan Social Development Organisation",
     tag: "Non Profit",
-    logo: "/logos/SSDO-Logo-full.jpg",
+    logo: "/logos/SSDO-Logo-full.png",
   },
-  { name: "Sunches Villa Hotel", tag: "Luxury Hospitality", logo: "/logos/SVH.PNG" },
-  { name: "Life Mind Navigation Psychiatry, USA", tag: "Mental Health", logo: "/logos/LMN.jpg" },
-  { name: "DIGC Garriki", tag: "Faith Based", logo: "/logos/DIGC-Garriki.jpeg" },
-  { name: "Somto Eden Evolution", tag: "Academic & Research", logo: "/logos/somto-eden.jpeg" },
+  { name: "Sunches Villa Hotel", tag: "Luxury Hospitality", logo: "/logos/SVH.png" },
+  { name: "Life Mind Navigation Psychiatry, USA", tag: "Mental Health", logo: "/logos/LMNN.png" },
+  { name: "DIGC Garriki", tag: "Faith Based", logo: "/logos/DIGC-Garriki.png" },
+  { name: "Somto Eden Evolution", tag: "Academic & Research", logo: "/logos/somto-eden.png" },
 ];

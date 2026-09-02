@@ -3,7 +3,8 @@ export type PortfolioCategory =
   | 'Creative Non-Fictions'
   | 'Editorial'
   | 'Press'
-  | 'Writing Samples';
+  | 'Writing Samples'
+  | 'Documentaries & Visual Storytelling';
 
 export interface Project {
   id: string;
@@ -19,8 +20,10 @@ export interface Project {
   metrics?: { label: string; value: string }[];
   image?: string;
   coverImage?: string;
+  videoUrl?: string;
+  duration?: string;
   fileUrl?: string;
-  fileType?: 'pdf' | 'pptx' | 'gallery' | 'article';
+  fileType?: 'pdf' | 'pptx' | 'gallery' | 'article' | 'video';
   fileSize?: string;
   images?: string[];
   highlights?: string[];

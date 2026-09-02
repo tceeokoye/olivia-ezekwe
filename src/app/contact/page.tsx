@@ -6,6 +6,7 @@ import {
   ChevronDown,
   Check,
   Copy,
+  Mail,
 } from "lucide-react";
 
 const SERVICES = [
@@ -14,6 +15,7 @@ const SERVICES = [
   { value: "Editorial" },
   { value: "Press" },
   { value: "Writing Samples" },
+  { value: "Documentaries & Visual Storytelling" },
   { value: "Others" },
 ];
 
@@ -279,14 +281,19 @@ export default function ContactPage() {
               <div className="flex items-center justify-between gap-3 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-[#C9A227]/50 transition-all group">
                 <a
                   href="mailto:ezekweolivia@gmail.com"
-                  className="flex-1 min-w-0"
+                  className="flex items-center gap-3 flex-1 min-w-0"
                   title="Click to send email"
                 >
-                  <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                    Email Address (Click to send)
+                  <div className="w-9 h-9 rounded-lg bg-[#C9A227]/10 text-[#C9A227] flex items-center justify-center shrink-0 border border-[#C9A227]/20">
+                    <Mail className="w-4 h-4" />
                   </div>
-                  <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors truncate">
-                    ezekweolivia@gmail.com
+                  <div className="min-w-0">
+                    <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                      Email Address
+                    </div>
+                    <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors truncate">
+                      ezekweolivia@gmail.com
+                    </div>
                   </div>
                 </a>
                 <button
@@ -321,15 +328,33 @@ export default function ContactPage() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-between gap-3 p-4 rounded-lg bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-white/10 hover:border-emerald-500/50 transition-all group cursor-pointer"
               >
-                <div>
-                  <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                    WhatsApp &amp; Phone
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
+                    <svg
+                      className="w-5 h-5 fill-current"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15-.2.301-.776.979-.951 1.18-.175.201-.351.226-.652.076-.301-.15-1.27-.468-2.42-1.493-.895-.798-1.5-1.784-1.675-2.085-.175-.301-.019-.464.132-.614.135-.135.301-.351.451-.527.15-.176.2-.301.301-.502.1-.201.05-.377-.025-.527-.075-.15-.676-1.631-.926-2.233-.244-.586-.492-.507-.676-.516l-.576-.01c-.201 0-.527.076-.803.376-.276.301-1.053 1.029-1.053 2.509s1.078 2.91 1.228 3.111c.15.201 2.12 3.238 5.136 4.542.717.311 1.277.497 1.713.636.72.23 1.375.197 1.893.12.578-.087 1.78-.727 2.031-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.351zM12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.98.58 3.82 1.58 5.38L2 22l4.78-1.56A9.94 9.94 0 0012.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.25c-1.66 0-3.21-.49-4.52-1.33l-.32-.2-3.13 1.02 1.04-3.05-.22-.35A8.21 8.21 0 013.79 12c0-4.55 3.7-8.25 8.25-8.25 4.55 0 8.25 3.7 8.25 8.25 0 4.55-3.7 8.25-8.25 8.25z" />
+                    </svg>
                   </div>
-                  <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-emerald-500 transition-colors">
-                    +2348067103176
+                  <div className="min-w-0">
+                    <div className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                      WhatsApp &amp; Phone
+                    </div>
+                    <div className="text-sm font-bold text-[#0A1628] dark:text-white group-hover:text-emerald-500 transition-colors">
+                      +2348067103176
+                    </div>
                   </div>
                 </div>
-                <span className="shrink-0 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                <span className="shrink-0 inline-flex items-center gap-1.5 text-xs font-mono text-emerald-600 dark:text-emerald-400 font-semibold px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-all">
+                  <svg
+                    className="w-3.5 h-3.5 fill-current shrink-0"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M17.472 14.382c-.301-.15-1.78-.878-2.056-.979-.276-.1-.476-.15-.676.15-.2.301-.776.979-.951 1.18-.175.201-.351.226-.652.076-.301-.15-1.27-.468-2.42-1.493-.895-.798-1.5-1.784-1.675-2.085-.175-.301-.019-.464.132-.614.135-.135.301-.351.451-.527.15-.176.2-.301.301-.502.1-.201.05-.377-.025-.527-.075-.15-.676-1.631-.926-2.233-.244-.586-.492-.507-.676-.516l-.576-.01c-.201 0-.527.076-.803.376-.276.301-1.053 1.029-1.053 2.509s1.078 2.91 1.228 3.111c.15.201 2.12 3.238 5.136 4.542.717.311 1.277.497 1.713.636.72.23 1.375.197 1.893.12.578-.087 1.78-.727 2.031-1.43.251-.703.251-1.305.176-1.43-.075-.126-.276-.201-.577-.351zM12.04 2C6.52 2 2.04 6.48 2.04 12c0 1.98.58 3.82 1.58 5.38L2 22l4.78-1.56A9.94 9.94 0 0012.04 22c5.52 0 10-4.48 10-10s-4.48-10-10-10zm0 18.25c-1.66 0-3.21-.49-4.52-1.33l-.32-.2-3.13 1.02 1.04-3.05-.22-.35A8.21 8.21 0 013.79 12c0-4.55 3.7-8.25 8.25-8.25 4.55 0 8.25 3.7 8.25 8.25 0 4.55-3.7 8.25-8.25 8.25z" />
+                  </svg>
                   Chat on WhatsApp &rarr;
                 </span>
               </a>

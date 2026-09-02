@@ -81,8 +81,10 @@ export default function Navbar() {
 
             {/* Direct CV Download */}
             <a
-              href="/api/download-cv"
-              download="Olivia_Ezekwe_CV.txt"
+              href="/Olivia_Ezekwe_CV.pdf"
+              download="Olivia_Ezekwe_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0A1628] dark:hover:text-white border border-slate-300 dark:border-white/15 hover:bg-slate-50 dark:hover:bg-white/5 transition-all"
             >
               <span>Download CV</span>
@@ -146,8 +148,10 @@ export default function Navbar() {
                 </Link>
 
                 <a
-                  href="/api/download-cv"
-                  download="Olivia_Ezekwe_CV.txt"
+                  href="/Olivia_Ezekwe_CV.pdf"
+                  download="Olivia_Ezekwe_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
                   className="block px-4 py-2.5 rounded-lg text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-[#0A1628] dark:hover:text-white transition-colors"
                 >

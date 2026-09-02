@@ -1,15 +1,7 @@
 import { PhotoItem, VideoItem } from '@/types';
 
 export const photographyData: PhotoItem[] = [
-  {
-    id: 'photo-1',
-    title: 'Sister Guardian Community Assembly',
-    category: 'Community & Development',
-    location: 'Enugu State, Nigeria',
-    year: '2023',
-    image: 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Women leaders gather under the shade of ancient village trees for the weekly conflict resolution council.'
-  },
+ 
   {
     id: 'photo-2',
     title: 'National Governance & Accountability Summit',
@@ -19,42 +11,10 @@ export const photographyData: PhotoItem[] = [
     image: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80',
     caption: 'Keynote panel discussion bringing together senior policymakers, civil society heads, and international donor representatives.'
   },
-  {
-    id: 'photo-3',
-    title: 'Grassroots Paralegal Advocacy Workshop',
-    category: 'Training & Workshops',
-    location: 'Nkanu West, Nigeria',
-    year: '2023',
-    image: 'https://images.unsplash.com/photo-1577962917302-cd874c4e31d2?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Interactive legal rights training session empowering 50+ local women advocates with dispute resolution tools.'
-  },
-  {
-    id: 'photo-4',
-    title: 'Primary Healthcare Frontline Voices',
-    category: 'Advocacy & Campaigns',
-    location: 'Udi LGA, Nigeria',
-    year: '2023',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Frontline community healthcare worker in the maternal ward documenting patient turnaround times.'
-  },
-  {
-    id: 'photo-5',
-    title: 'Community Matriarch & Paralegal Lead',
-    category: 'Portraits',
-    location: 'Nsukka, Nigeria',
-    year: '2023',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Portrait of Mama Blessing, whose courage led to the peaceful resolution of over 40 domestic disputes in her district.'
-  },
-  {
-    id: 'photo-6',
-    title: 'Rural Water & Sanitation Infrastructure Field Audit',
-    category: 'Documentary Photography',
-    location: 'Isi-Uzo, Nigeria',
-    year: '2022',
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=1200&q=80',
-    caption: 'Documentary audit of functional solar boreholes installed under municipal grant schemes.'
-  },
+
+
+
+ 
   {
     id: 'photo-7',
     title: 'Youth Digital Skills Hackathon',

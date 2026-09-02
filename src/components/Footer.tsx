@@ -32,8 +32,8 @@ export default function Footer() {
                 LET’S TALK ABOUT YOUR NEXT PROJECT.
               </h3>
               <p className="text-slate-200 text-base sm:text-lg mt-3 leading-relaxed">
-                &ldquo;Have an idea, story, campaign or communication challenge
-                in mind? Let’s talk. &rdquo;
+                Have an idea, story, campaign or communication challenge
+                in mind? Let’s talk. 
               </p>
             </div>
 
@@ -99,8 +99,10 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="/api/download-cv"
-                  download="Olivia_Ezekwe_CV.txt"
+                  href="/Olivia_Ezekwe_CV.pdf"
+                  download="Olivia_Ezekwe_CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-300 hover:text-[#C9A227] transition-colors font-medium inline-flex items-center gap-1.5"
                 >
                   <span>• Download CV / Resume</span>

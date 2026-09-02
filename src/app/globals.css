@@ -110,6 +110,26 @@ html.dark .tech-card:hover {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 30px -5px rgba(201, 162, 39, 0.2);
 }
 
+/* ─── Client Logo with Shape Shadow ─────────────────────────────────────── */
+.client-logo-img {
+  filter: drop-shadow(0 0 1px rgba(10, 22, 40, 0.75)) drop-shadow(0 2px 5px rgba(0, 0, 0, 0.18));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.client-logo-img:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 1.5px rgba(10, 22, 40, 0.9)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.28));
+}
+
+html.dark .client-logo-img {
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.75)) drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+}
+
+html.dark .client-logo-img:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.95)) drop-shadow(0 4px 14px rgba(201, 162, 39, 0.3));
+}
+
 /* ─── Pill ───────────────────────────────────────────────────────────────── */
 .tech-pill {
   background: #f8fafc;

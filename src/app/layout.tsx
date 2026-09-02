@@ -5,9 +5,9 @@ import Footer from '@/components/Footer';
 import { ThemeProvider } from '@/context/ThemeContext';
 
 export const metadata: Metadata = {
-  title: 'Olivia Ezekwe | Communications Strategist, Brand Lead & Storyteller',
+  title: 'Olivia Ezekwe | Communications Strategist | Writer | Visual Storyteller',
   description:
-    'Communications Strategist, Digital Communications Specialist, Brand & Content Manager with legal background (LL.M, B.L, LL.B). Helping non-profits, development organisations, and purpose-driven brands communicate their impact.',
+    'Communications Strategist, Digital Communications Specialist, Brand & Content Manager with legal background  Helping non-profits, development organisations, and purpose-driven brands communicate their impact.',
   keywords: [
     'Olivia Ezekwe',
     'Communications Strategist',

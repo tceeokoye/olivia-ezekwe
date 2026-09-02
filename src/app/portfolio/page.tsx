@@ -1,17 +1,10 @@
-'use client';
+"use client";
 
-import React, {
-  useState,
-  useEffect,
-  Suspense,
-} from 'react';
+import React, { useState, useEffect, Suspense } from "react";
 
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
 
-import {
-  motion,
-  AnimatePresence,
-} from 'framer-motion';
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   ChevronDown,
@@ -20,10 +13,15 @@ import {
   ChevronLeft,
   ChevronRight,
   ArrowRight,
-} from 'lucide-react';
+  Play,
+  Camera,
+  Film,
+  Eye,
+} from "lucide-react";
 
-import { projectsData } from '@/data/portfolioData';
-import { Project } from '@/types';
+import { projectsData } from "@/data/portfolioData";
+import { Project } from "@/types";
+import VideoModal from "@/components/VideoModal";
 
 // ─────────────────────────────────────────────
 // Section Config
@@ -31,44 +29,52 @@ import { Project } from '@/types';
 
 const SECTIONS = [
   {
-    id: 'Campaigns',
-    label: '01',
-    title: 'Campaigns & Advocacy',
-    subtitle: 'Civic & Health Mobilization',
+    id: "Campaigns",
+    label: "01",
+    title: "Campaigns",
+    subtitle: "Civic & Health Mobilization",
     description:
-      'High-impact multimedia advocacy and civic engagement campaigns designed to mobilize communities, shift public narratives, and drive measurable action across development, healthcare, and democratic governance sectors.',
+      "Advocacy and public-facing campaigns designed to raise awareness, engage audiences and encourage action.",
   },
   {
-    id: 'Creative Non-Fictions',
-    label: '02',
-    title: 'Creative Non-Fictions',
-    subtitle: 'Essays & Literary Memoirs',
+    id: "Creative Non-Fictions",
+    label: "02",
+    title: "Creative NonFictions",
+    subtitle: "Essays & Literary Memoirs",
     description:
-      'Introspective narratives, personal memoirs, and literary essays crafted at the intersection of lived experience, keen social observation, and evocative prose.',
+      "Personal essays, human-centred narratives and observational writing drawn from real experiences and everyday life.",
   },
   {
-    id: 'Editorial',
-    label: '03',
-    title: 'Editorial Publications',
-    subtitle: 'Reports & Compendiums',
+    id: "Editorial",
+    label: "03",
+    title: "Editorial",
+    subtitle: "Reports & Compendiums",
     description:
-      'Comprehensive institutional impact documentation, annual progress scorecards, and editorial compendiums that synthesise complex programmatic achievements into executive-ready knowledge products.',
+      " Reports, publications, compendiums and organisational documents that turn information and achievements into clear, readable stories.",
   },
   {
-    id: 'Press',
-    label: '04',
-    title: 'Press & Media',
-    subtitle: 'Public Relations & Dispatches',
+    id: "Press",
+    label: "04",
+    title: "Press",
+    subtitle: "Public Relations & Dispatches",
     description:
-      'Official press statements, diplomatic delegation briefs, media kits, and public-interest dispatches crafted for high newsroom uptake and stakeholder transparency.',
+      "Press releases, statements, media briefs and other materials developed for public and media engagement.",
   },
   {
-    id: 'Writing Samples',
-    label: '05',
-    title: 'Writing Samples',
-    subtitle: 'Legal Research & Policy',
+    id: "Writing Samples",
+    label: "05",
+    title: "Writing Samples",
+    subtitle: "Legal Research & Policy",
     description:
-      'Rigorous legal research treatises, comparative African labour law analyses, constitutional human rights frameworks, and specialised capacity-building curricula.',
+      "Selected long-form and professional writing, including research-based pieces, policy content, workshop materials and other commissioned work.",
+  },
+  {
+    id: "Documentaries & Visual Storytelling",
+    label: "06",
+    title: "Documentaries & Visual Storytelling",
+    subtitle: "Advocacy Films & Field Chronicles",
+    description:
+      "Documentaries, short films, community field stories and visual advocacy capturing lived human experiences.",
   },
 ];
 
@@ -135,31 +141,29 @@ function Lightbox({
   const prev = (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    setIdx((i) =>
-      i === 0 ? images.length - 1 : i - 1
-    );
+    setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
   };
 
   const next = (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    setIdx((i) =>
-      i === images.length - 1 ? 0 : i + 1
-    );
+    setIdx((i) => (i === images.length - 1 ? 0 : i + 1));
   };
 
   useEffect(() => {
     // Lock body scroll when lightbox is open
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     const handler = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
-      if (e.key === 'ArrowLeft') setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
-      if (e.key === 'ArrowRight') setIdx((i) => (i === images.length - 1 ? 0 : i + 1));
+      if (e.key === "Escape") onClose();
+      if (e.key === "ArrowLeft")
+        setIdx((i) => (i === 0 ? images.length - 1 : i - 1));
+      if (e.key === "ArrowRight")
+        setIdx((i) => (i === images.length - 1 ? 0 : i + 1));
     };
-    document.addEventListener('keydown', handler);
+    document.addEventListener("keydown", handler);
     return () => {
-      document.body.style.overflow = '';
-      document.removeEventListener('keydown', handler);
+      document.body.style.overflow = "";
+      document.removeEventListener("keydown", handler);
     };
   }, [images.length, onClose]);
 
@@ -173,8 +177,12 @@ function Lightbox({
       {/* Header bar */}
       <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-white/10 shrink-0">
         <div>
-          <p className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase">{title}</p>
-          <p className="text-white/50 text-xs font-mono mt-0.5">{idx + 1} / {images.length}</p>
+          <p className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase">
+            {title}:
+          </p>
+          <p className="text-white/50 text-xs font-mono mt-0.5">
+            {idx + 1} / {images.length}
+          </p>
         </div>
 
         {/* Close button — prominent on mobile */}
@@ -240,7 +248,9 @@ function Lightbox({
               key={i}
               onClick={() => setIdx(i)}
               className={`shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-lg overflow-hidden ring-2 transition-all cursor-pointer ${
-                i === idx ? 'ring-[#C9A227]' : 'ring-transparent opacity-40 hover:opacity-80'
+                i === idx
+                  ? "ring-[#C9A227]"
+                  : "ring-transparent opacity-40 hover:opacity-80"
               }`}
             >
               <img src={src} alt="" className="w-full h-full object-cover" />
@@ -263,11 +273,7 @@ function CampaignCard({
 }: {
   campaign: Project;
   cIdx: number;
-  onOpen: (
-    images: string[],
-    idx: number,
-    title: string
-  ) => void;
+  onOpen: (images: string[], idx: number, title: string) => void;
 }) {
   const [expanded, setExpanded] = useState(false);
 
@@ -275,14 +281,9 @@ function CampaignCard({
 
   const LIMIT = 8;
 
-  const visible = expanded
-    ? imgs
-    : imgs.slice(0, LIMIT);
+  const visible = expanded ? imgs : imgs.slice(0, LIMIT);
 
-  const remaining = Math.max(
-    imgs.length - LIMIT,
-    0
-  );
+  const remaining = Math.max(imgs.length - LIMIT, 0);
 
   return (
     <motion.div
@@ -298,16 +299,10 @@ function CampaignCard({
       {/* Card Header */}
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 pb-5 border-b border-slate-100 dark:border-white/10">
         <div className="space-y-2">
-          <div className="flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2 ">
             <span className="text-xs font-mono text-[#C9A227] tracking-wider uppercase font-bold px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20">
               Campaign 0{cIdx + 1}
             </span>
-
-            {campaign.client && (
-              <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-                {campaign.client}
-              </span>
-            )}
           </div>
 
           <h3 className="text-xl sm:text-2xl font-bold text-[#0A1628] dark:text-white leading-snug">
@@ -320,10 +315,6 @@ function CampaignCard({
             </p>
           )}
         </div>
-
-        <span className="self-start shrink-0 text-xs font-mono text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 px-3 py-1 rounded-md">
-          {imgs.length} visuals
-        </span>
       </div>
 
       {/* Images */}
@@ -348,21 +339,13 @@ function CampaignCard({
               whileTap={{
                 scale: 0.97,
               }}
-              onClick={() =>
-                onOpen(
-                  imgs,
-                  i,
-                  campaign.title
-                )
-              }
+              onClick={() => onOpen(imgs, i, campaign.title)}
               className="group relative aspect-square rounded-xl overflow-hidden bg-slate-100 dark:bg-[#0A1628] cursor-pointer shadow-md hover:shadow-xl transition-shadow border border-slate-200/60 dark:border-white/5"
             >
               <img
                 src={src}
                 alt={`${campaign.title} visual ${i + 1}`}
-                loading={
-                  i < 4 ? 'eager' : 'lazy'
-                }
+                loading={i < 4 ? "eager" : "lazy"}
                 decoding="async"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               />
@@ -382,9 +365,7 @@ function CampaignCard({
       {remaining > 0 && (
         <div className="flex justify-start pt-2">
           <button
-            onClick={() =>
-              setExpanded(!expanded)
-            }
+            onClick={() => setExpanded(!expanded)}
             className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors cursor-pointer"
           >
             {expanded ? (
@@ -414,11 +395,7 @@ function CampaignGallery({
   onOpen,
 }: {
   items: Project[];
-  onOpen: (
-    images: string[],
-    idx: number,
-    title: string
-  ) => void;
+  onOpen: (images: string[], idx: number, title: string) => void;
 }) {
   return (
     <div className="space-y-10">
@@ -438,18 +415,10 @@ function CampaignGallery({
 // Document Preview Card
 // ─────────────────────────────────────────────
 
-function DocumentCard({
-  doc,
-  index,
-}: {
-  doc: Project;
-  index: number;
-}) {
-  const isPptx = doc.fileType === 'pptx';
+function DocumentCard({ doc, index }: { doc: Project; index: number }) {
+  const isPptx = doc.fileType === "pptx";
 
-  const rawName =
-    doc.fileUrl?.split('/').pop() ??
-    `${doc.title}.pdf`;
+  const rawName = doc.fileUrl?.split("/").pop() ?? `${doc.title}.pdf`;
 
   let fileName = rawName;
 
@@ -481,19 +450,7 @@ function DocumentCard({
     >
       {/* Context */}
       <div className="mb-6 space-y-3">
-        <div className="flex flex-wrap items-center gap-2">
-          {doc.year && (
-            <span className="text-xs font-mono text-[#C9A227] font-bold tracking-wider px-2 py-0.5 rounded bg-[#C9A227]/10 border border-[#C9A227]/20">
-              {doc.year}
-            </span>
-          )}
-
-          {doc.client && (
-            <span className="text-xs font-mono text-slate-500 dark:text-slate-400">
-              {doc.client}
-            </span>
-          )}
-        </div>
+     
 
         <h3 className="text-lg sm:text-xl font-bold text-[#0A1628] dark:text-white leading-snug group-hover:text-[#C9A227] transition-colors">
           {doc.title}
@@ -510,11 +467,7 @@ function DocumentCard({
       <div className="rounded-xl overflow-hidden bg-[#1f2c34] shadow-md border border-slate-300/40 dark:border-white/5 w-full max-w-sm mt-auto">
         {/* Preview */}
         <div className="bg-white p-5 flex flex-col items-center justify-center min-h-[110px] text-center gap-2 select-none border-b border-slate-200/60">
-          {doc.client && (
-            <div className="bg-[#0A1628] text-white text-[10px] font-bold px-2.5 py-1 rounded tracking-wide truncate max-w-full">
-              {doc.client.toUpperCase()}
-            </div>
-          )}
+          
 
           <p className="text-xs font-semibold text-slate-700 leading-tight line-clamp-2 px-2">
             {doc.title}
@@ -533,7 +486,7 @@ function DocumentCard({
             <div className="absolute top-0 right-0 w-3 h-3 bg-[#1f2c34] rounded-bl-sm" />
 
             <span className="text-[8px] font-black text-white tracking-tighter leading-none">
-              {isPptx ? 'PPT' : 'PDF'}
+              {isPptx ? "PPT" : "PDF"}
             </span>
           </div>
 
@@ -543,12 +496,8 @@ function DocumentCard({
             </p>
 
             <p className="text-[11px] text-white/50 font-mono mt-0.5">
-              {doc.fileSize
-                ? `${doc.fileSize} · `
-                : ''}
-              {isPptx
-                ? 'Presentation'
-                : 'PDF document'}
+              {doc.fileSize ? `${doc.fileSize} · ` : ""}
+              {isPptx ? "Presentation" : "PDF document"}
             </p>
           </div>
         </div>
@@ -593,35 +542,21 @@ function DocumentCard({
 // Document Grid
 // ─────────────────────────────────────────────
 
-function DocumentGrid({
-  items,
-}: {
-  items: Project[];
-}) {
-  const [expanded, setExpanded] =
-    useState(false);
+function DocumentGrid({ items }: { items: Project[] }) {
+  const [expanded, setExpanded] = useState(false);
 
   const LIMIT = 4;
 
-  const visible = expanded
-    ? items
-    : items.slice(0, LIMIT);
+  const visible = expanded ? items : items.slice(0, LIMIT);
 
-  const remaining = Math.max(
-    items.length - LIMIT,
-    0
-  );
+  const remaining = Math.max(items.length - LIMIT, 0);
 
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
         <AnimatePresence initial={false}>
           {visible.map((doc, idx) => (
-            <DocumentCard
-              key={doc.id}
-              doc={doc}
-              index={idx}
-            />
+            <DocumentCard key={doc.id} doc={doc} index={idx} />
           ))}
         </AnimatePresence>
       </div>
@@ -645,9 +580,7 @@ function DocumentGrid({
           className="pt-3"
         >
           <button
-            onClick={() =>
-              setExpanded(!expanded)
-            }
+            onClick={() => setExpanded(!expanded)}
             className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors cursor-pointer"
           >
             {expanded ? (
@@ -669,35 +602,264 @@ function DocumentGrid({
 }
 
 // ─────────────────────────────────────────────
+// Documentary / Video Card & Grid
+// ─────────────────────────────────────────────
+
+function DocumentaryCard({
+  item,
+  index,
+  onPlay,
+  onOpenImage,
+}: {
+  item: Project;
+  index: number;
+  onPlay: (video: Project) => void;
+  onOpenImage: (images: string[], idx: number, title: string) => void;
+}) {
+  const isVideo = item.fileType === "video" || !!item.videoUrl;
+  const imgs = item.images || (item.coverImage ? [item.coverImage] : item.image ? [item.image] : []);
+
+  const handleClick = () => {
+    if (isVideo) {
+      onPlay(item);
+    } else {
+      onOpenImage(imgs, 0, item.title);
+    }
+  };
+
+  return (
+    <motion.div
+      variants={cardVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{
+        once: true,
+        amount: 0.08,
+      }}
+      transition={{
+        delay: (index % 3) * 0.08,
+      }}
+      whileHover={{
+        y: -6,
+        transition: {
+          duration: 0.2,
+        },
+      }}
+      className="tech-card rounded-2xl p-6 bg-white dark:bg-[#0c1a2e] border border-slate-200/80 dark:border-white/10 shadow-lg dark:shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] flex flex-col justify-between hover:shadow-2xl transition-all duration-300 group"
+    >
+      <div className="space-y-4">
+        {/* Thumbnail Frame with Play / Zoom Overlay */}
+        <div
+          onClick={handleClick}
+          className="group relative aspect-video w-full rounded-xl overflow-hidden bg-[#0A1628] cursor-pointer shadow-md group-hover:shadow-xl transition-shadow border border-slate-200/60 dark:border-white/5"
+        >
+          {isVideo && item.videoUrl ? (
+            <video
+              src={`${item.videoUrl}#t=0.5`}
+              preload="metadata"
+              playsInline
+              muted
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          ) : (
+            <img
+              src={item.coverImage || item.image || (item.images && item.images[0])}
+              alt={item.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          )}
+
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/80 via-[#0A1628]/20 to-transparent transition-opacity group-hover:opacity-60" />
+
+          {/* Action Badge */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <motion.div
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-transform ${
+                isVideo
+                  ? "bg-[#C9A227] text-[#0A1628]"
+                  : "bg-[#0A1628]/85 text-[#C9A227] border border-[#C9A227]/40 backdrop-blur-sm"
+              }`}
+            >
+              {isVideo ? (
+                <Play className="w-5 h-5 sm:w-6 sm:h-6 fill-[#0A1628] ml-0.5" />
+              ) : (
+                <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-[#C9A227]" />
+              )}
+            </motion.div>
+          </div>
+
+          {/* Type Tag */}
+          <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-sm text-white font-mono text-[10px] flex items-center gap-1 border border-white/10">
+            {isVideo ? (
+              <>
+                <Film className="w-3 h-3 text-[#C9A227]" />
+                <span>Film</span>
+              </>
+            ) : (
+              <>
+                <Camera className="w-3 h-3 text-[#C9A227]" />
+                <span>Photo Story</span>
+              </>
+            )}
+          </div>
+
+          {/* Duration or Category Tag */}
+          {item.duration && (
+            <div className="absolute bottom-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-sm text-white font-mono text-[10px]">
+              {item.duration}
+            </div>
+          )}
+          {item.year && (
+            <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-[#C9A227] text-[#0A1628] font-mono text-[10px] font-bold">
+              {item.year}
+            </div>
+          )}
+        </div>
+
+        {/* Content Details */}
+        <div className="space-y-2">
+         
+
+          <h3
+            onClick={handleClick}
+            className="text-lg sm:text-xl font-bold text-[#0A1628] dark:text-white leading-snug group-hover:text-[#C9A227] transition-colors cursor-pointer"
+          >
+            {item.title}
+          </h3>
+
+          {item.summary && (
+            <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed line-clamp-3 font-normal">
+              {item.summary}
+            </p>
+          )}
+        </div>
+      </div>
+
+      {/* Action Footer */}
+      <div className="pt-5 mt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
+       
+
+        <button
+          onClick={handleClick}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#C9A227]/10 hover:bg-[#C9A227] text-[#C9A227] hover:text-[#0A1628] border border-[#C9A227]/30 text-xs font-bold transition-all cursor-pointer"
+        >
+          {isVideo ? (
+            <>
+              <Play className="w-3.5 h-3.5 fill-current" />
+              Watch
+            </>
+          ) : (
+            <>
+              <Eye className="w-3.5 h-3.5" />
+              View Photo
+            </>
+          )}
+        </button>
+      </div>
+    </motion.div>
+  );
+}
+
+function DocumentaryGrid({
+  items,
+  onPlay,
+  onOpenImage,
+}: {
+  items: Project[];
+  onPlay: (video: Project) => void;
+  onOpenImage: (images: string[], idx: number, title: string) => void;
+}) {
+  const [filter, setFilter] = useState<"All" | "Films" | "Photos">("All");
+  const [expanded, setExpanded] = useState(false);
+
+  const filteredItems = items.filter((item) => {
+    const isVideo = item.fileType === "video" || !!item.videoUrl;
+    if (filter === "Films") return isVideo;
+    if (filter === "Photos") return !isVideo;
+    return true;
+  });
+
+  const LIMIT = 6;
+  const visible = expanded ? filteredItems : filteredItems.slice(0, LIMIT);
+  const remaining = Math.max(filteredItems.length - LIMIT, 0);
+
+  return (
+    <div className="space-y-6">
+      {/* Sub-filter tabs */}
+    
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <AnimatePresence initial={false}>
+          {visible.map((item, idx) => (
+            <DocumentaryCard
+              key={item.id}
+              item={item}
+              index={idx}
+              onPlay={onPlay}
+              onOpenImage={onOpenImage}
+            />
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {remaining > 0 && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          className="pt-3"
+        >
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="flex items-center gap-2 text-sm font-semibold text-[#C9A227] hover:text-[#e8c96a] transition-colors cursor-pointer"
+          >
+            {expanded ? (
+              <>
+                <ChevronUp className="w-4 h-4" />
+                Show fewer items
+              </>
+            ) : (
+              <>
+                <ChevronDown className="w-4 h-4" />
+                Show {remaining} more items
+              </>
+            )}
+          </button>
+        </motion.div>
+      )}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────
 // Main Portfolio Content
 // ─────────────────────────────────────────────
 
 function PortfolioContent() {
   const searchParams = useSearchParams();
 
-  const categoryParam =
-    searchParams.get('category');
+  const categoryParam = searchParams.get("category");
 
-  const [lightbox, setLightbox] =
-    useState<{
-      images: string[];
-      index: number;
-      title: string;
-    } | null>(null);
+  const [lightbox, setLightbox] = useState<{
+    images: string[];
+    index: number;
+    title: string;
+  } | null>(null);
 
-  const [open, setOpen] =
-    useState<Record<string, boolean>>(() => {
-      const init: Record<string, boolean> =
-        {};
+  const [activeVideo, setActiveVideo] = useState<Project | null>(null);
 
-      SECTIONS.forEach((s) => {
-        init[s.id] = categoryParam
-          ? s.id === categoryParam
-          : true;
-      });
+  const [open, setOpen] = useState<Record<string, boolean>>(() => {
+    const init: Record<string, boolean> = {};
 
-      return init;
+    SECTIONS.forEach((s) => {
+      init[s.id] = categoryParam ? s.id === categoryParam : true;
     });
+
+    return init;
+  });
 
   const toggle = (id: string) => {
     setOpen((prev) => ({
@@ -710,14 +872,10 @@ function PortfolioContent() {
     if (!categoryParam) return;
 
     const timer = setTimeout(() => {
-      document
-        .getElementById(
-          `section-${categoryParam}`
-        )
-        ?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        });
+      document.getElementById(`section-${categoryParam}`)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }, 150);
 
     return () => clearTimeout(timer);
@@ -751,9 +909,7 @@ function PortfolioContent() {
               Olivia Ezekwe
             </span>
 
-            <span className="text-slate-300 dark:text-white/20">
-              /
-            </span>
+            <span className="text-slate-300 dark:text-white/20">/</span>
 
             <span className="text-[11px] font-mono text-[#C9A227] tracking-widest uppercase font-semibold">
               Portfolio
@@ -780,7 +936,6 @@ function PortfolioContent() {
             >
               Selected
               <br />
-
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#e8c96a] via-[#C9A227] to-[#a07a10]">
                 Works.
               </span>
@@ -802,13 +957,9 @@ function PortfolioContent() {
               }}
               className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed font-normal max-w-2xl"
             >
-              A curated archive of campaigns,
-              creative writing, editorial
-              publications, press statements,
-              and legal research spanning
-              civic engagement, development
-              communications, and literary
-              non-fiction.
+              A collection of campaigns, stories, publications, press work and
+              visual projects spanning advocacy, development, creative writing
+              and documentary storytelling.
             </motion.p>
           </div>
 
@@ -857,14 +1008,10 @@ function PortfolioContent() {
                   }));
 
                   setTimeout(() => {
-                    document
-                      .getElementById(
-                        `section-${s.id}`
-                      )
-                      ?.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start',
-                      });
+                    document.getElementById(`section-${s.id}`)?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
                   }, 100);
                 }}
                 className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:text-[#0A1628] dark:hover:text-white bg-slate-100 dark:bg-white/5 hover:bg-slate-200 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 transition-all cursor-pointer shadow-sm"
@@ -879,7 +1026,7 @@ function PortfolioContent() {
           </motion.div>
 
           {/* Stats */}
-          <motion.div
+          {/* <motion.div
             initial={{
               opacity: 0,
               y: 20,
@@ -897,16 +1044,16 @@ function PortfolioContent() {
           >
             {[
               {
-                number: '55+',
-                label: 'Campaign Visuals',
+                number: "55+",
+                label: "Campaign Visuals",
               },
               {
-                number: '12+',
-                label: 'Publications',
+                number: "12+",
+                label: "Publications",
               },
               {
-                number: '5',
-                label: 'Disciplines',
+                number: "5",
+                label: "Disciplines",
               },
             ].map((stat, idx) => (
               <motion.div
@@ -934,7 +1081,7 @@ function PortfolioContent() {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 
@@ -944,20 +1091,16 @@ function PortfolioContent() {
 
       <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-16 py-12 space-y-0 divide-y divide-slate-200 dark:divide-white/10">
         {SECTIONS.map((section) => {
-          const items = projectsData.filter(
-            (p) =>
-              p.category === section.id
-          );
+          const items = projectsData.filter((p) => p.category === section.id);
 
           if (items.length === 0) {
             return null;
           }
 
-          const isCampaign =
-            section.id === 'Campaigns';
+          const isCampaign = section.id === "Campaigns";
+          const isDocumentary = section.id === "Documentaries & Visual Storytelling";
 
-          const isOpen =
-            open[section.id];
+          const isOpen = open[section.id];
 
           return (
             <motion.div
@@ -983,9 +1126,7 @@ function PortfolioContent() {
             >
               {/* Section Header */}
               <button
-                onClick={() =>
-                  toggle(section.id)
-                }
+                onClick={() => toggle(section.id)}
                 className="w-full flex items-start sm:items-center justify-between gap-4 py-8 text-left group cursor-pointer"
               >
                 <div className="flex items-start sm:items-center gap-4 sm:gap-6 min-w-0">
@@ -998,10 +1139,6 @@ function PortfolioContent() {
                       <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-[#0A1628] dark:text-white group-hover:text-[#C9A227] transition-colors leading-tight">
                         {section.title}
                       </h2>
-
-                      <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-normal hidden sm:inline">
-                        {section.subtitle}
-                      </span>
                     </div>
 
                     <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed max-w-3xl line-clamp-2">
@@ -1011,16 +1148,6 @@ function PortfolioContent() {
                 </div>
 
                 <div className="shrink-0 flex items-center gap-3 self-start sm:self-auto mt-1 sm:mt-0">
-                  <span className="hidden md:block text-xs font-mono text-slate-500 dark:text-slate-400">
-                    {isCampaign
-                      ? `${items.length} campaigns`
-                      : `${items.length} ${
-                          items.length === 1
-                            ? 'work'
-                            : 'works'
-                        }`}
-                  </span>
-
                   <div className="w-8 h-8 rounded-lg border border-slate-200 dark:border-white/15 group-hover:border-[#C9A227] flex items-center justify-center text-slate-600 dark:text-white/60 group-hover:text-[#C9A227] transition-all">
                     {isOpen ? (
                       <ChevronUp className="w-4 h-4" />
@@ -1032,9 +1159,7 @@ function PortfolioContent() {
               </button>
 
               {/* Expandable Content */}
-              <AnimatePresence
-                initial={false}
-              >
+              <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div
                     initial={{
@@ -1042,7 +1167,7 @@ function PortfolioContent() {
                       opacity: 0,
                     }}
                     animate={{
-                      height: 'auto',
+                      height: "auto",
                       opacity: 1,
                     }}
                     exit={{
@@ -1059,11 +1184,19 @@ function PortfolioContent() {
                       {isCampaign ? (
                         <CampaignGallery
                           items={items}
-                          onOpen={(
-                            images,
-                            idx,
-                            title
-                          ) =>
+                          onOpen={(images, idx, title) =>
+                            setLightbox({
+                              images,
+                              index: idx,
+                              title,
+                            })
+                          }
+                        />
+                      ) : isDocumentary ? (
+                        <DocumentaryGrid
+                          items={items}
+                          onPlay={(v) => setActiveVideo(v)}
+                          onOpenImage={(images, idx, title) =>
                             setLightbox({
                               images,
                               index: idx,
@@ -1072,9 +1205,7 @@ function PortfolioContent() {
                           }
                         />
                       ) : (
-                        <DocumentGrid
-                          items={items}
-                        />
+                        <DocumentGrid items={items} />
                       )}
                     </div>
                   </motion.div>
@@ -1130,14 +1261,13 @@ function PortfolioContent() {
             className="flex items-center gap-2 px-7 py-3.5 rounded-lg bg-[#C9A227] text-[#0A1628] text-sm font-bold hover:bg-[#e8c96a] transition-colors shadow-lg hover:shadow-[0_8px_24px_-4px_rgba(201,162,39,0.5)] shrink-0 cursor-pointer"
           >
             Get in touch
-
             <ArrowRight className="w-4 h-4" />
           </motion.a>
         </div>
       </motion.section>
 
       {/* ═══════════════════════════════════════
-          LIGHTBOX
+          LIGHTBOX & VIDEO MODAL
       ═══════════════════════════════════════ */}
 
       <AnimatePresence>
@@ -1146,12 +1276,15 @@ function PortfolioContent() {
             images={lightbox.images}
             startIndex={lightbox.index}
             title={lightbox.title}
-            onClose={() =>
-              setLightbox(null)
-            }
+            onClose={() => setLightbox(null)}
           />
         )}
       </AnimatePresence>
+
+      <VideoModal
+        video={activeVideo}
+        onClose={() => setActiveVideo(null)}
+      />
     </div>
   );
 }
