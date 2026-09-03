@@ -547,6 +547,24 @@ export const projectsData: Project[] = [
     featured: true,
     tags: ['Human Rights Law', 'Constitutional Law', 'CEDAW', 'Gender Jurisprudence']
   },
+  {
+    id: 'challenges-of-mining-activities-in-nigeria',
+    title: 'Challenges of Mining Activities in Nigeria',
+    category: 'Writing Samples',
+    year: '2023',
+    role: 'Researcher & Author',
+    summary: 'A research-based paper examining the environmental, regulatory, economic, and social challenges associated with mining activities in Nigeria.',
+    fileUrl: '/portfolio/WRITTEN WORKS/Challenges of Mining Activities in Nigeria — Olivia Uzoma Ezekwe (15).pdf',
+    fileType: 'pdf',
+    fileSize: '188 KB',
+    highlights: [
+      'Analysis of environmental and community impacts of mining activities',
+      'Review of regulatory and institutional challenges in Nigeria’s mining sector',
+      'Recommendations for more responsible and sustainable mining practices'
+    ],
+    featured: false,
+    tags: ['Mining Law', 'Environmental Policy', 'Nigeria', 'Research Writing']
+  },
 
   // =================================================================
   // DOCUMENTARIES & VISUAL STORYTELLING
