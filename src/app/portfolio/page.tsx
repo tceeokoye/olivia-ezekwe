@@ -690,20 +690,7 @@ function DocumentaryCard({
             </motion.div>
           </div>
 
-          {/* Type Tag */}
-          <div className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-sm text-white font-mono text-[10px] flex items-center gap-1 border border-white/10">
-            {isVideo ? (
-              <>
-                <Film className="w-3 h-3 text-[#C9A227]" />
-                <span>Film</span>
-              </>
-            ) : (
-              <>
-                <Camera className="w-3 h-3 text-[#C9A227]" />
-                <span>Photo Story</span>
-              </>
-            )}
-          </div>
+        
 
           {/* Duration or Category Tag */}
           {item.duration && (
@@ -711,11 +698,7 @@ function DocumentaryCard({
               {item.duration}
             </div>
           )}
-          {item.year && (
-            <div className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-[#C9A227] text-[#0A1628] font-mono text-[10px] font-bold">
-              {item.year}
-            </div>
-          )}
+         
         </div>
 
         {/* Content Details */}

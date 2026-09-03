@@ -16,7 +16,7 @@ export const projectsData: Project[] = [
     client: 'South Saharan Social Development Organisation (SSDO)',
     year: '2023 - 2024',
     role: 'Lead Communications Strategist & Copywriter',
-    summary: 'A high-impact 11-part digital advocacy and public awareness campaign designed for the global 16 Days of Activism against Gender-Based Violence (GBV).',
+    summary: 'Digital campaign advocacy messaging for the global 16 Days of Activism against Gender-Based Violence (GBV).',
     challenge: 'Addressing silence around domestic violence in rural and peri-urban communities, while breaking down complex legal protections and emergency hotlines into relatable, shareable digital messages.',
     solution: 'Engineered an accessible multi-channel visual narrative combining educational infographics, survivor empowerment quotes, and clear reporting directory graphics distributed across social channels.',
     deliverables: [
@@ -95,7 +95,7 @@ export const projectsData: Project[] = [
     client: 'South Saharan Social Development Organisation (SSDO)',
     year: '2022 - 2023',
     role: 'Lead Campaign Strategist & Content Creator',
-    summary: 'Comprehensive 35-piece nationwide civic mobilization campaign urging youth, women, and eligible citizens to register, verify, and collect their Permanent Voter Cards.',
+    summary: 'Civic mobilization digital campaign urging citizens to register, verify and collect their Permanent Voter Cards',
     challenge: 'Overcoming voter apathy, misinformation regarding registration deadlines, polling unit transfers, and last-minute INEC center bottlenecks.',
     solution: 'Created an extensive, bite-sized 35-graphic civic education series tackling every registration stage—from online pre-registration and data corrections to physical biometric capture.',
     deliverables: [
@@ -160,7 +160,7 @@ export const projectsData: Project[] = [
     client: 'Maternal Mental Health & Wellness Initiative',
     year: '2024 - 2025',
     role: 'Lead Communications Strategist & Visual Designer',
-    summary: 'A 15-part public health and emotional wellbeing campaign designed to de-stigmatize postpartum depression (PPD), guide emotional self-regulation, and connect new mothers with healing resources.',
+    summary: 'Comprehensive 35-piece nationwide civic mobilization campaign urging youth, women, and eligible citizens to register, verify, and collect their Permanent Voter Cards.',
     challenge: 'Addressing pervasive cultural silence, guilt, and stigma around postpartum mood disorders, while equipping families with clear diagnostic signs and accessible support channels.',
     solution: 'Designed an empathetic, visually compelling 15-part educational carousel suite integrating clinical symptom identification, self-regulation worksheets, affirmations, and actionable helpline guides.',
     deliverables: [
