@@ -160,7 +160,7 @@ export const projectsData: Project[] = [
     client: 'Maternal Mental Health & Wellness Initiative',
     year: '2024 - 2025',
     role: 'Lead Communications Strategist & Visual Designer',
-    summary: 'Comprehensive 35-piece nationwide civic mobilization campaign urging youth, women, and eligible citizens to register, verify, and collect their Permanent Voter Cards.',
+    summary: 'Mental health and emotional wellbeing campaign designed to guide mental well being, de-stigmatize postpartum depression (PPD), and connect new mothers with healing resources.',
     challenge: 'Addressing pervasive cultural silence, guilt, and stigma around postpartum mood disorders, while equipping families with clear diagnostic signs and accessible support channels.',
     solution: 'Designed an empathetic, visually compelling 15-part educational carousel suite integrating clinical symptom identification, self-regulation worksheets, affirmations, and actionable helpline guides.',
     deliverables: [
