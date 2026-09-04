@@ -266,9 +266,9 @@ export const projectsData: Project[] = [
     year: '2024',
     role: 'Author & Visual Storyteller',
     summary: 'A visual slide narrative and personal memoir exploring transformative journeys, lingering encounters, and the enduring tales that shape us.',
-    fileUrl: '/portfolio/CREATIVE NON-FICTIONS/THE STORY THAT FOLLOWED ME.pptx',
-    fileType: 'pptx',
-    fileSize: '18.6 MB',
+    fileUrl: '/portfolio/CREATIVE NON-FICTIONS/THE STORY THAT FOLLOWED ME.pdf',
+    fileType: 'pdf',
+    fileSize: '3.0 MB',
     coverImage: 'https://images.unsplash.com/photo-1476820865390-c52aeebb9891?auto=format&fit=crop&w=1200&q=80',
     highlights: [
       'Multi-slide visual storytelling journey combining photography and prose',
